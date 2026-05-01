@@ -1,47 +1,143 @@
-# fieldday
+# outpost-media
 
-A portable offline event server.
+A portable offline event server for places where cell service is nonexistent or saturated.
 
-## What it is
+Runs on a Raspberry Pi Zero 2W, broadcasts its own WiFi AP, and serves a self-contained site with movies, a live chat room, browser games, an offline library, and a CTF challenge. No internet required — everything is local.
 
-fieldday is a self-contained web server that runs on a Raspberry Pi Zero 2W and creates its own WiFi access point. Connected devices get a captive portal that serves movies, a live chat room, browser games, a CTF challenge, and curated info pages (no internet required, everything is local). It is designed for places where cell service is saturated or absent, like racing events, campsites, festivals, or just a long weekend off-grid.
+---
 
 ## Hardware
 
 - Raspberry Pi Zero 2W
-- 32GB+ microSD card (A1 rated, larger if you want a big movie library)
-- USB-A power bank (any reasonable capacity, the Pi sips power)
-- Optional: a small CRT or HDMI monitor for a status display
-- Optional: a case and a heatsink (the Zero 2W can get warm under sustained load)
+- 64GB+ microSD card (A1 rated; larger if you want a big movie library)
+- USB power bank (the Pi draws ~2W under load)
+- Heatsink recommended — the Zero 2W throttles under sustained load without one
+
+---
 
 ## Quick start
 
 ```bash
-git clone https://github.com/yourname/fieldday.git
-cd fieldday
+git clone https://github.com/logikill99/outpost-media.git
+cd outpost-media
 cp .env.example .env
-# edit .env and fill in SECRET_KEY, ADMIN_PASSWORD, and the CTF flags
+# fill in SECRET_KEY, ADMIN_PASSWORD, and the six CTF_FLAG_* values
+nano config/hostapd.conf  # set your SSID (open network by default)
 sudo bash scripts/setup.sh
 sudo reboot
 ```
 
-After reboot the Pi broadcasts its SSID and serves the site at `http://10.0.0.1/`.
+After reboot the Pi broadcasts its SSID and serves the site at `http://10.0.0.1/`. Any connected device's captive portal prompt will point there automatically.
 
-## Content setup
+See [SETUP.md](SETUP.md) for the full deployment guide including pre-boot config, content setup, and troubleshooting.
 
-- Drop video files into `media/videos/`. Any `.mp4`, `.mkv`, or `.webm` is auto-discovered.
-- Add metadata (title, year, description, genre) to `content/movies.json`. Files without metadata get a generated title from the filename.
-- Run `python scrape_wiki.py` (with internet access, on your laptop) to populate the offline Wikipedia library under `content/library/`.
-- Edit JSON files in `content/` to update info pages, schedules, standings, etc.
+---
 
-## Network
+## Content
 
-The Pi runs `hostapd` to broadcast its own SSID and `dnsmasq` to hand out DHCP leases in the `10.0.0.10` to `10.0.0.30` range. Wildcard DNS resolves every hostname to `10.0.0.1`, which makes captive-portal detection on iOS, Android, and Windows trigger automatically. Caddy fronts the static files and proxies the dynamic routes (`/api`, `/admin`, `/socket.io`) to the Flask process.
+**Movies** — drop encoded `.mp4`/`.mkv`/`.webm` files into `media/videos/`. They're auto-discovered at runtime. Add metadata (title, year, description) to `content/movies.json` for nicer display; unmatched files fall back to a generated title.
+
+Encode on a capable machine (not the Pi):
+
+```bash
+ffmpeg -i input.mkv -vf scale=1280:720 -c:v libx264 -preset slow -crf 23 \
+  -c:a aac -b:a 128k -movflags +faststart output.mp4
+```
+
+**Library** — run `python scrape_wiki.py` (with internet, on your laptop) to populate `content/library/` with offline Wikipedia articles.
+
+**F1 data** — standings, driver profiles, and schedule live in `content/`. Edit the JSON files directly or replace them before the event.
+
+---
+
+## Managing the Pi over USB (recommended)
+
+When the Pi is in AP mode it's off your home network, which makes SSH over WiFi impossible from a host machine. The better approach is USB ethernet gadget mode — the Pi presents as a USB network adapter when plugged into any computer, giving you a direct SSH connection regardless of what the WiFi radio is doing.
+
+### One-time setup
+
+**1. Pre-boot config** (edit the SD card before first boot, or edit in place and reboot):
+
+In `/boot/firmware/config.txt`, add at the end:
+```
+dtoverlay=dwc2
+```
+
+In `/boot/firmware/cmdline.txt`, append to the existing single line (no newline):
+```
+ modules-load=dwc2,g_ether
+```
+
+**2. On the Pi** — configure a static IP for the USB interface. Run this once after first boot (while the Pi is still on your home network, or via the AP):
+
+```bash
+sudo nmcli con add type ethernet ifname usb0 con-name usb-static ip4 10.55.55.2/24 gw4 10.55.55.1
+sudo nmcli con up usb-static
+```
+
+This persists across reboots. NetworkManager brings `usb0` up at `10.55.55.2` automatically on every boot.
+
+> Don't also run `systemctl enable systemd-networkd` — that conflicts with NetworkManager and leaves the interface unconfigured.
+
+**3. On the host machine** — find the USB ethernet interface and bring it up:
+
+```bash
+# find the interface name (will be enx<mac> on Linux, something like en7 on macOS)
+ip link show | grep enx       # Linux
+networksetup -listallhardwareports  # macOS
+
+# Linux
+sudo ip link set enx<yourmac> up
+sudo ip addr add 10.55.55.1/24 dev enx<yourmac>
+
+# macOS — set manually in System Settings > Network > USB Ethernet > Manual
+# IP: 10.55.55.1, subnet: 255.255.255.0
+```
+
+To make the host side persistent on Linux, create `/etc/systemd/network/10-pi-usb.network`:
+```ini
+[Match]
+MACAddress=<mac of the enx interface>
+
+[Network]
+Address=10.55.55.1/24
+```
+
+**4. SSH in:**
+
+```bash
+ssh outpost@10.55.55.2
+```
+
+Works whether the Pi is in AP mode, connected to your home network, or anything else.
+
+---
+
+## Network topology
+
+```
+[Client device] ──WiFi──▶ wlan0 (Pi, 10.0.0.1)
+                              ├── hostapd       AP, open network
+                              ├── dnsmasq       DHCP + wildcard DNS
+                              └── Caddy :80     reverse proxy + static files
+                                   └── Flask :5000
+
+[Host machine]  ──USB───▶ usb0 (Pi, 10.55.55.2)   ← management only
+                              └── enx<mac> (host, 10.55.55.1)
+```
+
+---
+
+## Admin panel
+
+`http://10.0.0.1/admin` — password set by `ADMIN_PASSWORD` in `.env`.
+
+---
 
 ## License
 
-MIT (see `LICENSE`). Bundled and dependent third-party software is listed in `THIRD_PARTY_NOTICES.md`.
+MIT — see `LICENSE`. Bundled third-party software is listed in `THIRD_PARTY_NOTICES.md`.
 
 ## Disclaimer
 
-fieldday is not affiliated with any racing series, sanctioning body, or event organizer. It is a personal hobby project.
+Not affiliated with any racing series, sanctioning body, or event organizer. Personal hobby project.

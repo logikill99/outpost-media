@@ -50,6 +50,42 @@ ffmpeg -i input.mkv -vf scale=1280:720 -c:v libx264 -preset slow -crf 23 \
 
 ---
 
+## Local development
+
+You don't need a Pi, hostapd, dnsmasq, or Caddy to work on the app. Flask serves everything directly and the full site is usable on localhost.
+
+```bash
+git clone https://github.com/logikill99/outpost-media.git
+cd outpost-media
+
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+
+cp .env.example .env
+# SECRET_KEY can be anything for local dev
+# ADMIN_PASSWORD is whatever you want
+# CTF flags can be any FLAG{...} strings
+```
+
+Then just run it:
+
+```bash
+python run.py
+```
+
+Site is at `http://localhost:5000`. The SQLite database initializes automatically on first run and gets seeded with the CTF challenges from your `.env` flags.
+
+A few things behave differently locally vs on the Pi:
+- **No captive portal** — navigate directly to `http://localhost:5000`
+- **No AP or DHCP** — the network stack (hostapd/dnsmasq) is Pi-only and irrelevant locally
+- **Caddy is optional** — Flask serves static files fine in dev. If you want to test video seek/range requests accurately, put Caddy in front, but it's not required
+- **Admin panel** is at `http://localhost:5000/admin`
+
+To stop it: `Ctrl+C`. Nothing runs on startup, nothing is installed to the system.
+
+---
+
 ## Managing the Pi over USB (recommended)
 
 When the Pi is in AP mode it's off your home network, which makes SSH over WiFi impossible from a host machine. The better approach is USB ethernet gadget mode — the Pi presents as a USB network adapter when plugged into any computer, giving you a direct SSH connection regardless of what the WiFi radio is doing.

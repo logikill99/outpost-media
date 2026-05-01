@@ -1,0 +1,80 @@
+{
+  "event": "Formula 1 Crypto.com Miami Grand Prix 2026",
+  "venue": "Miami International Autodrome",
+  "location": "Miami Gardens, Florida",
+  "format": "SPRINT WEEKEND",
+  "note": "This is a Sprint weekend — no FP2/FP3. Only one practice session. The Sprint race is Saturday.",
+  "days": [
+    {
+      "day": "Friday",
+      "date": "May 1, 2026",
+      "sessions": [
+        { "time": "11:00 AM", "event": "Parking Gates Open", "series": "logistics", "category": "gate" },
+        { "time": "11:30 AM", "event": "Campus Gates Open", "series": "logistics", "category": "gate" },
+        { "time": "12:00 PM", "event": "Practice Session", "series": "F1", "category": "f1",
+          "description": "The only free practice session of the weekend. Teams have just 60 minutes to gather data before Sprint Qualifying — no second bite at the apple." },
+        { "time": "2:30 PM", "event": "Formula 2 Qualifying", "series": "F2", "category": "support",
+          "description": "F2 qualifying session sets the grid for Saturday's Sprint race." },
+        { "time": "3:25 PM", "event": "Porsche Carrera Cup NA — Practice 2", "series": "Porsche Carrera Cup", "category": "support",
+          "description": "Porsche's one-make 911 GT3 Cup series, second practice session before qualifying." },
+        { "time": "4:30 PM", "event": "Sprint Qualifying", "series": "F1", "category": "f1",
+          "description": "Sets the grid for Saturday's Sprint race. Three knock-out rounds (SQ1, SQ2, SQ3) determine the top 8 starting positions for the 19-lap Sprint. High stakes — mistakes mean starting at the back of the Sprint." },
+        { "time": "6:15 PM", "event": "McLaren Trophy America — Practice 2", "series": "McLaren Trophy", "category": "support",
+          "description": "McLaren Artura Trophy EVO one-make series, second practice session." },
+        { "time": "7:10 PM", "event": "Porsche Carrera Cup NA — Qualifying", "series": "Porsche Carrera Cup", "category": "support",
+          "description": "Sets the grid for Saturday's and Sunday's Porsche races." },
+        { "time": "8:00 PM", "event": "Venue Gates Close", "series": "logistics", "category": "gate" }
+      ]
+    },
+    {
+      "day": "Saturday",
+      "date": "May 2, 2026",
+      "sessions": [
+        { "time": "9:30 AM", "event": "Parking Gates Open", "series": "logistics", "category": "gate" },
+        { "time": "10:00 AM", "event": "Campus Gates Open", "series": "logistics", "category": "gate" },
+        { "time": "10:00 AM", "event": "Formula 2 Sprint", "series": "F2", "category": "support",
+          "description": "Short reverse-grid sprint race for F2 — fast, frantic, and a great warm-up for the F1 action." },
+        { "time": "12:00 PM", "event": "F1 SPRINT RACE", "series": "F1", "category": "f1", "highlight": true,
+          "description": "19 laps. Full points on offer (half of grand prix points). No mandatory pit stop. Teams can't share data between this and the grand prix setup. Fastest 8 from Sprint Qualifying get to fight for the win — expect aggressive racing and risk-taking." },
+        { "time": "12:45 PM", "event": "Cadillac Laps", "series": "Demo", "category": "demo",
+          "description": "Cadillac showcasing their new F1 car — a historic moment for the American manufacturer in front of a home(ish) crowd." },
+        { "time": "1:45 PM", "event": "McLaren Trophy America — Qualifying", "series": "McLaren Trophy", "category": "support",
+          "description": "Sets the grid for both Sunday races." },
+        { "time": "2:45 PM", "event": "Porsche Carrera Cup NA — Race 1", "series": "Porsche Carrera Cup", "category": "support",
+          "description": "First of two races for Porsche's one-make 911 GT3 Cup series. Expect close racing — the cars are identical, so it all comes down to driver talent." },
+        { "time": "4:00 PM", "event": "F1 QUALIFYING SESSION", "series": "F1", "category": "f1", "highlight": true,
+          "description": "Sets the Grand Prix grid. Three knock-out sessions (Q1: all 22 cars → eliminate 5, Q2: 17 cars → eliminate 7, Q3: top 10 shootout). Pole position at Miami is a significant advantage." },
+        { "time": "6:00 PM", "event": "McLaren Trophy America — Race 1", "series": "McLaren Trophy", "category": "support",
+          "description": "First McLaren Artura Trophy race of the weekend. 40 minutes + 1 lap." },
+        { "time": "7:00 PM", "event": "Venue Gates Close", "series": "logistics", "category": "gate" }
+      ]
+    },
+    {
+      "day": "Sunday",
+      "date": "May 3, 2026",
+      "sessions": [
+        { "time": "7:30 AM", "event": "Parking Gates Open", "series": "logistics", "category": "gate" },
+        { "time": "8:00 AM", "event": "Campus Gates Open", "series": "logistics", "category": "gate" },
+        { "time": "8:30 AM", "event": "McLaren Trophy America — Race 2", "series": "McLaren Trophy", "category": "support",
+          "description": "Second and final McLaren Trophy race of the Miami weekend. 40 minutes + 1 lap." },
+        { "time": "10:05 AM", "event": "Precision Drive Club Laps", "series": "Demo", "category": "demo",
+          "description": "Exclusive track experience for Precision Drive Club members." },
+        { "time": "11:05 AM", "event": "Porsche Carrera Cup NA — Race 2", "series": "Porsche Carrera Cup", "category": "support",
+          "description": "Second and final Porsche Carrera Cup race of the weekend. Championship points on the line." },
+        { "time": "12:30 PM", "event": "Formula 2 Feature Race", "series": "F2", "category": "support",
+          "description": "The main F2 event — full points, mandatory pit stop, reverse grid top 10. F2 Feature Races regularly produce drama and upsets that directly affect the championship." },
+        { "time": "2:00 PM", "event": "F1 Drivers' Parade", "series": "F1", "category": "f1",
+          "description": "All 22 drivers parade the circuit — your best chance for a close look at the grid before the race." },
+        { "time": "2:30 PM", "event": "Grid Performance", "series": "Entertainment", "category": "event",
+          "description": "Pre-race entertainment on the grid." },
+        { "time": "3:40 PM", "event": "National Anthem", "series": "Ceremony", "category": "event",
+          "description": "Pre-race ceremony." },
+        { "time": "4:00 PM", "event": "FORMULA 1 GRAND PRIX", "series": "F1", "category": "f1", "highlight": true,
+          "description": "57 laps, 308.326 km. The main event. Broadcast on Apple TV and F1 TV Pro. Miami International Autodrome's combination of tight infield sections and sweeping outer loop creates a unique challenge for strategy and overtaking." }
+      ]
+    }
+  ],
+  "broadcast": "Apple TV and F1 TV Pro",
+  "laps": 57,
+  "distance_km": 308.326
+}

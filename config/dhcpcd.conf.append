@@ -1,0 +1,4 @@
+# Append to /etc/dhcpcd.conf — give wlan0 a static IP and tell dhcpcd not to ask DHCP for it.
+interface wlan0
+    static ip_address=10.0.0.1/24
+    nohook wpa_supplicant

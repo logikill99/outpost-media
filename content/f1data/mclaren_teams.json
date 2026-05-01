@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1, "name": "Flying Lizard Motorsports", "color": "#FFD700",
+    "drivers": [],
+    "car": "McLaren Artura Trophy EVO",
+    "bio": ""
+  },
+  {
+    "id": 2, "name": "Forte Racing", "color": "#E74C3C",
+    "drivers": [],
+    "car": "McLaren Artura Trophy EVO",
+    "bio": ""
+  },
+  {
+    "id": 3, "name": "GMG Racing", "color": "#27AE60",
+    "drivers": [],
+    "car": "McLaren Artura Trophy EVO",
+    "bio": ""
+  },
+  {
+    "id": 4, "name": "Orlando Motorsport Services", "color": "#3498DB",
+    "drivers": [],
+    "car": "McLaren Artura Trophy EVO",
+    "bio": ""
+  },
+  {
+    "id": 5, "name": "RP Motorsports by Forte Racing", "color": "#E67E22",
+    "drivers": [],
+    "car": "McLaren Artura Trophy EVO",
+    "bio": ""
+  },
+  {
+    "id": 6, "name": "RWE Motorsport", "color": "#9B59B6",
+    "drivers": [],
+    "car": "McLaren Artura Trophy EVO",
+    "bio": ""
+  },
+  {
+    "id": 7, "name": "TechSport", "color": "#1ABC9C",
+    "drivers": [],
+    "car": "McLaren Artura Trophy EVO",
+    "bio": ""
+  }
+]

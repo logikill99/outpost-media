@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}McLaren Trophy America — Race Info{% endblock %}
+{% block content %}
+<div class="page-header">
+  <h1 class="page-title">📖 McLAREN TROPHY AMERICA</h1>
+  <p class="muted">One-make racing · McLaren Artura Trophy EVO · Second season for 2026</p>
+</div>
+
+<section class="info-section" style="border-color:var(--accent-2);">
+  <h2 class="info-section-title" style="color:var(--accent-2);">2026 Season Status</h2>
+  <p>Check live results and standings at  <a href="https://mclarentrophyamerica.com" class="inline-link">mclarentrophyamerica.com</a>.</p>
+</section>
+
+<section class="info-section">
+  <h2 class="info-section-title">About the Series</h2>
+  <p>McLaren Trophy America is a one-make championship for the McLaren Artura Trophy EVO — a race-prepared version of McLaren's Artura road car. Now in its second season after launching in 2025, the championship secured a prestigious F1 support slot.</p>
+</section>
+
+<section class="info-section">
+  <h2 class="info-section-title">The Car — Artura Trophy EVO</h2>
+  <ul class="reg-list">
+    <li><strong>Powertrain:</strong> 3.0L twin-turbo V6 + e-motor (hybrid), ~585 hp combined</li>
+    <li><strong>Transmission:</strong> 8-speed dual-clutch with electric reverse</li>
+    <li><strong>Chassis:</strong> Carbon fibre monocoque (MCLA platform)</li>
+    <li><strong>Weight:</strong> ~1,395 kg</li>
+    <li><strong>Differentiator:</strong> One of very few hybrid one-make cars on a North American grid</li>
+  </ul>
+</section>
+
+<section class="info-section">
+  <h2 class="info-section-title">Format</h2>
+  <ul class="reg-list">
+    <li>Two races per weekend</li>
+    <li>40 minutes + 1 lap each</li>
+    <li>Mandatory pit stop in Race 2 only</li>
+    <li>Single qualifying session sets both grids (Race 2 grid based on Race 1 fastest lap)</li>
+  </ul>
+</section>
+
+<section class="info-section">
+  <h2 class="info-section-title">At This Event</h2>
+  <ul class="reg-list">
+    <li><strong>Friday 6:15 PM:</strong> Practice 2</li>
+    <li><strong>Saturday 1:45 PM:</strong> Qualifying</li>
+    <li><strong>Saturday afternoon:</strong> Race 1</li>
+    <li><strong>Sunday morning:</strong> Race 2</li>
+  </ul>
+  <p>This race is a marquee event for the McLaren Trophy America championship.</p>
+</section>
+
+<style>
+.info-section { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:20px; margin-bottom:18px; }
+.info-section-title { font-size:14px; text-transform:uppercase; letter-spacing:1px; color:var(--accent); margin:0 0 14px; }
+.info-section p { color:var(--text-muted); line-height:1.7; font-size:14px; }
+.reg-list { padding-left:18px; color:var(--text-muted); line-height:1.8; font-size:14px; }
+.reg-list strong { color:var(--text); }
+.results-table { width:100%; border-collapse:collapse; font-size:13px; background:var(--bg); border:1px solid var(--border); border-radius:6px; overflow:hidden; }
+.results-table th { text-align:left; padding:8px 10px; background:var(--surface-2); color:var(--text-muted); font-size:10px; text-transform:uppercase; letter-spacing:.5px; border-bottom:1px solid var(--border); font-weight:700; }
+.results-table td { padding:8px 10px; border-bottom:1px solid var(--border); }
+.results-table tr:last-child td { border-bottom:none; }
+.results-table .small { font-size:11px; }
+.session-badge { display:inline-block; padding:1px 6px; font-size:10px; background:var(--surface-2); border:1px solid var(--border); border-radius:3px; letter-spacing:.5px; }
+</style>
+
+<p class="back-link"><a href="/info">← Back to Race Info</a></p>
+{% endblock %}

@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+{% block title %}Porsche Carrera Cup NA — Race Info{% endblock %}
+{% block content %}
+<div class="page-header">
+  <h1 class="page-title">📖 PORSCHE CARRERA CUP NA</h1>
+  <p class="muted">One-make racing · 992.2-generation Porsche 911 GT3 Cup</p>
+</div>
+
+{% if standings and standings.standings %}
+<section class="info-section">
+  <h2 class="info-section-title">2026 Championship — Standings (top 5 by class)</h2>
+  {% if standings.last_updated %}<p class="standings-note muted">Updated {{ standings.last_updated }}{% if standings.note %} — {{ standings.note }}{% endif %}</p>{% endif %}
+  <div class="standings-grid">
+    {% for group in standings.standings %}
+    {% if group.class in ['Pro','Pro-Am','Masters'] and group.standings %}
+    <div class="standings-col">
+      <h3 class="standings-col-title">{{ group.class }}</h3>
+      <table class="results-table">
+        <thead><tr><th>Pos</th><th>Driver</th><th class="num">Pts</th></tr></thead>
+        <tbody>
+          {% for s in group.standings[:5] %}
+          <tr>
+            <td class="pos">{{ s.position }}</td>
+            <td>{{ s.driver }}</td>
+            <td class="num pts">{{ s.total_points }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% if results %}
+<section class="info-section">
+  <h2 class="info-section-title">2026 Recent Race Winners</h2>
+  <table class="results-table">
+    <thead>
+      <tr><th>Event</th><th>Session</th><th>Pro Winner</th><th>Pro-Am Winner</th></tr>
+    </thead>
+    <tbody>
+      {% for ev in results %}
+      {% set ev_name = ev.event[3:] if ev.event.startswith(ev.event[:2] + '_') else ev.event %}
+      {% for s in ev.sessions if s.session_type == 'Race' and s.results %}
+      {% set pro_winner = s.results | selectattr('class','equalto','Pro') | list | first %}
+      {% set proam_winner = s.results | selectattr('class','equalto','Pro-Am') | list | first %}
+      <tr>
+        <td><strong>{{ ev_name }}</strong></td>
+        <td><span class="session-badge">Race {{ s.race_number }}</span></td>
+        <td>{{ pro_winner.drivers if pro_winner else '—' }}<div class="muted small">{{ pro_winner.team if pro_winner else '' }}</div></td>
+        <td>{{ proam_winner.drivers if proam_winner else '—' }}<div class="muted small">{{ proam_winner.team if proam_winner else '' }}</div></td>
+      </tr>
+      {% endfor %}
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endif %}
+
+<section class="info-section">
+  <h2 class="info-section-title">About the Series</h2>
+  <p>PCCNA is a one-make championship — every competitor races the same car: the Porsche 911 GT3 Cup. No development allowed, no manufacturer spending wars. Just drivers, identical machinery, and pure racecraft. The series runs alongside major North American motorsport events including F1 and IMSA.</p>
+</section>
+
+<section class="info-section">
+  <h2 class="info-section-title">The Car — 992.2 (new for 2026)</h2>
+  <ul class="reg-list">
+    <li><strong>Engine:</strong> 4.0L flat-six naturally aspirated, ~520 hp</li>
+    <li><strong>Gearbox:</strong> 6-speed Porsche sequential</li>
+    <li><strong>Aero:</strong> Updated front splitter, rear wing, and underbody</li>
+    <li><strong>New for 2026:</strong> Air conditioning (matters in event-day heat), revised electronics, refined ABS</li>
+    <li><strong>Tires:</strong> Michelin Pilot Sport Cup spec</li>
+  </ul>
+</section>
+
+<section class="info-section">
+  <h2 class="info-section-title">Classes</h2>
+  <div class="class-grid">
+    <div class="class-item">
+      <div class="class-name">Pro</div>
+      <div class="class-desc muted">Top professional drivers competing for the overall championship.</div>
+    </div>
+    <div class="class-item">
+      <div class="class-name">Pro-Am</div>
+      <div class="class-desc muted">Gentleman drivers paired with pro coaching — the largest class.</div>
+    </div>
+    <div class="class-item">
+      <div class="class-name">Masters</div>
+      <div class="class-desc muted">Drivers 57 and older — remarkably competitive, deep talent.</div>
+    </div>
+  </div>
+</section>
+
+<section class="info-section">
+  <h2 class="info-section-title">At This Event</h2>
+  <ul class="reg-list">
+    <li><strong>Friday 3:25 PM:</strong> Practice 2</li>
+    <li><strong>Friday 7:10 PM:</strong> Qualifying</li>
+    <li><strong>Saturday 2:45 PM:</strong> Race 1</li>
+    <li><strong>Sunday 11:05 AM:</strong> Race 2</li>
+  </ul>
+  <p>This event brings significant exposure for sponsors and drivers alike.</p>
+</section>
+
+<style>
+.info-section { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:20px; margin-bottom:18px; }
+.info-section-title { font-size:14px; text-transform:uppercase; letter-spacing:1px; color:var(--accent); margin:0 0 14px; }
+.info-section p { color:var(--text-muted); line-height:1.7; font-size:14px; }
+.reg-list { padding-left:18px; color:var(--text-muted); line-height:1.8; font-size:14px; }
+.reg-list strong { color:var(--text); }
+.class-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:8px; }
+.class-item { background:var(--bg); border:1px solid var(--border); border-radius:4px; padding:10px; }
+.class-name { font-size:13px; font-weight:700; margin-bottom:2px; color:var(--text); }
+.class-desc { font-size:12px; }
+.standings-note { font-size:12px; margin:-6px 0 12px; }
+.standings-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; }
+.standings-col-title { font-size:11px; text-transform:uppercase; letter-spacing:1px; color:var(--text-muted); margin:0 0 8px; }
+.results-table { width:100%; border-collapse:collapse; font-size:13px; background:var(--bg); border:1px solid var(--border); border-radius:6px; overflow:hidden; }
+.results-table th { text-align:left; padding:8px 10px; background:var(--surface-2); color:var(--text-muted); font-size:10px; text-transform:uppercase; letter-spacing:.5px; border-bottom:1px solid var(--border); font-weight:700; }
+.results-table td { padding:8px 10px; border-bottom:1px solid var(--border); }
+.results-table tr:last-child td { border-bottom:none; }
+.results-table .num { text-align:right; font-variant-numeric: tabular-nums; }
+.results-table .pos { color:var(--accent); font-weight:700; width:36px; }
+.results-table .pts { color:var(--text); font-weight:600; }
+.results-table .small { font-size:11px; }
+.session-badge { display:inline-block; padding:1px 6px; font-size:10px; background:var(--surface-2); border:1px solid var(--border); border-radius:3px; letter-spacing:.5px; }
+</style>
+
+<p class="back-link"><a href="/info">← Back to Race Info</a></p>
+{% endblock %}

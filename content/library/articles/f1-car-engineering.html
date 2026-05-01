@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inside an F1 Car — Engineering at the Limit — Outpost Library</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { background: #0a0a0a; color: #e8e8e8; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 16px; line-height: 1.75; margin: 0; padding: 0; }
+    .container { max-width: 800px; margin: 0 auto; padding: 24px 20px 60px; }
+    .back-link { display: inline-block; color: #ff8700; text-decoration: none; font-size: 14px; margin-bottom: 24px; padding: 6px 12px; border: 1px solid #ff8700; border-radius: 4px; }
+    .back-link:hover { background: #ff870020; }
+    .meta { color: #888; font-size: 14px; margin-bottom: 32px; }
+    h1 { color: #fff; font-size: 2em; margin: 0 0 12px; border-bottom: 2px solid #e10600; padding-bottom: 12px; }
+    h2 { color: #e10600; font-size: 1.4em; margin: 40px 0 16px; border-bottom: 1px solid #222; padding-bottom: 8px; }
+    h3 { color: #ff8700; font-size: 1.15em; margin: 28px 0 10px; }
+    p { margin: 0 0 18px; }
+    a { color: #ff8700; }
+    .callout { background: #111; border-left: 3px solid #ff8700; padding: 16px 20px; margin: 24px 0; border-radius: 0 4px 4px 0; }
+    .stat { background: #0f0f0f; border: 1px solid #333; border-radius: 6px; padding: 12px 16px; margin: 8px 0; display: flex; justify-content: space-between; align-items: center; }
+    .stat-label { color: #aaa; font-size: 14px; }
+    .stat-value { color: #ff8700; font-weight: bold; font-size: 1.1em; }
+    ul, ol { margin: 0 0 18px; padding-left: 28px; }
+    li { margin-bottom: 6px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/library" class="back-link">← Library</a>
+    <h1>Inside an F1 Car — Engineering at the Limit</h1>
+    <div class="meta">Category: F1 Technical · Reading time: ~11 min · Written for Outpost</div>
+
+    <p>Formula One cars are the most advanced racing machines ever built. Not in a hyperbolic marketing sense — literally. The resources, ingenuity, and engineering talent concentrated in an F1 car represent a level of optimization that has no civilian equivalent. Here's what's actually inside one of these things.</p>
+
+    <h2>Key Specifications (2026 Regulations)</h2>
+    <div class="stat"><span class="stat-label">Minimum weight (car + driver)</span><span class="stat-value">~768 kg</span></div>
+    <div class="stat"><span class="stat-label">Total power output</span><span class="stat-value">~750 kW (~1005 hp)</span></div>
+    <div class="stat"><span class="stat-label">Electrical power fraction</span><span class="stat-value">~50%</span></div>
+    <div class="stat"><span class="stat-label">Top speed</span><span class="stat-value">~360 km/h (223 mph)</span></div>
+    <div class="stat"><span class="stat-label">0–100 km/h</span><span class="stat-value">~2.6 seconds</span></div>
+    <div class="stat"><span class="stat-label">Maximum lateral G in cornering</span><span class="stat-value">~6G</span></div>
+    <div class="stat"><span class="stat-label">Braking from 300–0 km/h</span><span class="stat-value">~3.5 seconds, ~4–5G deceleration</span></div>
+
+    <h2>The Chassis: Carbon Fiber Monocoque</h2>
+    <p>The survival cell (monocoque) is the central structural element of the car. It houses the driver and forms the attachment points for all major components. Modern F1 monocoques are manufactured from carbon fiber reinforced polymer (CFRP) — multiple layers of carbon fiber fabric pre-impregnated with epoxy resin, laid up by hand and cured under heat and pressure in an autoclave.</p>
+
+    <p>The result is a structure that weighs around 35kg but can withstand the forces required in an FIA crash test that exceeds 20G. The survival cell has to pass standardized crash tests involving impacts at the front, rear, and sides before a car is homologated for competition. Teams spend enormous effort on layer orientation (the fiber direction affects stiffness and strength), core material selection (honeycomb or foam), and ply schedule optimization.</p>
+
+    <h3>Why Carbon Fiber?</h3>
+    <p>Specific stiffness — stiffness per unit weight — is the key metric. Carbon fiber composites have specific stiffness roughly 5x better than steel and 3x better than aluminum. For a car that needs to be as light as possible while surviving 6G lateral loads and 5G braking loads, this is non-negotiable. The material cost is high (high-modulus CF runs $100+/kg), the manufacturing is labor-intensive, and the tooling is expensive, but the performance advantage is irreplaceable.</p>
+
+    <h2>Aerodynamics: The Art and Science of Air</h2>
+    <p>Approximately 40–50% of a Formula One team's engineering effort goes into aerodynamics. It is the single biggest performance differentiator between teams. The goal: generate as much downforce as possible (to allow higher cornering speeds) while minimizing drag (to allow high straight-line speed). These goals are in fundamental tension, and resolving that tension is where teams differentiate.</p>
+
+    <h3>Ground Effect and the Floor</h3>
+    <p>The most downforce-efficient surface on an F1 car is the floor. Venturi tunnels in the floor accelerate airflow beneath the car, creating a low-pressure zone that sucks the car down. This is ground effect. It generates more downforce per unit of drag than any other aerodynamic surface, and because it's enclosed under the car, it's less sensitive to the turbulent wake left by other cars — meaning cars can follow each other more closely than with traditional high-wing aero.</p>
+
+    <p>The 2022 regulations reintroduced ground effect after decades of prohibition (following Imola 1994 and Senna's death). The 2026 regulations refine the floor geometry further, standardizing some surfaces to reduce the design space and costs while preserving the fundamental efficiency advantage.</p>
+
+    <h3>Front Wing</h3>
+    <p>The front wing does several things: generates downforce at the front axle, controls the airflow that reaches every other aerodynamic surface downstream, and (in 2026) has active flap elements that adjust angle of attack depending on speed. The active elements can transition from high-downforce to low-drag configuration in milliseconds — an actuator adjusts the flap angle continuously.</p>
+
+    <p>Front wing design is where teams spend enormous wind tunnel time. The outwash effect (directing air around the front tires, which are massive aerodynamic obstacles) is particularly important. Small changes in wing endplate geometry can have cascading effects on airflow to the underfloor, sidepods, and rear wing.</p>
+
+    <h3>Rear Wing and DRS → Active Aero</h3>
+    <p>The rear wing generates both downforce and drag. In the 2022-2025 era, DRS (Drag Reduction System) allowed drivers to open the rear wing's upper flap on specified straights to reduce drag by around 10–15%, giving roughly 10–15 km/h of additional top speed. This was a manual system requiring a button press when within 1 second of a car ahead on designated detection points.</p>
+
+    <p>In 2026, active aerodynamics replaces DRS. The entire wing angle management is automated — above certain speeds, both front and rear wings flatten to reduce drag. Below certain speeds (cornering), they return to maximum attack. It's not that different in function to DRS, but it's available to both cars simultaneously and doesn't require manual activation. The system transitions are rapid enough to be effectively transparent to the driver.</p>
+
+    <h2>Suspension: Geometry Is Everything</h2>
+    <p>F1 suspension geometry is specified in sub-millimeter precision. The car uses pushrod (front) or pullrod (rear) suspension layouts — this refers to how the wishbones connect to the spring/damper system. The key parameters:</p>
+
+    <ul>
+      <li><strong>Camber:</strong> Tire lean angle. Negative camber (tops leaning inward) improves lateral grip at the cost of straight-line tire wear</li>
+      <li><strong>Toe:</strong> Tire direction angle. Toe-out in front aids turn-in; toe-in at rear aids stability</li>
+      <li><strong>Ride height:</strong> Critical for ground effect. Too low and the floor stalls (loses downforce instantly). Too high and efficiency drops. Teams work in 5mm ranges at circuit-specific optimum.</li>
+      <li><strong>Stiffness:</strong> Stiffer suspension keeps the floor at a more consistent height but transmits more load to the driver and reduces mechanical grip. Softer improves ride but compromises aero platform stability.</li>
+    </ul>
+
+    <p>Modern F1 cars don't have active hydraulic suspension (banned since 1994) but use mechanical setups of extreme precision. Inertial dampers, heave springs, and multi-element anti-roll systems allow teams to optimize for both ride and aero platform independently.</p>
+
+    <h2>Brakes: Carbon-Carbon and Brake-by-Wire</h2>
+    <p>F1 brakes operate at temperatures up to 1,000°C. They have to — the thermal energy from decelerating a 768kg car from 300 km/h to 80 km/h in ~3.5 seconds has to go somewhere, and it goes into the brake disc. Carbon-carbon composite (not to be confused with carbon ceramic — this is a different material with fiber in both disc and matrix) handles these temperatures where steel would fail catastrophically.</p>
+
+    <p>The front brakes are conventional hydraulic. The rear brakes, in the hybrid era, are brake-by-wire: the driver pushes the pedal, a computer reads the pedal force, and then decides how to split braking between the mechanical rear brakes and the MGU-K (which regenerates electrical energy under braking). This system allows the MGU-K to harvest energy at corner entry while maintaining consistent pedal feel. Getting this feel right is a significant challenge — drivers complain bitterly when rear brake-by-wire systems feel inconsistent.</p>
+
+    <h3>Brake Ducts</h3>
+    <p>Airflow to cool the brake discs is managed by ducts that teams develop extensively. More cooling airflow means cooler brakes (good for durability) but also more drag (bad for lap time). At Miami, where ambient and track temperatures are high, teams run relatively open brake duct configurations compared to cool-weather circuits.</p>
+
+    <h2>The 2026 Power Unit</h2>
+    <p>The 2026 power unit is the most significant regulatory change of the year. It contains:</p>
+
+    <ul>
+      <li><strong>ICE (Internal Combustion Engine):</strong> 1.6L V6 turbocharged, ~400kW peak, 100% sustainable fuel</li>
+      <li><strong>MGU-K (Motor Generator Unit — Kinetic):</strong> ~350kW — harvests energy under braking, deploys on acceleration. Much more powerful than previous 120kW MGU-K.</li>
+      <li><strong>ES (Energy Store):</strong> Battery unit. New regulations allow higher energy storage and deployment rates.</li>
+      <li><strong>CE (Control Electronics):</strong> FIA-standardized ECU</li>
+      <li><strong>Turbocharger:</strong> Exhaust-driven compressor on the ICE; spools more slowly without the MGU-H to assist, so throttle response and anti-lag strategies are different</li>
+    </ul>
+
+    <p>The MGU-H (motor on the turbo shaft) is eliminated. This simplifies the power unit significantly — the MGU-H was the component that made F1 engines nearly impossible to copy at any reasonable budget and was the primary barrier for new engine suppliers. Its removal makes the power unit more approachable, hence Audi entering and Ford returning.</p>
+
+    <h2>Data Acquisition: The Car as Sensor Platform</h2>
+    <p>A modern F1 car generates over 300 channels of sensor data at rates up to 500 samples per second. Over a race weekend, a team processes 100+ GB of telemetry data. The sensors include:</p>
+
+    <ul>
+      <li>Suspension potentiometers (measuring ride height at each corner, continuously)</li>
+      <li>Strain gauges on structural members</li>
+      <li>Wheel speed sensors at all four corners</li>
+      <li>Tire temperature (infrared, multiple zones across the tire face)</li>
+      <li>Brake temperature (infrared)</li>
+      <li>G-sensors (three axes)</li>
+      <li>Gyroscopes</li>
+      <li>GPS (cm-accurate, integrated with IMU)</li>
+      <li>Pitot tube (measuring airspeed/dynamic pressure)</li>
+      <li>Engine sensors: temperatures, pressures, fuel flow at dozens of points</li>
+      <li>Power unit electrical sensors: current, voltage, state-of-charge</li>
+      <li>Throttle, brake, and steering position</li>
+    </ul>
+
+    <p>This data streams to the garage in near-real-time over a telemetry link. Engineers back at the factory can observe it live too. The analysis tools used to process this are proprietary — teams spend significant resource building simulation environments that can predict lap times from setup changes using this data.</p>
+
+    <div class="callout">
+      <strong>The big picture:</strong> An F1 car is a rolling real-time sensor platform consuming ~750kW, generating ~6G lateral load, and operating at its materials' limits continuously. The driver is simultaneously an input device, a sensor (feel), and a control system running approximately 300 decisions per lap. That the whole thing works reliably is the greatest ongoing achievement in sports engineering.
+    </div>
+
+    <p>The teams you're watching this weekend have collectively spent billions of dollars and hundreds of thousands of engineering hours to be here. When a car's floor grazes the pavement at 200 km/h and the ride height stayed within spec, that's not luck — that's a hundred engineers making correct decisions in sequence for months. Enjoy the racing.</p>
+  </div>
+</body>
+</html>

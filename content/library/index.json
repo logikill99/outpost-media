@@ -1,0 +1,677 @@
+{
+  "books": [
+    {
+      "title": "Frankenstein",
+      "author": "Mary Shelley",
+      "year": 1818,
+      "genre": "Gothic Horror / Proto-Sci-Fi",
+      "file": "frankenstein.epub",
+      "description": "The original science-gone-wrong story. A scientist creates life and loses control of it. The actual novel is more philosophical and sad than any adaptation suggests.",
+      "reading_time": "~5 hours"
+    },
+    {
+      "title": "The Art of War",
+      "author": "Sun Tzu",
+      "year": -500,
+      "genre": "Military Strategy / Philosophy",
+      "file": "art-of-war.epub",
+      "description": "2,500-year-old military strategy treatise that has been applied to everything from business to motorsport. Short but dense.",
+      "reading_time": "~1 hour"
+    },
+    {
+      "title": "Flatland: A Romance of Many Dimensions",
+      "author": "Edwin Abbott Abbott",
+      "year": 1884,
+      "genre": "Mathematical Fiction / Satire",
+      "file": "flatland.epub",
+      "description": "A square living in a 2D world encounters higher dimensions. A meditation on perception, mathematics, and Victorian class hierarchy.",
+      "reading_time": "~3 hours"
+    },
+    {
+      "title": "Twenty Thousand Leagues Under the Sea",
+      "author": "Jules Verne",
+      "year": 1870,
+      "genre": "Science Fiction / Adventure",
+      "file": "20k-leagues.epub",
+      "description": "Captain Nemo's submarine Nautilus and the first great sci-fi submarine adventure. Verne's technical obsessiveness is part of the charm.",
+      "reading_time": "~10 hours"
+    },
+    {
+      "title": "Around the World in 80 Days",
+      "author": "Jules Verne",
+      "year": 1872,
+      "genre": "Adventure",
+      "file": "around-world-80-days.epub",
+      "description": "Phileas Fogg bets he can circumnavigate the globe in 80 days using every mode of transport available. Tight, propulsive, and endlessly adapted.",
+      "reading_time": "~6 hours"
+    },
+    {
+      "title": "The War of the Worlds",
+      "author": "H.G. Wells",
+      "year": 1898,
+      "genre": "Science Fiction",
+      "file": "war-of-worlds.epub",
+      "description": "Martians invade England. The original alien invasion story and a biting critique of British imperialism. Surprisingly short.",
+      "reading_time": "~4 hours"
+    },
+    {
+      "title": "The Time Machine",
+      "author": "H.G. Wells",
+      "year": 1895,
+      "genre": "Science Fiction",
+      "file": "time-machine.epub",
+      "description": "The novella that invented modern time travel fiction. The far future Wells imagines is deeply weird and unsettling.",
+      "reading_time": "~3 hours"
+    },
+    {
+      "title": "The Invisible Man",
+      "author": "H.G. Wells",
+      "year": 1897,
+      "genre": "Science Fiction",
+      "file": "invisible-man.epub",
+      "description": "A scientist makes himself invisible and gradually loses his mind. Wells exploring hubris and the limits of science.",
+      "reading_time": "~4 hours"
+    },
+    {
+      "title": "A Connecticut Yankee in King Arthur's Court",
+      "author": "Mark Twain",
+      "year": 1889,
+      "genre": "Satirical Fiction / Time Travel",
+      "file": "ct-yankee.epub",
+      "description": "A 19th century American engineer is knocked back to Arthurian England. Twain satirizing both medieval romance and modern industrial capitalism with equal venom.",
+      "reading_time": "~8 hours"
+    },
+    {
+      "title": "The Mysterious Island",
+      "author": "Jules Verne",
+      "year": 1874,
+      "genre": "Adventure / Science Fiction",
+      "file": "mysterious-island.epub",
+      "description": "Castaways on a remote island apply Victorian engineering to survive. The practical science of building civilization from scratch.",
+      "reading_time": "~14 hours"
+    }
+  ],
+  "wikipedia": [
+    {
+      "title": "Formula One",
+      "file": "formula-one.html",
+      "category": "F1",
+      "description": "The complete Wikipedia article on Formula 1 racing \u2014 history, governance, technical regulations, and more."
+    },
+    {
+      "title": "2026 Formula One World Championship",
+      "file": "2026-f1-season.html",
+      "category": "F1",
+      "description": "The current season \u2014 drivers, teams, calendar, and results so far."
+    },
+    {
+      "title": "Miami International Autodrome",
+      "file": "miami-circuit.html",
+      "category": "F1",
+      "description": "The circuit around Hard Rock Stadium \u2014 layout, history, and statistics."
+    },
+    {
+      "title": "Hard Rock Stadium",
+      "file": "hard-rock-stadium.html",
+      "category": "Miami",
+      "description": "The Miami Dolphins' home and the centerpiece of the Miami GP complex."
+    },
+    {
+      "title": "Miami Gardens",
+      "file": "miami-gardens.html",
+      "category": "Miami",
+      "description": "The city where you are right now \u2014 incorporated 2003, largest majority-Black city in Florida."
+    },
+    {
+      "title": "Miami",
+      "file": "miami-city.html",
+      "category": "Miami",
+      "description": "The city itself \u2014 history, culture, economy, and geography."
+    },
+    {
+      "title": "George Russell",
+      "file": "george-russell.html",
+      "category": "Drivers",
+      "description": "Mercedes driver, 2022 Brazilian GP winner. #63."
+    },
+    {
+      "title": "Lewis Hamilton",
+      "file": "lewis-hamilton.html",
+      "category": "Drivers",
+      "description": "7-time World Champion, now at Ferrari. The most decorated driver in F1 history."
+    },
+    {
+      "title": "Max Verstappen",
+      "file": "max-verstappen.html",
+      "category": "Drivers",
+      "description": "4-time World Champion, Red Bull Racing. Dominant force of the recent era."
+    },
+    {
+      "title": "Lando Norris",
+      "file": "lando-norris.html",
+      "category": "Drivers",
+      "description": "McLaren driver and 2024/2025 Miami GP winner. #4."
+    },
+    {
+      "title": "Charles Leclerc",
+      "file": "charles-leclerc.html",
+      "category": "Drivers",
+      "description": "Ferrari driver, Monaco native. Talented qualifier, multiple race wins."
+    },
+    {
+      "title": "McLaren",
+      "file": "mclaren.html",
+      "category": "Teams",
+      "description": "One of F1's most storied teams \u2014 history, championships, current car."
+    },
+    {
+      "title": "Ferrari in Formula One",
+      "file": "ferrari-f1.html",
+      "category": "Teams",
+      "description": "The Scuderia \u2014 the only team to compete in every F1 season since 1950."
+    },
+    {
+      "title": "Mercedes-Benz in Formula One",
+      "file": "mercedes-f1.html",
+      "category": "Teams",
+      "description": "The dominant force of 2014\u20132021 and their ongoing journey back to the front."
+    },
+    {
+      "title": "Red Bull Racing",
+      "file": "red-bull-racing.html",
+      "category": "Teams",
+      "description": "From energy drink backroom team to championship factory. Verstappen's home."
+    },
+    {
+      "title": "Williams Racing",
+      "file": "williams-racing.html",
+      "category": "Teams",
+      "description": "The most successful privateer team in F1 history, founded by Frank Williams."
+    },
+    {
+      "title": "Drag Reduction System (DRS)",
+      "file": "drs.html",
+      "category": "F1 Technical",
+      "description": "How the moveable rear wing works and its role in enabling overtaking."
+    },
+    {
+      "title": "Kinetic Energy Recovery System (KERS/ERS)",
+      "file": "ers-motorsport.html",
+      "category": "F1 Technical",
+      "description": "How F1's hybrid energy recovery systems work."
+    },
+    {
+      "title": "Formula One Car",
+      "file": "f1-car.html",
+      "category": "F1 Technical",
+      "description": "Complete overview of F1 car components, regulations, and engineering."
+    },
+    {
+      "title": "Artificial Intelligence",
+      "file": "artificial-intelligence.html",
+      "category": "Tech",
+      "description": "The Wikipedia article on AI \u2014 history, approaches, and current state of the field."
+    },
+    {
+      "title": "Large Language Model",
+      "file": "large-language-model.html",
+      "category": "Tech",
+      "description": "How LLMs work, training, capabilities, and limitations."
+    },
+    {
+      "title": "Machine Learning",
+      "file": "machine-learning.html",
+      "category": "Tech",
+      "description": "The field underpinning modern AI \u2014 algorithms, applications, and history."
+    },
+    {
+      "title": "FIA Formula 2 Championship",
+      "file": "formula-2.html",
+      "category": "Motorsport",
+      "description": "The feeder series directly below F1. Some of these drivers will be in F1 cars within a few years."
+    },
+    {
+      "title": "Porsche Carrera Cup",
+      "file": "porsche-carrera-cup.html",
+      "category": "Motorsport",
+      "description": "Single-make Porsche 911 GT3 Cup racing series \u2014 also on the Miami GP support bill."
+    },
+    {
+      "title": "History of Formula One",
+      "file": "f1-history.html",
+      "category": "F1",
+      "description": "From the 1950 British Grand Prix to today \u2014 the full arc of the world's most elite motorsport."
+    },
+    {
+      "title": "Aerodynamics",
+      "file": "aerodynamics.html",
+      "category": "Science",
+      "description": "The physics of airflow \u2014 the science that governs everything that happens on an F1 circuit."
+    },
+    {
+      "title": "Fernando Alonso",
+      "file": "fernando-alonso.html",
+      "category": "Drivers",
+      "description": "Two-time World Champion, one of the most decorated drivers in F1 history. Renault, McLaren, Ferrari, and Aston Martin stints."
+    },
+    {
+      "title": "Carlos Sainz Jr.",
+      "file": "carlos-sainz.html",
+      "category": "Drivers",
+      "description": "Spanish driver, 2024 Ferrari race winner. Son of rally legend Carlos Sainz Sr. Moved to Williams for 2025."
+    },
+    {
+      "title": "Alexander Albon",
+      "file": "alexander-albon.html",
+      "category": "Drivers",
+      "description": "Thai-British Williams driver. Red Bull junior alumnus, returned to the grid after a sabbatical year."
+    },
+    {
+      "title": "Sergio P\u00e9rez",
+      "file": "sergio-perez.html",
+      "category": "Drivers",
+      "description": "Mexican driver, former Red Bull Racing #2. Multiple GP wins. Departed Red Bull after 2024."
+    },
+    {
+      "title": "Valtteri Bottas",
+      "file": "valtteri-bottas.html",
+      "category": "Drivers",
+      "description": "Finnish driver, former Mercedes and Alfa Romeo/Sauber. Known for consistency and strong qualifying pace."
+    },
+    {
+      "title": "Esteban Ocon",
+      "file": "esteban-ocon.html",
+      "category": "Drivers",
+      "description": "French Alpine driver who moved to Haas for 2025. Alpine race winner from 2021 Hungarian GP."
+    },
+    {
+      "title": "Oliver Bearman",
+      "file": "oliver-bearman.html",
+      "category": "Drivers",
+      "description": "British Haas driver, Ferrari junior. Made his F1 debut mid-2024 replacing Sainz at Ferrari."
+    },
+    {
+      "title": "Nico H\u00fclkenberg",
+      "file": "nico-hulkenberg.html",
+      "category": "Drivers",
+      "description": "German veteran, longest-serving driver without a podium. Moved to Sauber/Kick for 2025."
+    },
+    {
+      "title": "Gabriel Bortoleto",
+      "file": "gabriel-bortoleto.html",
+      "category": "Drivers",
+      "description": "Brazilian F2 champion 2024, Sauber/Kick driver for 2025. McLaren junior academy product."
+    },
+    {
+      "title": "Lance Stroll",
+      "file": "lance-stroll.html",
+      "category": "Drivers",
+      "description": "Canadian Aston Martin driver, son of team owner Lawrence Stroll. Multiple podium finishes."
+    },
+    {
+      "title": "Pierre Gasly",
+      "file": "pierre-gasly.html",
+      "category": "Drivers",
+      "description": "French Alpine driver. Former Red Bull driver, 2020 Italian GP winner in an AlphaTauri upset."
+    },
+    {
+      "title": "Franco Colapinto",
+      "file": "franco-colapinto.html",
+      "category": "Drivers",
+      "description": "Argentine driver, exciting Williams substitute mid-2024. Part of the 2025 Alpine lineup."
+    },
+    {
+      "title": "Isack Hadjar",
+      "file": "isack-hadjar.html",
+      "category": "Drivers",
+      "description": "French-Algerian Red Bull junior, debuted in F1 2025 with Racing Bulls."
+    },
+    {
+      "title": "Liam Lawson",
+      "file": "liam-lawson.html",
+      "category": "Drivers",
+      "description": "New Zealand Red Bull driver. Multiple substitute appearances before securing a 2025 race seat."
+    },
+    {
+      "title": "Arvid Lindblad",
+      "file": "arvid-lindblad.html",
+      "category": "Drivers",
+      "description": "British-Swedish McLaren junior driver. One of the most hyped prospects in the junior ranks."
+    },
+    {
+      "title": "Oscar Piastri",
+      "file": "oscar-piastri.html",
+      "category": "Drivers",
+      "description": "Australian McLaren driver, 2025 title contender. 2021 F2 and 2022 F3 champion. Smooth, rapid development."
+    },
+    {
+      "title": "Andrea Kimi Antonelli",
+      "file": "kimi-antonelli.html",
+      "category": "Drivers",
+      "description": "Italian Mercedes driver for 2025, replacing Lewis Hamilton. One of the most hyped junior prospects in years."
+    },
+    {
+      "title": "24 Hours of Le Mans",
+      "file": "le-mans.html",
+      "category": "Motorsport",
+      "description": "The greatest endurance race in the world \u2014 24 hours on the Circuit de la Sarthe. History, records, famous battles."
+    },
+    {
+      "title": "Indianapolis 500",
+      "file": "indy-500.html",
+      "category": "Motorsport",
+      "description": "The 500-mile oval race at the Indianapolis Motor Speedway. Part of the original Triple Crown of Motorsport."
+    },
+    {
+      "title": "NASCAR",
+      "file": "nascar.html",
+      "category": "Motorsport",
+      "description": "America's most popular domestic racing series. Stock car racing from the Daytona 500 to Talladega."
+    },
+    {
+      "title": "Ayrton Senna",
+      "file": "ayrton-senna.html",
+      "category": "Motorsport History",
+      "description": "Three-time World Champion, the most beloved F1 driver in history. His 1994 death at Imola changed the sport forever."
+    },
+    {
+      "title": "Michael Schumacher",
+      "file": "michael-schumacher.html",
+      "category": "Motorsport History",
+      "description": "Seven-time World Champion, the record-holder until Hamilton. Dominated F1 from 1994\u20132004."
+    },
+    {
+      "title": "Niki Lauda",
+      "file": "niki-lauda.html",
+      "category": "Motorsport History",
+      "description": "Austrian three-time champion. Survived the 1976 N\u00fcrburgring fire and returned to racing within weeks."
+    },
+    {
+      "title": "Formula One Racing",
+      "file": "f1-racing.html",
+      "category": "F1",
+      "description": "Overview of Formula One racing \u2014 the mechanics, rules, and culture of the sport."
+    },
+    {
+      "title": "1994 San Marino Grand Prix",
+      "file": "1994-imola.html",
+      "category": "Motorsport History",
+      "description": "The darkest weekend in F1 history. Ratzenberger on Saturday, Senna on Sunday. The turning point for safety."
+    },
+    {
+      "title": "2021 Abu Dhabi Grand Prix",
+      "file": "2021-abu-dhabi.html",
+      "category": "F1",
+      "description": "The controversial season finale where Verstappen overtook Hamilton on the final lap under disputed safety car procedures."
+    },
+    {
+      "title": "Monaco Grand Prix",
+      "file": "monaco-gp.html",
+      "category": "F1",
+      "description": "The crown jewel of the calendar. The narrow streets of the principality, held since 1929."
+    },
+    {
+      "title": "Everglades",
+      "file": "everglades.html",
+      "category": "Miami",
+      "description": "The slow-moving river of grass that covers much of southern Florida. Unique ecosystem, endangered."
+    },
+    {
+      "title": "Key Biscayne",
+      "file": "key-biscayne.html",
+      "category": "Miami",
+      "description": "Barrier island south of Miami Beach. Home to Crandon Park and the former Homestead circuit."
+    },
+    {
+      "title": "Wynwood",
+      "file": "wynwood.html",
+      "category": "Miami",
+      "description": "Miami's arts and food district. Street art, galleries, breweries, and restaurants in a former warehouse district."
+    },
+    {
+      "title": "Little Havana",
+      "file": "little-havana.html",
+      "category": "Miami",
+      "description": "The heart of Cuban Miami. Calle Ocho, Versailles Restaurant, dominos, caf\u00e9 cubano."
+    },
+    {
+      "title": "South Beach",
+      "file": "south-beach.html",
+      "category": "Miami",
+      "description": "The iconic beach district on Miami Beach. Art Deco architecture, nightlife, Ocean Drive."
+    },
+    {
+      "title": "Miami Beach Art Deco Historic District",
+      "file": "art-deco-miami.html",
+      "category": "Miami",
+      "description": "The world's largest collection of Art Deco architecture. National Historic Landmark."
+    },
+    {
+      "title": "PortMiami",
+      "file": "port-miami.html",
+      "category": "Miami",
+      "description": "The cruise capital of the world. One of the busiest cruise and cargo ports in the United States."
+    },
+    {
+      "title": "Biscayne Bay",
+      "file": "biscayne-bay.html",
+      "category": "Miami",
+      "description": "The shallow estuary between Miami and Miami Beach. Home to manatees, dolphins, and mangroves."
+    },
+    {
+      "title": "Carbon Fiber Reinforced Polymer",
+      "file": "carbon-fiber.html",
+      "category": "Engineering",
+      "description": "The material that F1 monocoques are made from. Lightweight, incredibly strong, expensive to produce."
+    },
+    {
+      "title": "Computational Fluid Dynamics",
+      "file": "cfd.html",
+      "category": "Engineering",
+      "description": "The simulation technique that F1 teams use to model airflow and optimize aerodynamics without a wind tunnel."
+    },
+    {
+      "title": "Telemetry",
+      "file": "telemetry.html",
+      "category": "Engineering",
+      "description": "Real-time data transmission \u2014 how F1 cars send 100+ GB of performance data per race weekend."
+    },
+    {
+      "title": "Lithium-ion Battery",
+      "file": "lithium-battery.html",
+      "category": "Engineering",
+      "description": "The battery technology powering F1's ERS and all modern EVs."
+    },
+    {
+      "title": "Electric Motor",
+      "file": "electric-motor.html",
+      "category": "Engineering",
+      "description": "How electric motors work \u2014 the technology behind F1's MGU-K and the EV revolution."
+    },
+    {
+      "title": "Turbocharger",
+      "file": "turbocharger.html",
+      "category": "Engineering",
+      "description": "How turbochargers work \u2014 critical to understanding F1's current 1.6L V6 power units."
+    },
+    {
+      "title": "Monocoque",
+      "file": "monocoque.html",
+      "category": "Engineering",
+      "description": "The single-shell structural design at the heart of every F1 car's safety cell."
+    },
+    {
+      "title": "Wind Tunnel",
+      "file": "wind-tunnel.html",
+      "category": "Engineering",
+      "description": "How teams use scale models and full-size wind tunnels to develop aerodynamic packages."
+    },
+    {
+      "title": "Computer Vision",
+      "file": "computer-vision.html",
+      "category": "Tech",
+      "description": "The field of AI that teaches machines to interpret visual information. Used in autonomous vehicles and driver tracking."
+    },
+    {
+      "title": "Reinforcement Learning",
+      "file": "reinforcement-learning.html",
+      "category": "Tech",
+      "description": "The AI technique where agents learn by trial and reward. Used in game-playing AI and robot control."
+    },
+    {
+      "title": "Neural Network (Machine Learning)",
+      "file": "neural-network.html",
+      "category": "Tech",
+      "description": "The fundamental architecture behind modern deep learning \u2014 inspired by (but very different from) biological neurons."
+    },
+    {
+      "title": "GPT-4",
+      "file": "gpt-4.html",
+      "category": "Tech",
+      "description": "OpenAI's large language model \u2014 the architecture that sparked the current AI boom."
+    },
+    {
+      "title": "Transformer (Deep Learning Architecture)",
+      "file": "transformer.html",
+      "category": "Tech",
+      "description": "The \"Attention Is All You Need\" architecture that underlies GPT, BERT, and virtually all modern LLMs."
+    },
+    {
+      "title": "Convolutional Neural Network",
+      "file": "cnn.html",
+      "category": "Tech",
+      "description": "The architecture that powers image recognition \u2014 the backbone of computer vision since AlexNet in 2012."
+    },
+    {
+      "title": "Natural Language Processing",
+      "file": "nlp.html",
+      "category": "Tech",
+      "description": "The field of AI concerned with language understanding and generation."
+    },
+    {
+      "title": "SpaceX",
+      "file": "spacex.html",
+      "category": "Science",
+      "description": "Elon Musk's rocket company that revolutionized reusable rocketry and commercial space access."
+    },
+    {
+      "title": "James Webb Space Telescope",
+      "file": "jwst.html",
+      "category": "Science",
+      "description": "The most powerful space telescope ever built. Images from JWST have rewritten our understanding of the early universe."
+    },
+    {
+      "title": "CERN",
+      "file": "cern.html",
+      "category": "Science",
+      "description": "The European nuclear research organization. Home of the Large Hadron Collider and the birthplace of the World Wide Web."
+    },
+    {
+      "title": "Raspberry Pi",
+      "file": "raspberry-pi.html",
+      "category": "Tech",
+      "description": "The British single-board computer that democratized hardware hacking. The backbone of countless homelab projects."
+    }
+  ],
+  "articles": [
+    {
+      "title": "2026 F1 Technical Regulations \u2014 What Changed and Why",
+      "file": "f1-2026-regulations.html",
+      "category": "F1 Technical",
+      "reading_time": "~8 min",
+      "description": "The complete breakdown of the 2026 regulation overhaul \u2014 smaller cars, active aero, 50/50 power units, and what it means for racing."
+    },
+    {
+      "title": "Miami GP \u2014 The Full Story",
+      "file": "f1-miami-history.html",
+      "category": "F1 History",
+      "reading_time": "~6 min",
+      "description": "From fake marina controversy to Norris's first win \u2014 every Miami GP race result and how the event has evolved."
+    },
+    {
+      "title": "How F1 Tire Strategy Works \u2014 A Miami GP Guide",
+      "file": "f1-tire-strategy.html",
+      "category": "F1 Technical",
+      "reading_time": "~7 min",
+      "description": "Compounds, undercut vs overcut, VSC timing, and how to actually understand the strategy calls you're watching."
+    },
+    {
+      "title": "Large Language Models \u2014 How They Actually Work",
+      "file": "ai-llm-explainer.html",
+      "category": "AI/ML",
+      "reading_time": "~12 min",
+      "description": "Transformers, attention mechanisms, training, RLHF, and inference \u2014 the honest technical explainer for engineers who haven't studied ML."
+    },
+    {
+      "title": "Inside an F1 Car \u2014 Engineering at the Limit",
+      "file": "f1-car-engineering.html",
+      "category": "F1 Technical",
+      "reading_time": "~11 min",
+      "description": "Carbon fiber monocoques, ground effect aerodynamics, brake-by-wire, and 100+ GB of telemetry per race weekend."
+    },
+    {
+      "title": "Miami \u2014 A Nerd's Guide to South Florida",
+      "file": "miami-local-guide.html",
+      "category": "Travel",
+      "reading_time": "~6 min",
+      "description": "Geography, Cuban culture, tech scene, Wynwood Walls, weather patterns, and what's actually worth your time here."
+    },
+    {
+      "title": "How F1 Sprint Weekends Work",
+      "file": "f1-sprint-explainer.html",
+      "category": "F1 Technical",
+      "reading_time": "~8 min",
+      "description": "What changes on a Sprint weekend, how SQ works, the points system, and how it affects Sunday strategy at Miami."
+    },
+    {
+      "title": "The 2026 F1 Power Unit \u2014 50/50 Electric",
+      "file": "f1-2026-power-units.html",
+      "category": "F1 Technical",
+      "reading_time": "~15 min",
+      "description": "Deep dive into the 350kW electric + 350kW ICE split, the MGU-H deletion, sustainable fuels, and what it means for competition."
+    },
+    {
+      "title": "DRS: The Overtaking Aid Explained",
+      "file": "drs-explained.html",
+      "category": "F1 Technical",
+      "reading_time": "~10 min",
+      "description": "How DRS works mechanically, the 1-second rule, Miami's DRS zones, strategy implications, and the 2026 active aero replacement."
+    },
+    {
+      "title": "How F1 Got Safer \u2014 From Senna to the Halo",
+      "file": "f1-safety-evolution.html",
+      "category": "F1 History",
+      "reading_time": "~15 min",
+      "description": "The complete safety evolution from 1950 to today \u2014 Senna's death, the Halo's introduction, and current safety technology."
+    },
+    {
+      "title": "Understanding F1 Team Radio",
+      "file": "f1-team-radio-guide.html",
+      "category": "F1 Culture",
+      "reading_time": "~8 min",
+      "description": "Full dictionary of F1 team radio phrases \u2014 box box, undercut, push push, delta \u2014 plus famous radio moments."
+    },
+    {
+      "title": "Why Is There So Much Crypto in F1?",
+      "file": "crypto-f1-explainer.html",
+      "category": "F1 Business",
+      "reading_time": "~8 min",
+      "description": "The crypto-F1 relationship, why it happened in 2021, the FTX collapse, current state of crypto sponsorship."
+    },
+    {
+      "title": "Formula E vs Formula 1 \u2014 Engineering Compared",
+      "file": "ev-vs-f1-engineering.html",
+      "category": "Motorsport Engineering",
+      "reading_time": "~10 min",
+      "description": "How FE and F1 approach engineering differently, where they borrow from each other, and the 2026 convergence."
+    },
+    {
+      "title": "What to Eat in Miami \u2014 A Food Guide",
+      "file": "miami-food-guide.html",
+      "category": "Travel",
+      "reading_time": "~8 min",
+      "description": "Cuban food, Haitian food, seafood, Wynwood restaurants, craft beer, and how to actually eat well in Miami."
+    }
+  ],
+  "zim": []
+}

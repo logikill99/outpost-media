@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block title %}Outpost — CTF{% endblock %}
+
+{% block content %}
+<div x-data="ctfHub()" x-init="init()">
+  <div class="ctf-head">
+    <div>
+      <h1 class="page-title-inline">🚩 CTF</h1>
+      <p class="muted">Six flags. Solve them, climb the board.</p>
+    </div>
+    <div class="user-row">
+      <label class="muted">Username:</label>
+      <input type="text" x-model="username" @change="saveName()" maxlength="32" placeholder="anon" class="user-input">
+    </div>
+  </div>
+
+  <div class="ctf-layout">
+    <section class="grid grid-cards">
+      <template x-for="c in challenges" :key="c.slug">
+        <a class="card card-link ctf-card"
+           :class="{ solved: solved.includes(c.slug) }"
+           :href="'/ctf/' + c.slug">
+          <span class="badge" :class="'badge-'+c.category" x-text="c.category"></span>
+          <h3 x-text="c.title"></h3>
+          <p class="muted" x-text="c.description"></p>
+          <div class="ctf-meta">
+            <span class="points" x-text="c.points + ' pts'"></span>
+            <span x-show="solved.includes(c.slug)" class="solved-tag">✅ solved</span>
+          </div>
+        </a>
+      </template>
+    </section>
+
+    <aside class="leaderboard">
+      <h3>🏁 LEADERBOARD</h3>
+      <ol>
+        <template x-for="(row, i) in leaderboard" :key="row.username">
+          <li :class="{me: row.username === username}">
+            <span class="lb-rank" x-text="i+1"></span>
+            <span class="lb-name" x-text="row.username"></span>
+            <span class="lb-score" x-text="row.score + ' pts (' + row.solves + ')'"></span>
+          </li>
+        </template>
+        <li x-show="leaderboard.length === 0" class="muted">No solves yet. Be first.</li>
+      </ol>
+    </aside>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function ctfHub(){
+  return {
+    challenges: [],
+    leaderboard: [],
+    username: '',
+    solved: [],
+    init(){
+      this.username = localStorage.getItem('outpost_username') || '';
+      this.solved = JSON.parse(localStorage.getItem('outpost_solved') || '[]');
+      this.fetchChallenges();
+      this.fetchLeaderboard();
+      setInterval(()=>this.fetchLeaderboard(), 8000);
+    },
+    saveName(){
+      this.username = (this.username || '').trim().slice(0,32);
+      localStorage.setItem('outpost_username', this.username);
+    },
+    fetchChallenges(){
+      fetch('/api/ctf/challenges').then(r=>r.json()).then(d=>{ this.challenges = d || []; });
+    },
+    fetchLeaderboard(){
+      fetch('/api/ctf/leaderboard').then(r=>r.json()).then(d=>{ this.leaderboard = (d||[]).slice(0,10); });
+    },
+  }
+}
+</script>
+{% endblock %}

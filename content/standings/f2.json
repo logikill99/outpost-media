@@ -1,0 +1,238 @@
+{
+  "last_updated": "2026-05-01T02:08:44Z",
+  "drivers": [
+    {
+      "driver": "N. Tsolov",
+      "tla": "TSO",
+      "team": "Campos Racing",
+      "points": 25,
+      "driver_id": 1265,
+      "position": 1
+    },
+    {
+      "driver": "R. C\u00e2mara",
+      "tla": "CAM",
+      "team": "Invicta Racing",
+      "points": 18,
+      "driver_id": 1268,
+      "position": 2
+    },
+    {
+      "driver": "L. van Hoepen",
+      "tla": "VAN",
+      "team": "TRIDENT",
+      "points": 16,
+      "driver_id": 1261,
+      "position": 3
+    },
+    {
+      "driver": "R. Miyata",
+      "tla": "MIY",
+      "team": "Hitech TGR",
+      "points": 13,
+      "driver_id": 1241,
+      "position": 4
+    },
+    {
+      "driver": "T. Inthraphuvasak",
+      "tla": "INT",
+      "team": "ART Grand Prix",
+      "points": 12,
+      "driver_id": 1267,
+      "position": 5
+    },
+    {
+      "driver": "O. Goethe",
+      "tla": "GOE",
+      "team": "MP Motorsport",
+      "points": 12,
+      "driver_id": 1247,
+      "position": 6
+    },
+    {
+      "driver": "J. D\u00fcrksen",
+      "tla": "DUR",
+      "team": "Invicta Racing",
+      "points": 11,
+      "driver_id": 1244,
+      "position": 7
+    },
+    {
+      "driver": "N. Le\u00f3n",
+      "tla": "LEO",
+      "team": "Campos Racing",
+      "points": 7,
+      "driver_id": 1270,
+      "position": 8
+    },
+    {
+      "driver": "G. Min\u00ec",
+      "tla": "MIN",
+      "team": "MP Motorsport",
+      "points": 6,
+      "driver_id": 1249,
+      "position": 9
+    },
+    {
+      "driver": "C. Herta",
+      "tla": "HER",
+      "team": "Hitech TGR",
+      "points": 6,
+      "driver_id": 1269,
+      "position": 10
+    },
+    {
+      "driver": "A. Dunne",
+      "tla": "DUN",
+      "team": "Rodin Motorsport",
+      "points": 5,
+      "driver_id": 1260,
+      "position": 11
+    },
+    {
+      "driver": "S. Montoya",
+      "tla": "MON",
+      "team": "PREMA Racing",
+      "points": 2,
+      "driver_id": 1258,
+      "position": 12
+    },
+    {
+      "driver": "R. Bilinski",
+      "tla": "BIL",
+      "team": "DAMS Lucas Oil",
+      "points": 0,
+      "driver_id": 1271,
+      "position": 13
+    },
+    {
+      "driver": "M. Stenshorne",
+      "tla": "STE",
+      "team": "Rodin Motorsport",
+      "points": 0,
+      "driver_id": 1263,
+      "position": 14
+    },
+    {
+      "driver": "K. Maini",
+      "tla": "MAI",
+      "team": "ART Grand Prix",
+      "points": 0,
+      "driver_id": 1231,
+      "position": 15
+    },
+    {
+      "driver": "R. Villag\u00f3mez",
+      "tla": "VIL",
+      "team": "Van Amersfoort Racing",
+      "points": 0,
+      "driver_id": 1245,
+      "position": 16
+    },
+    {
+      "driver": "E. Fittipaldi",
+      "tla": "FIT",
+      "team": "AIX Racing",
+      "points": 0,
+      "driver_id": 1273,
+      "position": 17
+    },
+    {
+      "driver": "J. Bennett",
+      "tla": "BEN",
+      "team": "TRIDENT",
+      "points": 0,
+      "driver_id": 1255,
+      "position": 18
+    },
+    {
+      "driver": "C. Shields",
+      "tla": "SHI",
+      "team": "AIX Racing",
+      "points": 0,
+      "driver_id": 1254,
+      "position": 19
+    },
+    {
+      "driver": "D. Beganovic",
+      "tla": "BEG",
+      "team": "DAMS Lucas Oil",
+      "points": 0,
+      "driver_id": 1252,
+      "position": 20
+    },
+    {
+      "driver": "N. Varrone",
+      "tla": "VAR",
+      "team": "Van Amersfoort Racing",
+      "points": 0,
+      "driver_id": 1274,
+      "position": 21
+    },
+    {
+      "driver": "M. Boya",
+      "tla": "BOY",
+      "team": "PREMA Racing",
+      "points": 0,
+      "driver_id": 1272,
+      "position": 22
+    }
+  ],
+  "teams": [
+    {
+      "team": "Campos Racing",
+      "points": 32,
+      "position": 1
+    },
+    {
+      "team": "Invicta Racing",
+      "points": 29,
+      "position": 2
+    },
+    {
+      "team": "Hitech TGR",
+      "points": 19,
+      "position": 3
+    },
+    {
+      "team": "MP Motorsport",
+      "points": 18,
+      "position": 4
+    },
+    {
+      "team": "TRIDENT",
+      "points": 16,
+      "position": 5
+    },
+    {
+      "team": "ART Grand Prix",
+      "points": 12,
+      "position": 6
+    },
+    {
+      "team": "Rodin Motorsport",
+      "points": 5,
+      "position": 7
+    },
+    {
+      "team": "PREMA Racing",
+      "points": 2,
+      "position": 8
+    },
+    {
+      "team": "DAMS Lucas Oil",
+      "points": 0,
+      "position": 9
+    },
+    {
+      "team": "Van Amersfoort Racing",
+      "points": 0,
+      "position": 10
+    },
+    {
+      "team": "AIX Racing",
+      "points": 0,
+      "position": 11
+    }
+  ]
+}

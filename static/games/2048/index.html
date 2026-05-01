@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<title>2048 — Outpost</title>
+<style>
+:root{--bg:#0a0a0a;--surface:#111;--border:#222;--accent:#e10600;--accent2:#ff8700;--text:#fff;--muted:#888}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{background:var(--bg);color:var(--text);font-family:ui-monospace,Menlo,monospace;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:14px;touch-action:none}
+h1{color:var(--accent);margin-bottom:6px;letter-spacing:2px}
+.bar{display:flex;gap:10px;margin-bottom:10px;flex-wrap:wrap;justify-content:center}
+.score{background:var(--surface);border:1px solid var(--border);padding:6px 12px;border-radius:6px;text-align:center}
+.score b{color:var(--accent2);font-size:18px;display:block}
+.score span{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:1px}
+button{background:var(--accent);color:#fff;border:0;padding:8px 14px;border-radius:6px;font-family:inherit;cursor:pointer;font-weight:700;letter-spacing:1px}
+button:hover{background:#b80500}
+.board{background:var(--surface);border:1px solid var(--border);padding:8px;border-radius:8px;display:grid;grid-template-columns:repeat(4,80px);gap:8px;margin-top:8px}
+@media(max-width:380px){.board{grid-template-columns:repeat(4,68px)}}
+.cell{background:#1a1a1a;border-radius:6px;width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;color:var(--text);transition:.1s}
+.t2{background:#2c2c2c}.t4{background:#3c3530}.t8{background:#5a3520;color:#fff}
+.t16{background:#7a401e;color:#fff}.t32{background:#a14a18;color:#fff}.t64{background:#c14a18;color:#fff}
+.t128{background:#e10600;color:#fff;font-size:22px}.t256{background:#ff4f4f;font-size:22px}
+.t512{background:#ff8700;font-size:22px}.t1024{background:#ffaa00;font-size:18px}.t2048{background:#ffcc00;color:#000;font-size:18px;box-shadow:0 0 18px #ffcc00}
+.foot{margin-top:14px;color:var(--muted);font-size:12px;text-align:center}
+a{color:var(--accent2)}
+</style></head><body>
+<h1>2048</h1>
+<div class="bar">
+  <div class="score"><b id="score">0</b><span>score</span></div>
+  <div class="score"><b id="best">0</b><span>best</span></div>
+  <button onclick="reset()">↻ New</button>
+</div>
+<div class="board" id="board"></div>
+<p class="foot">Arrow keys / WASD on desktop · swipe on mobile<br><a href="/games">← back</a></p>
+<script>
+const N=4;let g=[],score=0,best=+localStorage.getItem('2048best')||0;
+const boardEl=document.getElementById('board');
+function emp(){let r=[];for(let i=0;i<N;i++){r.push([]);for(let j=0;j<N;j++)r[i].push(0)}return r}
+function add(){const e=[];for(let i=0;i<N;i++)for(let j=0;j<N;j++)if(!g[i][j])e.push([i,j]);if(!e.length)return;const[i,j]=e[Math.random()*e.length|0];g[i][j]=Math.random()<.9?2:4}
+function draw(){boardEl.innerHTML='';for(let i=0;i<N;i++)for(let j=0;j<N;j++){const v=g[i][j];const c=document.createElement('div');c.className='cell'+(v?' t'+v:'');c.textContent=v||'';boardEl.appendChild(c)}document.getElementById('score').textContent=score;document.getElementById('best').textContent=best}
+function slide(row){const r=row.filter(v=>v);for(let i=0;i<r.length-1;i++)if(r[i]===r[i+1]){r[i]*=2;score+=r[i];r[i+1]=0}return r.filter(v=>v).concat(Array(N-r.filter(v=>v).length).fill(0))}
+function move(d){const old=JSON.stringify(g);if(d==='L')for(let i=0;i<N;i++)g[i]=slide(g[i]);
+else if(d==='R')for(let i=0;i<N;i++)g[i]=slide(g[i].slice().reverse()).reverse();
+else if(d==='U'){for(let j=0;j<N;j++){let c=[];for(let i=0;i<N;i++)c.push(g[i][j]);c=slide(c);for(let i=0;i<N;i++)g[i][j]=c[i]}}
+else if(d==='D'){for(let j=0;j<N;j++){let c=[];for(let i=N-1;i>=0;i--)c.push(g[i][j]);c=slide(c);for(let i=N-1,k=0;i>=0;i--,k++)g[i][j]=c[k]}}
+if(JSON.stringify(g)!==old){add();if(score>best){best=score;localStorage.setItem('2048best',best)}draw();if(over()){setTimeout(()=>alert('Game over! Score: '+score),50)}}}
+function over(){for(let i=0;i<N;i++)for(let j=0;j<N;j++){if(!g[i][j])return false;if(j<N-1&&g[i][j]===g[i][j+1])return false;if(i<N-1&&g[i][j]===g[i+1][j])return false}return true}
+function reset(){g=emp();score=0;add();add();draw()}
+document.addEventListener('keydown',e=>{const m={ArrowLeft:'L',ArrowRight:'R',ArrowUp:'U',ArrowDown:'D',a:'L',d:'R',w:'U',s:'D',A:'L',D:'R',W:'U',S:'D'};if(m[e.key]){e.preventDefault();move(m[e.key])}});
+let sx,sy;document.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY});
+document.addEventListener('touchend',e=>{if(sx==null)return;const dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>Math.abs(dy)){if(Math.abs(dx)>20)move(dx>0?'R':'L')}else{if(Math.abs(dy)>20)move(dy>0?'D':'U')}sx=sy=null});
+reset();
+</script></body></html>

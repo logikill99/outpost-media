@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<title>Snake — Outpost</title>
+<style>
+:root{--bg:#0a0a0a;--surface:#111;--border:#222;--accent:#e10600;--accent2:#ff8700;--muted:#888}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{background:var(--bg);color:#fff;font-family:ui-monospace,Menlo,monospace;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:14px;touch-action:none}
+h1{color:var(--accent);margin-bottom:6px;letter-spacing:2px}
+.bar{display:flex;gap:10px;margin-bottom:10px;flex-wrap:wrap;justify-content:center}
+.score{background:var(--surface);border:1px solid var(--border);padding:6px 12px;border-radius:6px;text-align:center}
+.score b{color:var(--accent2);font-size:18px;display:block}
+.score span{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:1px}
+button{background:var(--accent);color:#fff;border:0;padding:8px 14px;border-radius:6px;font-family:inherit;cursor:pointer;font-weight:700;letter-spacing:1px}
+canvas{background:var(--surface);border:1px solid var(--border);border-radius:8px;display:block;margin-top:8px;max-width:100%;height:auto}
+.pad{display:grid;grid-template-columns:60px 60px 60px;gap:6px;margin-top:14px;justify-content:center}
+.pad button{padding:14px 0;font-size:18px}
+.foot{margin-top:14px;color:var(--muted);font-size:12px;text-align:center}
+a{color:var(--accent2)}
+</style></head><body>
+<h1>SNAKE</h1>
+<div class="bar">
+  <div class="score"><b id="score">0</b><span>score</span></div>
+  <div class="score"><b id="best">0</b><span>best</span></div>
+  <button onclick="reset()">↻ New</button>
+</div>
+<canvas id="c" width="400" height="400"></canvas>
+<div class="pad">
+  <span></span><button onclick="dir(0,-1)">↑</button><span></span>
+  <button onclick="dir(-1,0)">←</button><span></span><button onclick="dir(1,0)">→</button>
+  <span></span><button onclick="dir(0,1)">↓</button><span></span>
+</div>
+<p class="foot">Arrows / WASD / on-screen · don't crash<br><a href="/games">← back</a></p>
+<script>
+const c=document.getElementById('c'),x=c.getContext('2d'),G=20,S=400/G;
+let snake,food,vx,vy,nvx,nvy,score=0,best=+localStorage.getItem('snakebest')||0,alive=true,t;
+function reset(){snake=[{x:10,y:10}];vx=1;vy=0;nvx=1;nvy=0;food=newFood();score=0;alive=true;clearInterval(t);t=setInterval(step,100);draw()}
+function newFood(){let f;do{f={x:Math.random()*G|0,y:Math.random()*G|0}}while(snake.some(s=>s.x===f.x&&s.y===f.y));return f}
+function step(){if(!alive)return;vx=nvx;vy=nvy;const h={x:snake[0].x+vx,y:snake[0].y+vy};if(h.x<0||h.y<0||h.x>=G||h.y>=G||snake.some(s=>s.x===h.x&&s.y===h.y)){alive=false;if(score>best){best=score;localStorage.setItem('snakebest',best)}draw();return}
+snake.unshift(h);if(h.x===food.x&&h.y===food.y){score++;food=newFood()}else snake.pop();draw()}
+function draw(){x.fillStyle='#0e0e0e';x.fillRect(0,0,400,400);x.strokeStyle='#1a1a1a';for(let i=0;i<G;i++){x.beginPath();x.moveTo(i*S,0);x.lineTo(i*S,400);x.moveTo(0,i*S);x.lineTo(400,i*S);x.stroke()}
+x.fillStyle='#e10600';x.fillRect(food.x*S+2,food.y*S+2,S-4,S-4);
+snake.forEach((s,i)=>{x.fillStyle=i===0?'#ff8700':'#ffaa44';x.fillRect(s.x*S+1,s.y*S+1,S-2,S-2)});
+document.getElementById('score').textContent=score;document.getElementById('best').textContent=best;
+if(!alive){x.fillStyle='rgba(0,0,0,.7)';x.fillRect(0,0,400,400);x.fillStyle='#fff';x.font='28px monospace';x.textAlign='center';x.fillText('GAME OVER',200,190);x.font='16px monospace';x.fillText('Score: '+score,200,220);x.fillText('Tap ↻ to retry',200,250)}}
+function dir(dx,dy){if(snake.length>1&&dx===-vx&&dy===-vy)return;nvx=dx;nvy=dy}
+document.addEventListener('keydown',e=>{const m={ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0],w:[0,-1],s:[0,1],a:[-1,0],d:[1,0],W:[0,-1],S:[0,1],A:[-1,0],D:[1,0]};if(m[e.key]){e.preventDefault();dir(...m[e.key])}});
+let sx,sy;c.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY});
+c.addEventListener('touchend',e=>{if(sx==null)return;const dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>Math.abs(dy)){if(Math.abs(dx)>20)dir(dx>0?1:-1,0)}else{if(Math.abs(dy)>20)dir(0,dy>0?1:-1)}sx=sy=null});
+reset();
+</script></body></html>

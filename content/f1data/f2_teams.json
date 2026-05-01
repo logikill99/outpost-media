@@ -1,0 +1,178 @@
+[
+  {
+    "id": 1,
+    "name": "Prema Racing",
+    "full_name": "Prema Racing",
+    "color": "#FF0000",
+    "base": "Grisignano di Zocco, Italy",
+    "chassis": "Dallara F2 2024",
+    "engine": "Mecachrome V6 (spec)",
+    "principal": "Angelo Rosin",
+    "drivers": [
+      "Sebastián Montoya",
+      "Mari Boya"
+    ],
+    "bio": "F2's most successful team. Prema have won more F2 titles than any other outfit and operate the championship's most polished operation. Their drivers tend to graduate either to F1 (Leclerc, Russell, Schumacher) or to top-tier factory programmes.",
+    "notable": "Multiple F2 teams' titles, alumni include Leclerc, Russell, Schumacher, Bortoleto"
+  },
+  {
+    "id": 2,
+    "name": "ART Grand Prix",
+    "full_name": "ART Grand Prix",
+    "color": "#FF66FF",
+    "base": "Boulogne-Billancourt, France",
+    "chassis": "Dallara F2 2024",
+    "engine": "Mecachrome V6 (spec)",
+    "principal": "Sébastien Philippe",
+    "drivers": [
+      "Tasanapol Inthraphuvasak",
+      "Kush Maini"
+    ],
+    "bio": "Frédéric Vasseur's old team — and arguably the foundational outfit of the modern F2 era. ART's history is essentially the history of GP2/F2 itself. Strong factory backing and an excellent driver development pipeline.",
+    "notable": "Founded by current Ferrari TP Vasseur. Alumni: Hamilton, Rosberg, Leclerc"
+  },
+  {
+    "id": 3,
+    "name": "Hitech TGR",
+    "full_name": "Hitech TGR",
+    "color": "#000000",
+    "base": "Silverstone, United Kingdom",
+    "chassis": "Dallara F2 2024",
+    "engine": "Mecachrome V6 (spec)",
+    "principal": "Guiliano Giuntini",
+    "drivers": [
+      "Ritomo Miyata",
+      "Colton Herta"
+    ],
+    "bio": "British squad with strong technical operation. Hitech runs Ferrari and Williams juniors in 2026 — a clear bet that academy backing translates to results. Quietly built into a frontrunning team over the last three seasons.",
+    "notable": "Now under TGR (Toyota Gazoo Racing) banner — Toyota's stealth return to junior single-seaters"
+  },
+  {
+    "id": 4,
+    "name": "DAMS Lucas Oil",
+    "full_name": "DAMS Lucas Oil",
+    "color": "#3498DB",
+    "base": "Le Mans, France",
+    "chassis": "Dallara F2 2024",
+    "engine": "Mecachrome V6 (spec)",
+    "principal": "Charles Pic",
+    "drivers": [
+      "Dino Beganovic",
+      "Roman Bilinski"
+    ],
+    "bio": "Storied French team with a championship pedigree across multiple junior categories. Now branded with Lucas Oil and running both an American (Crawford) and Indian (Maini) driver — DAMS deliberately positioning itself as a global development program.",
+    "notable": "1990s F3000 dominance; F2 champion 2014 (Palmer)"
+  },
+  {
+    "id": 5,
+    "name": "MP Motorsport",
+    "full_name": "MP Motorsport",
+    "color": "#F39C12",
+    "base": "Westmaas, Netherlands",
+    "chassis": "Dallara F2 2024",
+    "engine": "Mecachrome V6 (spec)",
+    "principal": "Sander Dorsman",
+    "drivers": [
+      "Oliver Goethe",
+      "Gabriele Minì"
+    ],
+    "bio": "Dutch team that punched above its weight to claim the 2022 F2 teams' title. MP has a reputation for getting the most out of less-fancied drivers and rapid setup work in tight session formats.",
+    "notable": "2022 F2 Teams' Champion. 2022 Drivers' Champion (Felipe Drugovich)"
+  },
+  {
+    "id": 6,
+    "name": "Campos Racing",
+    "full_name": "Campos Racing",
+    "color": "#F4D03F",
+    "base": "Alzira, Spain",
+    "chassis": "Dallara F2 2024",
+    "engine": "Mecachrome V6 (spec)",
+    "principal": "Salvador Servià",
+    "drivers": [
+      "Nikola Tsolov",
+      "Noel León"
+    ],
+    "bio": "Spanish team founded by Adrián Campos. Long-running F2 outfit with a knack for developing Latin talent. Campos's 2024 F2 title with Bortoleto reinforced their reputation as a serious championship contender.",
+    "notable": "2024 Drivers' Champion (Gabriel Bortoleto)"
+  },
+  {
+    "id": 7,
+    "name": "Trident",
+    "full_name": "Trident",
+    "color": "#0066CC",
+    "base": "Milan, Italy",
+    "chassis": "Dallara F2 2024",
+    "engine": "Mecachrome V6 (spec)",
+    "principal": "Maurizio Salvadori",
+    "drivers": [
+      "Laurens van Hoepen",
+      "John Bennett"
+    ],
+    "bio": "Italian squad consistently in the upper midfield. Trident's strength is engineering depth — they're rarely the fastest team in qualifying but often the smartest in race trim and strategy.",
+    "notable": "F3 championship pedigree; consistent upper-midfield F2 competitor"
+  },
+  {
+    "id": 8,
+    "name": "Van Amersfoort Racing",
+    "full_name": "Van Amersfoort Racing",
+    "color": "#FF6B35",
+    "base": "Amersfoort, Netherlands",
+    "chassis": "Dallara F2 2024",
+    "engine": "Mecachrome V6 (spec)",
+    "principal": "Frits van Amersfoort",
+    "drivers": [
+      "Rafael Villagómez",
+      "Nico Varrone"
+    ],
+    "bio": "Family-run Dutch team with a long F3/F2 history. VAR's 2026 lineup pairs experienced hands with rookie talent — the kind of mix that can occasionally spring a surprise on a tricky weekend.",
+    "notable": "Founded 1975; alumni include Verstappen Sr."
+  },
+  {
+    "id": 9,
+    "name": "PHM AIX Racing",
+    "full_name": "PHM AIX Racing",
+    "color": "#1E1E1E",
+    "base": "Bahrain (operations) / Germany",
+    "chassis": "Dallara F2 2024",
+    "engine": "Mecachrome V6 (spec)",
+    "principal": "Paul Müller",
+    "drivers": [
+      "Cian Shields",
+      "Emerson Fittipaldi Jr."
+    ],
+    "bio": "Mid-grid team rebuilding after rotating multiple drivers in recent seasons. PHM is investing heavily in technical infrastructure and is a long-term project rather than an immediate title contender.",
+    "notable": "Series' newest entry; rapid growth phase"
+  },
+  {
+    "id": 10,
+    "name": "Rodin Motorsport",
+    "full_name": "Rodin Motorsport",
+    "color": "#E74C3C",
+    "base": "Bourne, United Kingdom",
+    "chassis": "Dallara F2 2024",
+    "engine": "Mecachrome V6 (spec)",
+    "principal": "David Hayle",
+    "drivers": [
+      "Martinius Stenshorne",
+      "Alexander Dunne"
+    ],
+    "bio": "Formerly Carlin — bought and rebranded by Rodin Cars under Trevor Carlin's continued involvement. Carlin's F2 title pedigree is huge; Rodin retains that DNA. With Miyata aboard, an interesting season for Toyota observers.",
+    "notable": "Carlin heritage; multiple F2 champions including De Vries, Norris, Russell"
+  },
+  {
+    "id": 11,
+    "name": "Invicta Racing",
+    "full_name": "Invicta Racing",
+    "color": "#1ABC9C",
+    "base": "Bicester, United Kingdom",
+    "chassis": "Dallara F2 2024",
+    "engine": "Mecachrome V6 (spec)",
+    "principal": "James Robinson",
+    "drivers": [
+      "Rafael Câmara",
+      "Joshua Dürksen"
+    ],
+    "bio": "British team formerly known as Virtuosi. Reigning team and drivers' champions (2024 with Doohan; 2025 contender). Excellent operation with growing factory ties — McLaren's Dunne placement is a vote of confidence.",
+    "notable": "Formerly Virtuosi Racing; strong recent F2 form with top-team engineering depth"
+  }
+]

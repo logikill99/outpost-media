@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% block title %}Porsche Carrera Cup NA — Teams 2026{% endblock %}
+{% block content %}
+<div x-data="porscheTeamApp()" x-init="init()">
+
+  <div class="page-header">
+    <h1 class="page-title">🏁 PORSCHE CARRERA CUP NA — TEAMS</h1>
+    <p class="muted">{{ teams|length }} customer teams · all running the new 992.2 911 GT3 Cup · click any card for details</p>
+  </div>
+
+  {% set entrants = (standings.standings | selectattr('class','equalto','Entrants') | list | first or {}).get('standings') if standings else [] %}
+  <section class="grid grid-cards">
+    {% for t in teams %}
+    {% set ts = entrants | selectattr('driver','equalto',t.name) | list | first if entrants else None %}
+    <div class="card team-card clickable"
+         @click="openModal({{ loop.index0 }})"
+         style="--team-color: {{ t.color }}; border-left: 4px solid {{ t.color }};">
+      <div class="team-card-head">
+        <h3 style="color: {{ t.color }};">{{ t.name }}</h3>
+        {% if ts %}
+        <div class="team-pos" title="2026 entrants standings">P{{ ts.position }} · {{ ts.total_points }} pts</div>
+        {% endif %}
+      </div>
+      <div class="team-meta">
+        <div><span class="team-meta-label">Car</span><span class="team-meta-val">{{ t.car }}</span></div>
+        <div><span class="team-meta-label">Classes</span><span class="team-meta-val">{{ t.classes | join(', ') }}</span></div>
+        <div><span class="team-meta-label">Drivers</span><span class="team-meta-val">{{ t.drivers | join(', ') }}</span></div>
+      </div>
+      <p class="team-bio">{{ t.bio }}</p>
+    </div>
+    {% endfor %}
+  </section>
+
+  <!-- Team detail modal -->
+  <div class="modal-backdrop" x-show="modalOpen" @click.self="modalOpen=false" x-transition>
+    <div class="modal-card" x-show="modalOpen" x-transition>
+      <button class="modal-close" @click="modalOpen=false">✕</button>
+      <template x-if="selected">
+        <div>
+          <div class="modal-header" :style="'border-color:' + selected.color">
+            <div>
+              <h2 class="modal-name" :style="'color:' + selected.color" x-text="selected.name"></h2>
+              <div class="modal-team" x-text="selected.car"></div>
+            </div>
+          </div>
+
+          <div class="team-modal-grid">
+            <div><span class="team-meta-label">Drivers</span><span class="team-meta-val" x-text="(selected.drivers || []).join(', ')"></span></div>
+            <div><span class="team-meta-label">Classes Run</span><span class="team-meta-val" x-text="(selected.classes || []).join(', ')"></span></div>
+            <div><span class="team-meta-label">Car</span><span class="team-meta-val" x-text="selected.car"></span></div>
+          </div>
+
+          <p class="modal-bio" x-text="selected.bio"></p>
+
+          <template x-if="selectedStanding">
+            <div>
+              <h4 class="modal-section-title">📊 2026 Entrants Standings</h4>
+              <div class="modal-standing">
+                <div class="modal-standing-row">
+                  <span class="modal-standing-label">Entrants' Championship</span>
+                  <span class="modal-standing-pos" x-text="'P' + selectedStanding.net_position"></span>
+                  <span class="modal-standing-pts" x-text="selectedStanding.total_points + ' pts'"></span>
+                </div>
+              </div>
+            </div>
+          </template>
+        </div>
+      </template>
+    </div>
+  </div>
+
+</div>
+
+<p class="back-link"><a href="/info">← Back to Race Info</a></p>
+
+<style>
+.team-card-head { display:flex; justify-content:space-between; align-items:baseline; gap:8px; flex-wrap:wrap; }
+.team-pos { font-size:11px; padding:2px 8px; background:var(--bg); border:1px solid var(--border); border-radius:3px; color:var(--accent); font-weight:700; letter-spacing:.5px; }
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+const PORSCHE_TEAMS = {{ teams | tojson }};
+const PORSCHE_ENTRANTS_STANDINGS = (() => {
+  const standings = {{ standings | tojson }};
+  const group = (standings.standings || []).find(g => g.class === 'Entrants');
+  return group ? group.standings : [];
+})();
+
+function findPorscheEntrantStanding(teamName) {
+  return PORSCHE_ENTRANTS_STANDINGS.find(e => e.driver === teamName) || null;
+}
+
+function porscheTeamApp() {
+  return {
+    modalOpen: false,
+    selected: null,
+    selectedStanding: null,
+    init() {},
+    openModal(idx) {
+      this.selected = PORSCHE_TEAMS[idx];
+      this.selectedStanding = findPorscheEntrantStanding(this.selected.name);
+      this.modalOpen = true;
+    }
+  }
+}
+</script>
+{% endblock %}

@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+{% block title %}F2 — Race Info{% endblock %}
+{% block content %}
+<div class="page-header">
+  <h1 class="page-title">📖 F2 — RACE INFO</h1>
+  <p class="muted">FIA Formula 2 Championship · This Round</p>
+</div>
+
+{% if standings and (standings.drivers or standings.teams) %}
+<section class="info-section">
+  <h2 class="info-section-title">2026 Championship — Standings</h2>
+  {% if standings.last_updated %}<p class="standings-note muted">Updated {{ standings.last_updated }}</p>{% endif %}
+  <div class="standings-grid">
+    {% if standings.drivers %}
+    <div class="standings-col">
+      <h3 class="standings-col-title">Drivers (top 10)</h3>
+      <table class="results-table">
+        <thead><tr><th>Pos</th><th>Driver</th><th>Team</th><th class="num">Pts</th></tr></thead>
+        <tbody>
+          {% for d in standings.drivers[:10] %}
+          <tr>
+            <td class="pos">{{ d.position }}</td>
+            <td>{{ d.driver }} <span class="muted small">({{ d.tla }})</span></td>
+            <td class="muted">{{ d.team }}</td>
+            <td class="num pts">{{ d.points }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% endif %}
+
+    {% if standings.teams %}
+    <div class="standings-col">
+      <h3 class="standings-col-title">Teams</h3>
+      <table class="results-table">
+        <thead><tr><th>Pos</th><th>Team</th><th class="num">Pts</th></tr></thead>
+        <tbody>
+          {% for t in standings.teams[:10] %}
+          <tr>
+            <td class="pos">{{ t.position }}</td>
+            <td>{{ t.team }}</td>
+            <td class="num pts">{{ t.points }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endif %}
+
+{% if results %}
+{% set completed = results | selectattr('sessions') | selectattr('sessions.0.results') | list %}
+{% if completed %}
+<section class="info-section">
+  <h2 class="info-section-title">2026 Round Winners</h2>
+  <table class="results-table">
+    <thead>
+      <tr><th class="num">Rd</th><th>Country</th><th>Feature Race</th><th>Sprint Race</th></tr>
+    </thead>
+    <tbody>
+      {% for r in results %}
+      {% set fr = r.sessions | selectattr('name','equalto','FR') | list | first %}
+      {% set sr = r.sessions | selectattr('name','equalto','SR') | list | first %}
+      {% if (fr and fr.winner) or (sr and sr.winner) %}
+      <tr>
+        <td class="num">{{ r.round }}</td>
+        <td><strong>{{ r.country }}</strong><div class="muted small">{{ r.start_date }}</div></td>
+        <td>{{ fr.winner if fr and fr.winner else '—' }}</td>
+        <td>{{ sr.winner if sr and sr.winner else '—' }}</td>
+      </tr>
+      {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endif %}
+{% endif %}
+
+<section class="info-section">
+  <h2 class="info-section-title">About Formula 2</h2>
+  <p>F2 is the official feeder series to Formula 1. Every team runs the same chassis (the Dallara F2 2024) and engine (a Mecachrome V6), so results come down to driver craft, race engineering, and strategy execution. Most current F1 drivers — Verstappen, Leclerc, Norris, Piastri, Russell, Hamilton — graduated through F2 or its predecessor (GP2).</p>
+</section>
+
+<section class="info-section">
+  <h2 class="info-section-title">Weekend Format</h2>
+  <ul class="reg-list">
+    <li><strong>Friday:</strong> 30-min Free Practice + Qualifying (single 30-min session sets the grid)</li>
+    <li><strong>Saturday:</strong> Sprint Race — reverse top-10 grid, no mandatory pit stop, ~25 min + 1 lap</li>
+    <li><strong>Sunday:</strong> Feature Race — full grid, mandatory pit stop, ~45 min + 1 lap</li>
+  </ul>
+  <p>Points are awarded across both races, with bonus points for pole position and fastest lap.</p>
+</section>
+
+<section class="info-section">
+  <h2 class="info-section-title">At This Event</h2>
+  <ul class="reg-list">
+    <li><strong>Friday 2:30 PM:</strong> Qualifying</li>
+    <li><strong>Saturday 10:00 AM:</strong> Sprint Race</li>
+    <li><strong>Sunday 12:30 PM:</strong> Feature Race</li>
+  </ul>
+</section>
+
+<section class="info-section">
+  <h2 class="info-section-title">Why Watch</h2>
+  <p>The 2026 F2 champion will likely be in F1 by 2027. Watching F2 is essentially scouting the next generation. With Ferrari, Red Bull, Mercedes, McLaren, and Williams all running junior drivers across the F2 grid, every weekend doubles as an interview for an F1 seat.</p>
+</section>
+
+<section class="info-section">
+  <h2 class="info-section-title">Notable Alumni</h2>
+  <div class="alumni-chips">
+    <span class="chip">Max Verstappen</span>
+    <span class="chip">Charles Leclerc</span>
+    <span class="chip">Lando Norris</span>
+    <span class="chip">Oscar Piastri</span>
+    <span class="chip">George Russell</span>
+    <span class="chip">Gabriel Bortoleto</span>
+    <span class="chip">Isack Hadjar</span>
+  </div>
+</section>
+
+<style>
+.info-section { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:20px; margin-bottom:18px; }
+.info-section-title { font-size:14px; text-transform:uppercase; letter-spacing:1px; color:var(--accent); margin:0 0 14px; }
+.info-section p { color:var(--text-muted); line-height:1.7; font-size:14px; }
+.reg-list { padding-left:18px; color:var(--text-muted); line-height:1.8; font-size:14px; }
+.reg-list strong { color:var(--text); }
+.alumni-chips { display:flex; flex-wrap:wrap; gap:6px; }
+.chip { background:var(--bg); border:1px solid var(--border); border-radius:4px; padding:4px 10px; font-size:12px; }
+.standings-note { font-size:12px; margin:-6px 0 12px; }
+.standings-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:14px; }
+.standings-col-title { font-size:11px; text-transform:uppercase; letter-spacing:1px; color:var(--text-muted); margin:0 0 8px; }
+.results-table { width:100%; border-collapse:collapse; font-size:13px; background:var(--bg); border:1px solid var(--border); border-radius:6px; overflow:hidden; }
+.results-table th { text-align:left; padding:8px 10px; background:var(--surface-2); color:var(--text-muted); font-size:10px; text-transform:uppercase; letter-spacing:.5px; border-bottom:1px solid var(--border); font-weight:700; }
+.results-table td { padding:8px 10px; border-bottom:1px solid var(--border); }
+.results-table tr:last-child td { border-bottom:none; }
+.results-table .num { text-align:right; font-variant-numeric: tabular-nums; }
+.results-table .pos { color:var(--accent); font-weight:700; width:36px; }
+.results-table .pts { color:var(--text); font-weight:600; }
+.results-table .small { font-size:11px; }
+</style>
+
+<p class="back-link"><a href="/info">← Back to Race Info</a></p>
+{% endblock %}

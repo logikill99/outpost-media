@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Outpost — Games{% endblock %}
+
+{% block content %}
+<h1 class="page-title">🎮 GAMES</h1>
+<p class="muted">No internet, no problem. Tap to play.</p>
+
+<section class="grid grid-cards">
+  <a class="card card-link game-card" href="/static/games/2048/index.html">
+    <div class="card-icon">🔢</div><h3>2048</h3><p>Slide tiles to merge. Reach 2048.</p>
+  </a>
+  <a class="card card-link game-card" href="/static/games/chess/index.html">
+    <div class="card-icon">♛</div><h3>Chess</h3><p>Two-player local board.</p>
+  </a>
+  <a class="card card-link game-card" href="/static/games/sudoku/index.html">
+    <div class="card-icon">🔡</div><h3>Sudoku</h3><p>Daily puzzle, three difficulties.</p>
+  </a>
+  <a class="card card-link game-card" href="/static/games/snake/index.html">
+    <div class="card-icon">🐍</div><h3>Snake</h3><p>Classic. Don't crash.</p>
+  </a>
+  <a class="card card-link game-card" href="/static/games/wordle-f1/index.html">
+    <div class="card-icon">🏎️</div><h3>F1 Wordle</h3><p>Guess the F1 driver surname.</p>
+  </a>
+</section>
+{% endblock %}

@@ -1,0 +1,57 @@
+[
+  {
+    "id": "f2",
+    "name": "FIA Formula 2 Championship",
+    "short": "Formula 2",
+    "color": "#0090FF",
+    "car": "Dallara F2 2024",
+    "description": "The primary feeder series to Formula 1. F2 uses a spec car (everyone races the same chassis), which means results are purely down to driver talent. Most current F1 drivers came through F2 — watching it is essentially scouting the next generation of F1 stars.",
+    "format": "2 races per weekend: Sprint Race (reverse top-10 grid), Feature Race (full points, mandatory pit stop).",
+    "at_miami": [
+      { "session": "Qualifying", "day": "Friday", "time": "2:30 PM" },
+      { "session": "Sprint Race", "day": "Saturday", "time": "10:00 AM" },
+      { "session": "Feature Race", "day": "Sunday", "time": "12:30 PM" }
+    ],
+    "notable_alumni": ["Max Verstappen", "Charles Leclerc", "Lando Norris", "Oscar Piastri", "George Russell"],
+    "current_info": "The 2026 F2 champion will likely be in F1 by 2027. Watch for who's leading the championship — they're the next wave."
+  },
+  {
+    "id": "porsche-carrera-cup",
+    "name": "Porsche Carrera Cup North America",
+    "short": "Porsche Carrera Cup",
+    "color": "#CC0000",
+    "car": "Porsche 911 GT3 Cup (Type 992.2) — new car for 2026",
+    "description": "A one-make championship where every competitor drives the same car — the Porsche 911 GT3 Cup. No development allowed, no manufacturer spending wars. Just drivers, identical machinery, and pure racecraft. The series runs alongside major North American motorsport events including F1 and IMSA.",
+    "format": "Two races per F1 event weekend. Classes: Pro, Pro-Am, Am, Masters. Points count toward the overall season championship.",
+    "at_miami": [
+      { "session": "Practice 2", "day": "Friday", "time": "3:25 PM" },
+      { "session": "Qualifying", "day": "Friday", "time": "7:10 PM" },
+      { "session": "Race 1", "day": "Saturday", "time": "2:45 PM" },
+      { "session": "Race 2", "day": "Sunday", "time": "11:05 AM" }
+    ],
+    "notable": "2026 is the first season with the new 992.2 generation car — faster, better aero, air conditioning (yes, really — matters in Miami heat), updated electronics.",
+    "classes": [
+      { "name": "Pro", "description": "Top professional drivers competing for the overall championship" },
+      { "name": "Pro-Am", "description": "One pro, one gentleman driver pairing" },
+      { "name": "Am", "description": "Amateur competitors" },
+      { "name": "Masters/Solairus Aviation Masters", "description": "For drivers 57 and older — remarkably competitive" }
+    ]
+  },
+  {
+    "id": "mclaren-trophy",
+    "name": "McLaren Trophy America",
+    "short": "McLaren Trophy",
+    "color": "#FF8000",
+    "car": "McLaren Artura Trophy EVO — 585PS twin-turbo hybrid",
+    "description": "A one-make racing series for the McLaren Artura Trophy EVO, a race-prepared version of McLaren's Artura road car. Only in its second season in North America, the series secured a prestigious F1 Miami support slot. Think Artura but stripped out, caged, and on track.",
+    "format": "Two races per weekend, 40 minutes + 1 lap each. Races at Miami are the marquee events of the 2026 championship.",
+    "at_miami": [
+      { "session": "Practice 2", "day": "Friday", "time": "6:15 PM" },
+      { "session": "Qualifying", "day": "Saturday", "time": "1:45 PM" },
+      { "session": "Race 1", "day": "Saturday", "time": "6:00 PM" },
+      { "session": "Race 2", "day": "Sunday", "time": "8:30 AM" }
+    ],
+    "notable": "The McLaren Artura Trophy EVO uses a hybrid powertrain — 585PS from a 3.0L twin-turbo V6 plus electric motor. Fastest pure McLaren one-make car ever built.",
+    "background": "McLaren Trophy America launched in 2025 as McLaren's North American racing programme. Miami 2026 is the first time the series has supported an F1 event."
+  }
+]

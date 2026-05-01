@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}McLaren Trophy America — Teams 2026{% endblock %}
+{% block content %}
+<div class="page-header">
+  <h1 class="page-title">🏁 McLAREN TROPHY AMERICA — TEAMS</h1>
+  <p class="muted">{{ teams|length }} teams · McLaren Artura Trophy EVO · 2026 season</p>
+</div>
+
+<section class="grid grid-cards">
+  {% for t in teams %}
+  <div class="card team-card" style="--team-color: {{ t.color }}; border-left: 4px solid {{ t.color }};">
+    <h3 style="color: {{ t.color }};">{{ t.name }}</h3>
+    <div class="team-meta">
+      <div><span class="team-meta-label">Car</span><span class="team-meta-val">{{ t.car }}</span></div>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+
+<div class="info-section" style="margin-top:24px;">
+  <p class="muted" style="font-size:13px;">Full 2026 entry list: <a href="https://mclarentrophyamerica.com/teams" class="inline-link">mclarentrophyamerica.com/teams</a><br><span style="font-size:11px; opacity:0.6;">⚠️ Driver rosters weren’t publicly accessible — their site requires JavaScript just to show a list of names. You’d think a series backed by a £1.5B supercar brand could afford a decent web developer.</span></p>
+</div>
+
+<style>
+.info-section { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:16px 20px; }
+</style>
+
+<p class="back-link"><a href="/info">← Back to Race Info</a></p>
+{% endblock %}

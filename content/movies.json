@@ -1,0 +1,106 @@
+[
+  {
+    "title": "Spaceballs",
+    "filename": "spaceballs.mp4",
+    "year": 1987,
+    "duration": "96 min",
+    "description": "May the Schwartz be with you.",
+    "genre": "Comedy/Sci-Fi"
+  },
+  {
+    "title": "Ford v Ferrari",
+    "filename": "ford-v-ferrari.mp4",
+    "year": 2019,
+    "duration": "152 min",
+    "description": "The true story of the 1966 Le Mans race.",
+    "genre": "Drama/Sport"
+  },
+  {
+    "title": "Office Space",
+    "filename": "office-space.mp4",
+    "year": 1999,
+    "duration": "89 min",
+    "description": "It's not that I'm lazy, it's that I just don't care.",
+    "genre": "Comedy"
+  },
+  {
+    "title": "How to Train Your Dragon",
+    "filename": "httyd.mp4",
+    "year": 2010,
+    "duration": "98 min",
+    "description": "A young Viking befriends a Night Fury.",
+    "genre": "Animation/Family"
+  },
+  {
+    "title": "Cinderella",
+    "filename": "cinderella.mp4",
+    "year": 1950,
+    "duration": "74 min",
+    "description": "A classic Disney fairy tale.",
+    "genre": "Animation/Family"
+  },
+  {
+    "title": "Tom & Jerry: The Movie",
+    "filename": "tom-and-jerry.mp4",
+    "year": 1992,
+    "duration": "84 min",
+    "description": "The cat-and-mouse duo on a feature-length adventure.",
+    "genre": "Animation/Family"
+  },
+  {
+    "title": "Rush",
+    "filename": "rush.mp4",
+    "year": 2013,
+    "duration": "123 min",
+    "description": "The 1976 F1 rivalry of James Hunt and Niki Lauda.",
+    "genre": "Drama/Sport"
+  },
+  {
+    "title": "Avatar: The Last Airbender",
+    "filename": "avatar-airbender.mp4",
+    "year": "2026",
+    "duration": "~2h",
+    "description": "The live-action adaptation of the beloved animated series. Aang, Katara, Sokka, and Zuko — on the big screen.",
+    "genre": "Action / Fantasy"
+  },
+  {
+    "title": "Baby Driver",
+    "filename": "baby-driver.mp4",
+    "year": "2017",
+    "duration": "1h 53m",
+    "description": "A getaway driver with a hearing condition uses music to drown out the noise. Edgar Wright at his most kinetic. One of the best soundtracks ever committed to film.",
+    "genre": "Action / Crime"
+  },
+  {
+    "title": "Blade Runner: The Final Cut",
+    "filename": "blade-runner.mp4",
+    "year": "1982",
+    "duration": "1h 57m",
+    "description": "The definitive version of Ridley Scott's neo-noir sci-fi masterpiece. Harrison Ford hunts replicants in a rain-soaked dystopian Los Angeles. Stunning.",
+    "genre": "Sci-Fi / Neo-Noir"
+  },
+  {
+    "title": "Monty Python and the Holy Grail",
+    "filename": "monty-python.mp4",
+    "year": "1975",
+    "duration": "1h 31m",
+    "description": "King Arthur and his knights quest for the Holy Grail. Possibly the funniest film ever made. None shall pass.",
+    "genre": "Comedy"
+  },
+  {
+    "title": "The Martian",
+    "filename": "the-martian.mp4",
+    "year": "2015",
+    "duration": "2h 24m",
+    "description": "Extended cut. Matt Damon gets stranded on Mars and decides to science the hell out of it. Genuinely funny, genuinely tense.",
+    "genre": "Sci-Fi / Drama"
+  },
+  {
+    "title": "Tokyo Mater",
+    "filename": "tokyo-mater.mp4",
+    "year": "2008",
+    "duration": "~10m",
+    "description": "Mater goes to Tokyo and drifts. A short but perfectly sized pit stop between features.",
+    "genre": "Animation / Short"
+  }
+]

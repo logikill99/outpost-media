@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How F1 Sprint Weekends Work — Outpost Library</title>
+<style>
+body{background:#0a0a0a;color:#e0e0e0;font-family:system-ui,sans-serif;max-width:800px;margin:0 auto;padding:16px;line-height:1.7}
+h1,h2,h3{color:#e10600}
+a{color:#ff8700}
+.back{display:inline-block;margin-bottom:12px;color:#ff8700;font-size:13px;text-decoration:none}
+.meta{color:#999;font-size:14px;margin-bottom:24px;border-bottom:1px solid #222;padding-bottom:12px}
+.callout{background:#111;border-left:4px solid #e10600;padding:12px 16px;margin:20px 0;border-radius:0 4px 4px 0}
+table{border-collapse:collapse;width:100%;margin:16px 0}
+td,th{border:1px solid #333;padding:8px;font-size:13px;text-align:left}
+th{background:#111;color:#e10600}
+</style>
+</head>
+<body>
+<a href="/library" class="back">← Library</a>
+<h1>How F1 Sprint Weekends Work</h1>
+<div class="meta">📖 ~8 min read &nbsp;|&nbsp; F1 Technical &nbsp;|&nbsp; Updated 2025</div>
+
+<p>The Miami Grand Prix runs a Sprint format — meaning you get twice the racing for your money, a compressed schedule, and a whole extra layer of strategy that most broadcast commentators never fully explain. Here's what's actually happening.</p>
+
+<h2>The Two-Race Weekend</h2>
+<p>A normal F1 weekend has three practice sessions, qualifying on Saturday, and the race on Sunday. A Sprint weekend is completely different. The schedule compresses everything and adds a standalone 100km race called the Sprint.</p>
+
+<table>
+<thead><tr><th>Session</th><th>Normal Weekend</th><th>Sprint Weekend</th></tr></thead>
+<tbody>
+<tr><td>Friday AM</td><td>Practice 1 (60 min)</td><td>Practice 1 (60 min)</td></tr>
+<tr><td>Friday PM</td><td>Practice 2 (60 min)</td><td>Sprint Qualifying (SQ)</td></tr>
+<tr><td>Saturday AM</td><td>Practice 3 (60 min)</td><td>Sprint Race (100km)</td></tr>
+<tr><td>Saturday PM</td><td>Grand Prix Qualifying</td><td>Grand Prix Qualifying</td></tr>
+<tr><td>Sunday</td><td>Grand Prix (305km)</td><td>Grand Prix (305km)</td></tr>
+</tbody>
+</table>
+
+<p>The key change: you go from one free practice session directly into Sprint Qualifying. There is no second practice. Teams have almost no data before they're throwing their cars into timed laps. This rewards driver feel and engineering intuition over computational optimization — which is part of why the format is controversial with the teams.</p>
+
+<h2>Sprint Qualifying (SQ)</h2>
+<p>Sprint Qualifying mirrors the format of normal qualifying — three knockout rounds (SQ1, SQ2, SQ3) — but compressed:</p>
+<ul>
+<li><strong>SQ1:</strong> 12 minutes. Bottom 5 eliminated (positions 16–20 set).</li>
+<li><strong>SQ2:</strong> 10 minutes. Next 5 eliminated (positions 11–15 set).</li>
+<li><strong>SQ3:</strong> 8 minutes. Top 10 fight for Sprint pole.</li>
+</ul>
+
+<p>Unlike Grand Prix qualifying, parc fermé (the strict no-modification rule) does NOT apply after SQ in the same way. Teams have more flexibility to adjust the car before the Sprint race itself. However, GP Qualifying still sets the grid for the main race, and parc fermé rules then apply through to Sunday.</p>
+
+<h2>The Sprint Race Itself</h2>
+<p>The Sprint is approximately 100km — roughly one-third of a Grand Prix distance. At Miami, that's about 19 laps. A few key rules:</p>
+
+<div class="callout">
+<strong>No mandatory tire stops.</strong> Teams are free to run any compound and stop or not stop as they choose. This makes Sprint strategy extremely variable.
+</div>
+
+<p><strong>Tire choice:</strong> Teams can use any of the three dry compounds (soft, medium, hard). Most will run a single stint on softs to maximize pace, but if safety car conditions look likely, some will gamble on a longer-lasting compound to avoid a stop while others pit. Pirelli does not mandate a specific compound in the Sprint.</p>
+
+<p><strong>Points:</strong> The top 8 finishers score Sprint points on a reduced scale:</p>
+<table>
+<thead><tr><th>Position</th><th>Sprint Points</th><th>vs Grand Prix</th></tr></thead>
+<tbody>
+<tr><td>1st</td><td>8</td><td>25 in GP</td></tr>
+<tr><td>2nd</td><td>7</td><td>18 in GP</td></tr>
+<tr><td>3rd</td><td>6</td><td>15 in GP</td></tr>
+<tr><td>4th</td><td>5</td><td>12 in GP</td></tr>
+<tr><td>5th</td><td>4</td><td>10 in GP</td></tr>
+<tr><td>6th</td><td>3</td><td>8 in GP</td></tr>
+<tr><td>7th</td><td>2</td><td>6 in GP</td></tr>
+<tr><td>8th</td><td>1</td><td>4 in GP</td></tr>
+</tbody>
+</table>
+
+<p>No points for Sprint fastest lap. The maximum haul over a full Sprint weekend (Sprint win + GP win + fastest lap) is 8 + 25 + 1 = 34 points vs a normal weekend's 26.</p>
+
+<h2>How It Affects Grand Prix Strategy</h2>
+<p>This is where it gets genuinely interesting. The Sprint result matters, but what teams learn during the Sprint matters more.</p>
+
+<p><strong>Tire degradation data:</strong> Teams get 19 laps of real-race-condition degradation data before the Grand Prix. In a normal weekend, your only reference is practice — which is slower and uses different fuel loads. Sprint weekends mean teams enter Sunday with much better tire models.</p>
+
+<p><strong>Car setup tradeoffs:</strong> Because GP Qualifying happens after the Sprint, teams sometimes build the car for the Sprint (more aggressive setup, better for short stints) knowing they'll need to shift to a more conservative race setup. The limited practice time makes these decisions higher-stakes.</p>
+
+<p><strong>Risk management:</strong> Teams that are fighting for a championship will be conservative in the Sprint — don't risk the car for 8 points when 25 are on the table Sunday. Teams that need a miracle might swing hard on Sprint strategy knowing Sunday is already a write-off for them.</p>
+
+<h2>DRS and Overtaking in the Sprint</h2>
+<p>The Sprint uses full DRS rules. DRS detection points and activation zones are identical to the Grand Prix configuration. With 19 laps, there's no time to play games — drivers push hard from lap 1, which makes the opening laps chaotic and entertaining.</p>
+
+<p>The shorter distance also means there's usually no VSC or Safety Car buffer to exploit. If you're in clean air, you're building a gap. If you're stuck in dirty air, you're losing time. It's a more honest picture of relative car performance than a 58-lap race with pit window variability.</p>
+
+<h2>The Controversy</h2>
+<p>The Sprint format divides opinion — sharply. Here's the honest state of the debate:</p>
+
+<p><strong>For it:</strong> More green-flag racing. An extra 100km of competitive laps. Championship points with real stakes. The compressed schedule creates genuine uncertainty that normal weekends don't have.</p>
+
+<p><strong>Against it:</strong> Teams hate it. One practice session is not enough to optimize the car, which means small teams with less computational firepower get punished harder. The reduced development time compresses performance differences and can make the grid artificially close — or artificially spread out depending on how fortune falls. Some argue it dilutes the importance of the Grand Prix itself.</p>
+
+<p>The FIA has gradually expanded the Sprint calendar — from two rounds in 2021 to six in 2025. The commercial logic is clear: more action, more social media clips, more broadcast value. Whether that translates to better racing is a different question.</p>
+
+<h2>Miami Specifically</h2>
+<p>Miami has hosted the Sprint format for multiple years. The circuit's characteristics make it particularly interesting for the short race format:</p>
+<ul>
+<li>The long Turn 1 braking zone creates a genuine first-lap overtaking opportunity.</li>
+<li>The two DRS zones mean that tire degradation compounds quickly when following another car — putting pressure on anyone who qualifies out of position.</li>
+<li>Miami's surface degrades faster than average, so even a 19-lap Sprint generates meaningful tire data for Sunday.</li>
+<li>The Sprint result at Miami has historically shifted the energy of the weekend — a strong Sprint often predicts a strong Sunday for the leading teams.</li>
+</ul>
+
+<p>When you're watching the Sprint on Saturday morning and the commentators talk about "managing information" or "not showing their hand" — this is what they mean. Every lap is data, and data wins championships.</p>
+</body>
+</html>

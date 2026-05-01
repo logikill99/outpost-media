@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% block title %}F2 Teams — 2026{% endblock %}
+{% block content %}
+<div x-data="f2TeamApp()" x-init="init()">
+
+  <div class="page-header">
+    <h1 class="page-title">🏁 2026 F2 TEAMS</h1>
+    <p class="muted">{{ teams|length }} teams · all running spec Dallara F2 2024 + Mecachrome V6 · click any card for details</p>
+  </div>
+
+  <section class="grid grid-cards">
+    {% for t in teams %}
+    {% set ts = standings.teams | selectattr("team","equalto",t.name) | list | first %}
+    {% if not ts %}{% set ts = standings.teams | selectattr("team","equalto",t.full_name) | list | first %}{% endif %}
+    <div class="card team-card clickable"
+         @click="openModal({{ loop.index0 }})"
+         style="--team-color: {{ t.color }}; border-left: 4px solid {{ t.color }};">
+      <div class="team-card-head">
+        <h3 style="color: {{ t.color }};">{{ t.full_name }}</h3>
+        {% if ts %}
+        <div class="team-pos" title="2026 standings">P{{ ts.position }} · {{ ts.points }} pts</div>
+        {% endif %}
+      </div>
+      <div class="team-meta">
+        <div><span class="team-meta-label">Drivers</span><span class="team-meta-val">{{ t.drivers | join(', ') }}</span></div>
+        <div><span class="team-meta-label">Principal</span><span class="team-meta-val">{{ t.principal }}</span></div>
+        <div><span class="team-meta-label">Base</span><span class="team-meta-val">{{ t.base }}</span></div>
+      </div>
+      <p class="team-bio">{{ t.bio }}</p>
+      {% if t.notable is defined %}
+      <div class="team-notable">💡 {{ t.notable }}</div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </section>
+
+  <!-- Team detail modal -->
+  <div class="modal-backdrop" x-show="modalOpen" @click.self="modalOpen=false" x-transition>
+    <div class="modal-card" x-show="modalOpen" x-transition>
+      <button class="modal-close" @click="modalOpen=false">✕</button>
+      <template x-if="selected">
+        <div>
+          <div class="modal-header" :style="'border-color:' + selected.color">
+            <div>
+              <h2 class="modal-name" :style="'color:' + selected.color" x-text="selected.full_name"></h2>
+              <div class="modal-team" x-text="selected.base"></div>
+            </div>
+          </div>
+
+          <div class="team-modal-grid">
+            <div><span class="team-meta-label">Drivers</span><span class="team-meta-val" x-text="(selected.drivers || []).join(', ')"></span></div>
+            <div><span class="team-meta-label">Principal</span><span class="team-meta-val" x-text="selected.principal"></span></div>
+            <div><span class="team-meta-label">Chassis</span><span class="team-meta-val" x-text="selected.chassis"></span></div>
+            <div><span class="team-meta-label">Engine</span><span class="team-meta-val" x-text="selected.engine"></span></div>
+          </div>
+
+          <p class="modal-bio" x-text="selected.bio"></p>
+
+          <template x-if="selected.notable">
+            <div class="team-notable">💡 <span x-text="selected.notable"></span></div>
+          </template>
+
+          <template x-if="selectedStanding">
+            <div>
+              <h4 class="modal-section-title">📊 2026 Team Standings</h4>
+              <div class="modal-standing">
+                <div class="modal-standing-row">
+                  <span class="modal-standing-label">F2 Teams' Championship</span>
+                  <span class="modal-standing-pos" x-text="'P' + selectedStanding.position"></span>
+                  <span class="modal-standing-pts" x-text="selectedStanding.points + ' pts'"></span>
+                </div>
+              </div>
+            </div>
+          </template>
+        </div>
+      </template>
+    </div>
+  </div>
+
+</div>
+
+<p class="back-link"><a href="/info">← Back to Race Info</a></p>
+
+<style>
+.team-card-head { display:flex; justify-content:space-between; align-items:baseline; gap:8px; flex-wrap:wrap; }
+.team-pos { font-size:11px; padding:2px 8px; background:var(--bg); border:1px solid var(--border); border-radius:3px; color:var(--accent); font-weight:700; letter-spacing:.5px; }
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+const F2_TEAMS = {{ teams | tojson }};
+const F2_STANDINGS = {{ standings | tojson }};
+
+function findF2TeamStanding(teamName, fullName) {
+  const teams = F2_STANDINGS.teams || [];
+  return teams.find(t => t.team === teamName || t.team === fullName) || null;
+}
+
+function f2TeamApp() {
+  return {
+    modalOpen: false,
+    selected: null,
+    selectedStanding: null,
+    init() {},
+    openModal(idx) {
+      this.selected = F2_TEAMS[idx];
+      this.selectedStanding = findF2TeamStanding(this.selected.name, this.selected.full_name);
+      this.modalOpen = true;
+    }
+  }
+}
+</script>
+{% endblock %}

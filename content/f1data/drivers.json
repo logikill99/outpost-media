@@ -1,0 +1,486 @@
+[
+  {
+    "id": 1,
+    "name": "George Russell",
+    "number": 63,
+    "team": "Mercedes",
+    "nationality": "British",
+    "flag": "🇬🇧",
+    "teamColor": "#00D2BE",
+    "slug": "george-russell",
+    "bio": "The 2026 championship frontrunner. Russell joined Mercedes in 2022, replacing Bottas, and has become one of F1's most complete drivers — clinical in qualifying and relentless on race day. Led the 2026 Drivers' Championship standings early in the season with a dominant 25-point haul from the opening round.",
+    "stats": {
+      "wins": 6,
+      "podiums": 26,
+      "poles": 9,
+      "championships": 0
+    },
+    "highlights": [
+      "2022 Brazilian GP winner — his first F1 victory",
+      "2026 season early championship leader",
+      "Known for tire management and qualifying pace"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Kimi Antonelli",
+    "number": 12,
+    "team": "Mercedes",
+    "nationality": "Italian",
+    "flag": "🇮🇹",
+    "teamColor": "#00D2BE",
+    "slug": "kimi-antonelli",
+    "bio": "The Italian prodigy who replaced Lewis Hamilton at Mercedes for 2025. Despite crashing in his debut qualifying in Bahrain, Antonelli quickly justified the hype — securing wins and pole positions by mid-season. Rated as one of the most exciting talents to enter F1 in years.",
+    "stats": {
+      "wins": 2,
+      "podiums": 6,
+      "poles": 2,
+      "championships": 0
+    },
+    "highlights": [
+      "Mercedes debut 2025, replacing Hamilton",
+      "First win in only his third season",
+      "2026 early championship contender, 18 pts after opening round"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Charles Leclerc",
+    "number": 16,
+    "team": "Ferrari",
+    "nationality": "Monégasque",
+    "flag": "🇲🇨",
+    "teamColor": "#E8002D",
+    "slug": "charles-leclerc",
+    "bio": "The Monégasque ace has been the heartbeat of Ferrari since 2019. Leclerc's speed is undeniable — multiple pole positions at Monaco, multiple wins — but consistency and strategy have sometimes cost him. With Hamilton now alongside him, 2026 is high-stakes for both driver and team.",
+    "stats": {
+      "wins": 8,
+      "podiums": 52,
+      "poles": 27,
+      "championships": 0
+    },
+    "highlights": [
+      "2019 Belgian & Italian GP winner on back-to-back weekends",
+      "Multiple Monaco pole positions",
+      "15 pts after 2026 opening round"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Lewis Hamilton",
+    "number": 44,
+    "team": "Ferrari",
+    "nationality": "British",
+    "flag": "🇬🇧",
+    "teamColor": "#E8002D",
+    "slug": "lewis-hamilton",
+    "bio": "The most decorated driver in F1 history moved to Ferrari for 2025 in a blockbuster signing. Seven-time World Champion, 105 race wins, 104 pole positions. The move to Maranello is his final chapter — and Ferrari's biggest bet in decades. Still fiercely competitive at the highest level.",
+    "stats": {
+      "wins": 105,
+      "podiums": 203,
+      "poles": 104,
+      "championships": 7
+    },
+    "highlights": [
+      "7× World Champion (2008, 2014–15, 2017–20)",
+      "Most wins and poles in F1 history",
+      "Moved to Ferrari for 2025 in career-defining switch"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Lando Norris",
+    "number": 4,
+    "team": "McLaren",
+    "nationality": "British",
+    "flag": "🇬🇧",
+    "teamColor": "#FF8000",
+    "slug": "lando-norris",
+    "bio": "The 2025 World Champion. Norris finally converted his immense speed into a championship title after years as F1's nearly man. Quick, entertaining, and fiercely committed, he enters 2026 as the defending champion with McLaren, the reigning constructors' title holder.",
+    "stats": {
+      "wins": 11,
+      "podiums": 44,
+      "poles": 16,
+      "championships": 1
+    },
+    "highlights": [
+      "2025 World Drivers' Champion",
+      "McLaren career since 2019 — loyalty rewarded",
+      "Known for raw speed and entertaining racecraft"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Oscar Piastri",
+    "number": 81,
+    "team": "McLaren",
+    "nationality": "Australian",
+    "flag": "🇦🇺",
+    "teamColor": "#FF8000",
+    "slug": "oscar-piastri",
+    "bio": "The 2023 F2 champion who wasted no time proving himself in F1. Piastri pushed Norris hard throughout 2025 and is widely seen as a future champion. Calm, precise, and deceptively fast — McLaren opted to let both drivers race freely rather than impose team orders.",
+    "stats": {
+      "wins": 9,
+      "podiums": 27,
+      "poles": 6,
+      "championships": 0
+    },
+    "highlights": [
+      "McLaren debut 2023",
+      "Multiple wins in sophomore season",
+      "Pushed Norris throughout 2025 championship battle"
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Max Verstappen",
+    "number": 1,
+    "team": "Red Bull Racing",
+    "nationality": "Dutch",
+    "flag": "🇳🇱",
+    "teamColor": "#3671C6",
+    "slug": "max-verstappen",
+    "bio": "Four-time World Champion and arguably the greatest driver of his era. Verstappen dominated 2021–2024 with Red Bull before McLaren's resurgence pushed him hard. In 2026 he starts with a new teammate in Hadjar, and all eyes are on whether Red Bull's new car under the revised regulations can challenge again.",
+    "stats": {
+      "wins": 71,
+      "podiums": 127,
+      "poles": 48,
+      "championships": 4
+    },
+    "highlights": [
+      "4× World Champion (2021–2024)",
+      "71 race wins and counting — all-time great territory",
+      "Known for relentless aggression and tire management"
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Isack Hadjar",
+    "number": 6,
+    "team": "Red Bull Racing",
+    "nationality": "French-Algerian",
+    "flag": "🇫🇷",
+    "teamColor": "#3671C6",
+    "slug": "isack-hadjar",
+    "bio": "The 2024 F2 champion who earned his Red Bull seat the hard way. After a promising rookie season at Racing Bulls in 2025, Hadjar was promoted to the senior Red Bull team for 2026 — replacing the departed Tsunoda. Still 20, with enormous upside.",
+    "stats": {
+      "wins": 0,
+      "podiums": 1,
+      "poles": 0,
+      "championships": 0
+    },
+    "highlights": [
+      "2024 F2 Champion",
+      "Red Bull junior programme graduate",
+      "Promoted to senior team for 2026 after strong Racing Bulls rookie year"
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Liam Lawson",
+    "number": 30,
+    "team": "Racing Bulls",
+    "nationality": "New Zealander",
+    "flag": "🇳🇿",
+    "teamColor": "#6692FF",
+    "slug": "liam-lawson",
+    "bio": "The New Zealander who impressed in emergency stints covering for Ricciardo and Pérez. Lawson earned a full Racing Bulls seat for 2026 and brings a gritty, never-say-die attitude. Experienced despite his young age from multiple substitute appearances.",
+    "stats": {
+      "wins": 0,
+      "podiums": 0,
+      "poles": 0,
+      "championships": 0
+    },
+    "highlights": [
+      "Memorable debut substitute stints for Red Bull",
+      "Full Racing Bulls seat earned for 2026",
+      "One of Red Bull's most versatile young talents"
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Arvid Lindblad",
+    "number": 41,
+    "team": "Racing Bulls",
+    "nationality": "British-Swedish",
+    "flag": "🇸🇪",
+    "teamColor": "#6692FF",
+    "slug": "arvid-lindblad",
+    "bio": "The youngest driver on the 2026 grid. Lindblad is a product of the Red Bull junior academy, fast-tracked to F1 after a dominant 2025 F2 season. A Bahraini GP showing in the opening round indicated he's not just making up the numbers.",
+    "stats": {
+      "wins": 0,
+      "podiums": 0,
+      "poles": 0,
+      "championships": 0
+    },
+    "highlights": [
+      "Youngest driver on 2026 grid",
+      "Red Bull junior programme fast-track graduate",
+      "Impressive F1 debut showing in 2026 opener"
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Sergio Perez",
+    "number": 11,
+    "team": "Cadillac",
+    "nationality": "Mexican",
+    "flag": "🇲🇽",
+    "teamColor": "#FFFFFF",
+    "slug": "sergio-perez",
+    "bio": "After losing his Red Bull seat at the end of 2025, Perez reinvented himself by signing with Cadillac — the American team that joined the grid as the 11th constructor in 2026. A massive moment for Mexican motorsport, and Checo brings enormous experience to the new outfit.",
+    "stats": {
+      "wins": 6,
+      "podiums": 39,
+      "poles": 3,
+      "championships": 0
+    },
+    "highlights": [
+      "2021 Azerbaijani GP winner — iconic late-race charge",
+      "Key role in Red Bull 2021–2025 constructor titles",
+      "Founding driver of Cadillac F1 — historic American return to F1"
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Valtteri Bottas",
+    "number": 77,
+    "team": "Cadillac",
+    "nationality": "Finnish",
+    "flag": "🇫🇮",
+    "teamColor": "#FFFFFF",
+    "slug": "valtteri-bottas",
+    "bio": "The Finn who went from Mercedes #2 to Alfa Romeo/Sauber to the newly launched Cadillac team. Bottas is an F1 lifer at this point — experienced, likeable, fast on his day. His no-filter social media presence and Finnish stoicism have made him a fan favourite.",
+    "stats": {
+      "wins": 10,
+      "podiums": 67,
+      "poles": 20,
+      "championships": 0
+    },
+    "highlights": [
+      "10 F1 race wins with Mercedes",
+      "Key player in Mercedes constructors' titles 2017–2021",
+      "Returned to F1 with historic Cadillac team in 2026"
+    ]
+  },
+  {
+    "id": 13,
+    "name": "Fernando Alonso",
+    "number": 14,
+    "team": "Aston Martin",
+    "nationality": "Spanish",
+    "flag": "🇪🇸",
+    "teamColor": "#358C75",
+    "slug": "fernando-alonso",
+    "bio": "Still competing at 44 and still capable of stunning performances. Two-time World Champion who many consider the most complete driver in F1 history. Alonso's move to Aston Martin with the promise of a competitive car has yet to fully materialize, but his racecraft remains elite.",
+    "stats": {
+      "wins": 32,
+      "podiums": 106,
+      "poles": 22,
+      "championships": 2
+    },
+    "highlights": [
+      "2× World Champion (2005–2006)",
+      "32 race wins across three distinct F1 careers",
+      "Still competitive into his mid-40s — legendary longevity"
+    ]
+  },
+  {
+    "id": 14,
+    "name": "Lance Stroll",
+    "number": 18,
+    "team": "Aston Martin",
+    "nationality": "Canadian",
+    "flag": "🇨🇦",
+    "teamColor": "#358C75",
+    "slug": "lance-stroll",
+    "bio": "The son of Lawrence Stroll, Aston Martin's owner. Lance has been a polarizing figure in F1, but he's claimed podiums and pole positions and has shown genuine raw speed on his day. Driving alongside Alonso is the ultimate reference point for measuring his progress.",
+    "stats": {
+      "wins": 0,
+      "podiums": 3,
+      "poles": 1,
+      "championships": 0
+    },
+    "highlights": [
+      "Pole position at 2020 Turkish GP",
+      "Multiple podium finishes",
+      "Youngest Canadian F1 driver in history on debut"
+    ]
+  },
+  {
+    "id": 15,
+    "name": "Pierre Gasly",
+    "number": 10,
+    "team": "Alpine",
+    "nationality": "French",
+    "flag": "🇫🇷",
+    "teamColor": "#0090FF",
+    "slug": "pierre-gasly",
+    "bio": "The Frenchman who bounced back from a demotion to Red Bull's B-team to win at Monza and establish himself as a solid midfield force. Gasly joined Alpine for 2023 and has been their team leader. Consistent points-scorer who can occasionally punch above Alpine's weight.",
+    "stats": {
+      "wins": 1,
+      "podiums": 5,
+      "poles": 0,
+      "championships": 0
+    },
+    "highlights": [
+      "2020 Italian GP winner — emotional maiden victory",
+      "Alpine team leader since 2023",
+      "Known for consistency and strong race pace in midfield battles"
+    ]
+  },
+  {
+    "id": 16,
+    "name": "Franco Colapinto",
+    "number": 43,
+    "team": "Alpine",
+    "nationality": "Argentine",
+    "flag": "🇦🇷",
+    "teamColor": "#0090FF",
+    "slug": "franco-colapinto",
+    "bio": "The Argentine who burst onto the scene with Williams in 2024 as a late substitute and impressed enough to earn a full race seat at Alpine for 2026. Argentina's first F1 driver since José Dolhem in 1974. Carries the weight of a nation on his shoulders.",
+    "stats": {
+      "wins": 0,
+      "podiums": 0,
+      "poles": 0,
+      "championships": 0
+    },
+    "highlights": [
+      "First Argentine F1 driver since 1974",
+      "Impressive substitute debut at Williams in 2024",
+      "Full Alpine seat earned for 2026 season"
+    ]
+  },
+  {
+    "id": 17,
+    "name": "Esteban Ocon",
+    "number": 31,
+    "team": "Haas F1 Team",
+    "nationality": "French",
+    "flag": "🇫🇷",
+    "teamColor": "#B6BABD",
+    "slug": "esteban-ocon",
+    "bio": "The 2021 Hungarian GP winner who joined Haas after leaving Alpine. Ocon is a solid midfield performer with enough speed to spring surprises. Known for his fighting spirit — quite literally, given incidents with various teammates over the years.",
+    "stats": {
+      "wins": 1,
+      "podiums": 4,
+      "poles": 0,
+      "championships": 0
+    },
+    "highlights": [
+      "2021 Hungarian GP winner — emotional first F1 victory",
+      "Survived a Mercedes junior program that churned through talent",
+      "Moved to Haas for 2025"
+    ]
+  },
+  {
+    "id": 18,
+    "name": "Oliver Bearman",
+    "number": 87,
+    "team": "Haas F1 Team",
+    "nationality": "British",
+    "flag": "🇬🇧",
+    "teamColor": "#B6BABD",
+    "slug": "oliver-bearman",
+    "bio": "The teenager who earned worldwide attention when he subbed for Sainz at Ferrari and scored a point on his debut. Bearman joined Haas full-time in 2025 and has shown he belongs in F1 — aggressive on track, calm under pressure, and improving race by race.",
+    "stats": {
+      "wins": 0,
+      "podiums": 0,
+      "poles": 0,
+      "championships": 0
+    },
+    "highlights": [
+      "Scored points on debut subbing for Ferrari at 2024 Saudi GP",
+      "Full Haas seat from 2025",
+      "Ferrari junior driver — part of the red long-term plan"
+    ]
+  },
+  {
+    "id": 19,
+    "name": "Nico Hulkenberg",
+    "number": 27,
+    "team": "Audi F1 Team",
+    "nationality": "German",
+    "flag": "🇩🇪",
+    "teamColor": "#C00000",
+    "slug": "nico-hulkenberg",
+    "bio": "The man with 200+ starts and zero podiums who returned to F1 as Sauber's team leader before the Audi takeover. Hulkenberg is experienced, metronomic, and highly rated in the paddock. Now leading the transition to Audi power — a historic moment for German motorsport.",
+    "stats": {
+      "wins": 0,
+      "podiums": 1,
+      "poles": 1,
+      "championships": 0
+    },
+    "highlights": [
+      "200+ F1 starts — one of the most experienced on the grid",
+      "24H Le Mans winner (LMP1, 2015)",
+      "Team leader for Sauber → Audi transition"
+    ]
+  },
+  {
+    "id": 20,
+    "name": "Gabriel Bortoleto",
+    "number": 5,
+    "team": "Audi F1 Team",
+    "nationality": "Brazilian",
+    "flag": "🇧🇷",
+    "teamColor": "#C00000",
+    "slug": "gabriel-bortoleto",
+    "bio": "The 2024 F2 Champion who skipped straight from F2 to Audi/Sauber for 2025. The Brazilian carries enormous expectation as a future star — calm, clinical, and devastatingly quick in single-lap pace. Brazil hasn't had an F1 winner since Barrichello in 2009; the pressure is noted.",
+    "stats": {
+      "wins": 0,
+      "podiums": 0,
+      "poles": 0,
+      "championships": 0
+    },
+    "highlights": [
+      "2024 F2 Champion",
+      "Debut F1 season with Sauber/Audi in 2025",
+      "Destined for a top team if Audi's project succeeds"
+    ]
+  },
+  {
+    "id": 21,
+    "name": "Carlos Sainz",
+    "number": 55,
+    "team": "Williams",
+    "nationality": "Spanish",
+    "flag": "🇪🇸",
+    "teamColor": "#37BEDD",
+    "slug": "carlos-sainz",
+    "bio": "Sainz left Ferrari when Hamilton arrived and joined Williams — a brave move showing his belief in the team's trajectory. A consistent performer who claimed his first win at the 2024 Australian GP. Brings world-class experience to Williams alongside Albon.",
+    "stats": {
+      "wins": 4,
+      "podiums": 29,
+      "poles": 6,
+      "championships": 0
+    },
+    "highlights": [
+      "2024 Australian GP winner — first F1 victory",
+      "Joined Williams after Ferrari for 2025",
+      "Son of two-time WRC champion Carlos Sainz Sr."
+    ]
+  },
+  {
+    "id": 22,
+    "name": "Alexander Albon",
+    "number": 23,
+    "team": "Williams",
+    "nationality": "Thai-British",
+    "flag": "🇹🇭",
+    "teamColor": "#37BEDD",
+    "slug": "alexander-albon",
+    "bio": "The Thai-British driver who rebuilt his career at Williams after losing his Red Bull seat. Albon has been exceptional at extracting maximum performance from a midfield car and has become a genuine fan favourite. His tire management is rated among the best on the grid.",
+    "stats": {
+      "wins": 0,
+      "podiums": 2,
+      "poles": 0,
+      "championships": 0
+    },
+    "highlights": [
+      "Red Bull race seat 2019–2020",
+      "Williams career revival — multiple points hauls with underdog car",
+      "Known for extraordinary tire management"
+    ]
+  }
+]

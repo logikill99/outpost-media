@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}McLaren Trophy America — Drivers 2026{% endblock %}
+{% block content %}
+<div class="page-header">
+  <h1 class="page-title">👤 McLAREN TROPHY AMERICA — DRIVERS</h1>
+  <p class="muted">McLaren Artura Trophy EVO · 2026 season</p>
+</div>
+
+<div class="driver-grid">
+  {% for driver in drivers %}
+  <div class="driver-card" style="cursor:default;">
+    <div class="driver-info">
+      <div class="driver-name">{{ driver.driver }}</div>
+      {% if driver.team %}<div class="driver-team">{{ driver.team }}</div>{% endif %}
+      {% if driver.class %}<div class="driver-nat"><span class="class-pill">{{ driver.class }}</span></div>{% endif %}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<div class="info-section" style="margin-top:24px;">
+  <p class="muted" style="font-size:13px;">Full 2026 entry list: <a href="https://mclarentrophyamerica.com/drivers" class="inline-link">mclarentrophyamerica.com/drivers</a><br><span style="font-size:11px; opacity:0.6;">⚠️ Their site is almost entirely JavaScript-rendered with no fallback, so only 4 of the drivers actually loaded. McLaren builds a great car. Less great website.</span></p>
+</div>
+
+<style>
+.info-section { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:16px 20px; }
+</style>
+
+<p class="back-link"><a href="/info">← Back to Race Info</a></p>
+{% endblock %}

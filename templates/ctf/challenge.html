@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block title %}CTF — {{ challenge.title }}{% endblock %}
+
+{% block content %}
+<div class="challenge-page" x-data="challenge()" x-init="init()">
+  <a href="/ctf/" class="back-link">← All challenges</a>
+  <div class="challenge-head">
+    <span class="badge badge-{{ challenge.category }}">{{ challenge.category }}</span>
+    <h1>{{ challenge.title }}</h1>
+    <span class="points">{{ challenge.points }} pts</span>
+  </div>
+
+  <div class="card">
+    <p class="challenge-desc">{{ challenge.description }}</p>
+
+    {% if challenge.hint %}
+    <details class="hint">
+      <summary>💡 Hint (click to reveal)</summary>
+      <p>{{ challenge.hint }}</p>
+    </details>
+    {% endif %}
+
+    <form class="flag-form" @submit.prevent="submit()">
+      <label class="muted">Username</label>
+      <input type="text" x-model="username" maxlength="32" placeholder="anon" class="user-input">
+      <label class="muted">Flag</label>
+      <input type="text" x-model="flag" placeholder="FLAG{...}" class="flag-input" autocomplete="off" autocapitalize="off">
+      <button type="submit" class="btn-primary" :disabled="busy || !flag.trim() || !username.trim()">
+        <span x-show="!busy">Submit Flag</span>
+        <span x-show="busy">Submitting…</span>
+      </button>
+    </form>
+
+    <div class="flag-result" x-show="result" x-transition>
+      <p :class="resultOk ? 'ok' : 'bad'" x-text="result"></p>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function challenge(){
+  return {
+    slug: {{ challenge.slug | tojson }},
+    username: '',
+    flag: '',
+    result: '',
+    resultOk: false,
+    busy: false,
+    init(){
+      this.username = localStorage.getItem('outpost_username') || '';
+    },
+    submit(){
+      this.busy = true;
+      this.result = '';
+      localStorage.setItem('outpost_username', this.username.trim());
+      fetch('/api/ctf/submit', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({username: this.username.trim(), slug: this.slug, flag: this.flag.trim()}),
+      }).then(r=>r.json()).then(d=>{
+        this.busy = false;
+        this.result = d.message || (d.correct ? 'Correct!' : 'Wrong.');
+        this.resultOk = !!d.correct;
+        if(d.correct){
+          let solved = JSON.parse(localStorage.getItem('outpost_solved') || '[]');
+          if(!solved.includes(this.slug)){ solved.push(this.slug); localStorage.setItem('outpost_solved', JSON.stringify(solved)); }
+        }
+      }).catch(()=>{
+        this.busy = false;
+        this.result = 'Network error. Try again.';
+        this.resultOk = false;
+      });
+    },
+  }
+}
+</script>
+{% endblock %}

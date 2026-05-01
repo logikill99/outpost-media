@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1, "name": "Topp Racing", "color": "#9B59B6",
+    "drivers": ["Tyler Maxson", "Cole Kleck"],
+    "car": "Porsche 911 GT3 Cup (992.2)",
+    "classes": ["Pro"],
+    "bio": "Championship-leading team through two rounds of the 2026 season. Topp Racing runs Tyler Maxson — the Pro class points leader — alongside Rookie Cole Kleck. Both swept Sebring from pole position, and Maxson has yet to finish lower than fourth. One of the most formidable two-car lineups in the Pro field."
+  },
+  {
+    "id": 2, "name": "Kellymoss", "color": "#FFC72C",
+    "drivers": ["Aaron Jeansonne", "Paul Bocuse", "Alan Metni", "Josh Conley", "John Goetz", "Chris Bellomo", "Kayden Kelly", "Steve Wetterau"],
+    "car": "Porsche 911 GT3 Cup (992.2)",
+    "classes": ["Pro", "Pro-Am", "Masters"],
+    "bio": "The largest operation in the PCCNA paddock. Kellymoss runs entries across all three classes in 2026 — Aaron Jeansonne leads the Pro effort at P2 in the championship, while the Pro-Am and Masters squads add depth. The Wisconsin-based Porsche specialist has decades of customer racing experience behind every car on the grid."
+  },
+  {
+    "id": 3, "name": "JDX Racing", "color": "#0070C0",
+    "drivers": ["Callum Hedge", "Connor Bloum", "Sabre Cook", "Kevin Stadtlander"],
+    "car": "Porsche 911 GT3 Cup (992.2)",
+    "classes": ["Pro", "Masters"],
+    "bio": "One of PCCNA's most decorated customer operations. JDX fields Callum Hedge — P3 in the 2026 Pro standings — alongside regulars Connor Bloum and Sabre Cook in Pro, and Kevin Stadtlander in Masters. JDX's engineering depth gives every driver a title-ready machine from round one."
+  },
+  {
+    "id": 4, "name": "ACI Motorsports", "color": "#E74C3C",
+    "drivers": ["Janne Stiak", "John Jodoin", "Alex Pratt", "Patrick Mulcahy", "Marco Cirone", "Richard Edge", "Ricco Shlaimoun"],
+    "car": "Porsche 911 GT3 Cup (992.2)",
+    "classes": ["Pro", "Pro-Am", "Masters"],
+    "bio": "A large, well-funded customer racing outfit covering every class in 2026. ACI Motorsports fields Patrick Mulcahy — the Pro-Am championship leader — alongside multiple Pro entries and Marco Cirone leading the Masters standings. The team is a fixture at every IMSA support event on the calendar."
+  },
+  {
+    "id": 5, "name": "GMG Racing", "color": "#27AE60",
+    "drivers": ["Tom Sargent", "James Sofronas", "John Capestro-Dubets"],
+    "car": "Porsche 911 GT3 Cup (992.2)",
+    "classes": ["Pro", "Pro-Am"],
+    "bio": "Florida-based Porsche customer team founded by James Sofronas. GMG struck gold at Long Beach with Tom Sargent sweeping both races — the Australian Porsche factory driver arrived late to the 2026 season and immediately went to the top of the results. Sofronas himself races the Pro-Am entry and JCD Dubets rounds out the Pro effort."
+  },
+  {
+    "id": 6, "name": "JTR Motorsports Engineering", "color": "#2980B9",
+    "drivers": ["Jared Thomas", "Rob Walker"],
+    "car": "Porsche 911 GT3 Cup (992.2)",
+    "classes": ["Pro", "Masters"],
+    "bio": "Focused, engineering-led Porsche customer team. Jared Thomas runs a competitive Pro effort — he qualified on pole at Sebring and finished second in Race 1. Rob Walker runs the Masters entry alongside him, and JTR's technical approach gives both drivers a data-rich environment to find time."
+  },
+  {
+    "id": 7, "name": "CSM - Reis Nichols", "color": "#16A085",
+    "drivers": ["Nikita Lastochkin"],
+    "car": "Porsche 911 GT3 Cup (992.2)",
+    "classes": ["Pro"],
+    "bio": "Czabok-Simpson Motorsport — running as CSM Reis Nichols in 2026 — fields Nikita Lastochkin in the Pro class. The team is a compact single-car operation focused on developing the Russian driver's pace in the North American series environment."
+  },
+  {
+    "id": 8, "name": "Ruckus Racing", "color": "#E67E22",
+    "drivers": ["Scott Blind"],
+    "car": "Porsche 911 GT3 Cup (992.2)",
+    "classes": ["Masters"],
+    "bio": "Scott Blind's single-car Masters programme. Blind won the Masters class at Miami in 2025 — his home-track knowledge makes Ruckus Racing one to watch this weekend. The team runs lean and fast, with the sole ambition of a Masters championship title."
+  },
+  {
+    "id": 9, "name": "van der Steur Racing", "color": "#8E44AD",
+    "drivers": ["Brady Behrman"],
+    "car": "Porsche 911 GT3 Cup (992.2)",
+    "classes": ["Pro-Am"],
+    "bio": "Dutch-American customer racing squad with a long IMSA history. van der Steur's PCCNA entry runs Brady Behrman in the Pro-Am class — a well-prepared car from a team that knows how to win in the one-make format."
+  },
+  {
+    "id": 10, "name": "Scalzo Autosport", "color": "#7F8C8D",
+    "drivers": ["Alain Scalzo"],
+    "car": "Porsche 911 GT3 Cup (992.2)",
+    "classes": ["Masters"],
+    "bio": "Owner-driver operation run by Alain Scalzo himself. Scalzo Autosport is the purest expression of the gentleman-racer ethos — one driver, one car, one goal. The team handles its own logistics, its own data, and its own motivation."
+  }
+]

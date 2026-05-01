@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block title %}Race Info — Outpost{% endblock %}
+{% block content %}
+
+<div class="page-header">
+  <h1 class="page-title">🏁 RACE INFO</h1>
+  <p class="muted">Drivers, teams, and series details for every championship at this event.</p>
+</div>
+
+{% set groups = [
+  {
+    "key": "f1",
+    "label": "F1 — Formula 1",
+    "color": "#E10600",
+    "blurb": "The pinnacle of single-seater racing. 22 drivers across 11 teams.",
+    "drivers_desc": "All 22 drivers with full bios, stats, and career highlights.",
+    "teams_desc": "11 constructors including Cadillac and Audi — 2026's two new entries.",
+    "general_desc": "Circuit guide, schedule, history, and regulation notes."
+  },
+  {
+    "key": "f2",
+    "label": "F2 — Formula 2",
+    "color": "#0090FF",
+    "blurb": "The primary feeder series to F1. Spec chassis, pure driver talent.",
+    "drivers_desc": "22 drivers — the next wave of F1 talent. Ferrari, Red Bull, McLaren, Williams juniors.",
+    "teams_desc": "11 spec-chassis teams running Dallara F2 2024s with Mecachrome V6 engines.",
+    "general_desc": "About F2: format, scoring, and history."
+  },
+  {
+    "key": "porsche",
+    "label": "Porsche Carrera Cup North America",
+    "color": "#CC0000",
+    "blurb": "One-make 911 GT3 Cup series. Pro, Pro-Am, Masters classes.",
+    "drivers_desc": "Pro, Pro-Am, and Masters drivers.",
+    "teams_desc": "Customer entries running the new 992.2-generation Porsche 911 GT3 Cup.",
+    "general_desc": "Series overview: format, classes, and the new 992.2 car."
+  },
+  {
+    "key": "mclaren",
+    "label": "McLaren Trophy America",
+    "color": "#FF8000",
+    "blurb": "One-make Artura Trophy EVO series, in its second season.",
+    "drivers_desc": "Drivers competing in McLaren Trophy America.",
+    "teams_desc": "Customer entries running the McLaren Artura Trophy EVO.",
+    "general_desc": "McLaren Trophy: format, hybrid powertrain, and the path to the championship."
+  }
+] %}
+
+{% for g in groups %}
+<section class="info-group" style="--group-color: {{ g.color }};">
+  <div class="info-group-header">
+    <h2 class="info-group-title" style="color: {{ g.color }};">{{ g.label }}</h2>
+    <p class="info-group-blurb muted">{{ g.blurb }}</p>
+    {% if leaders[g.key] %}
+    <div class="info-group-leader">
+      <span class="leader-label">Leader:</span>
+      <strong>{{ leaders[g.key].name }}</strong>
+      {% if leaders[g.key].team %}<span class="muted">— {{ leaders[g.key].team }}</span>{% endif %}
+      <span class="leader-pts" style="color: {{ g.color }};">{{ leaders[g.key].points }} pts</span>
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="info-card-row">
+    <a class="info-card" href="/info/{{ g.key }}/drivers" style="--accent: {{ g.color }};">
+      <div class="info-card-icon">👤</div>
+      <h3>Drivers</h3>
+      <p>{{ g.drivers_desc }}</p>
+    </a>
+    <a class="info-card" href="/info/{{ g.key }}/teams" style="--accent: {{ g.color }};">
+      <div class="info-card-icon">🏁</div>
+      <h3>Teams</h3>
+      <p>{{ g.teams_desc }}</p>
+    </a>
+    <a class="info-card" href="/info/{{ g.key }}/general" style="--accent: {{ g.color }};">
+      <div class="info-card-icon">📖</div>
+      <h3>Race Info</h3>
+      <p>{{ g.general_desc }}</p>
+    </a>
+  </div>
+</section>
+{% endfor %}
+
+{% endblock %}

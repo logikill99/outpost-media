@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+{% block title %}F2 Drivers — 2026{% endblock %}
+{% block content %}
+<div x-data="f2DriverApp()" x-init="init()">
+
+  <div class="page-header">
+    <h1 class="page-title">👤 2026 F2 DRIVERS</h1>
+    <p class="muted">{{ drivers|length }} drivers · {{ drivers|map(attribute='team')|unique|list|length }} teams</p>
+  </div>
+
+  <div class="filter-bar">
+    <input type="search" x-model="search" placeholder="Search driver or team…" class="search-input" autocomplete="off">
+    <div class="team-filters">
+      <button class="filter-btn" :class="{active: teamFilter===''}" @click="teamFilter=''">All</button>
+      {% set teams = drivers|map(attribute='team')|unique|sort %}
+      {% for team in teams %}
+      <button class="filter-btn" :class="{active: teamFilter==='{{ team }}'}" @click="teamFilter='{{ team }}'">{{ team }}</button>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="driver-grid">
+    {% for driver in drivers %}
+    {% set standing = standings.drivers | selectattr("driver_id", "equalto", driver.driver_id) | list | first %}
+    <div class="driver-card"
+         x-show="matchesFilter('{{ driver.name|e }}', '{{ driver.team|e }}')"
+         @click="openModal({{ loop.index0 }})">
+      <div class="driver-card-top">
+        <div class="driver-number">#{{ driver.number or driver.tla }}</div>
+        {% if standing %}
+        <div class="driver-pos" title="2026 standings">P{{ standing.position }} · {{ standing.points }} pts</div>
+        {% endif %}
+      </div>
+      <div class="driver-info">
+        <div class="driver-name">{{ driver.name }}</div>
+        <div class="driver-team">{{ driver.team }}</div>
+        <div class="driver-nat">{{ driver.flag or '' }} {{ driver.nationality or '' }}</div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- Driver detail modal -->
+  <div class="modal-backdrop" x-show="modalOpen" @click.self="modalOpen=false" x-transition>
+    <div class="modal-card" x-show="modalOpen" x-transition>
+      <button class="modal-close" @click="modalOpen=false">✕</button>
+      <template x-if="selected">
+        <div>
+          <div class="modal-header">
+            <div class="modal-number" x-text="'#' + (selected.number || selected.tla)"></div>
+            <div>
+              <h2 class="modal-name" x-text="selected.name"></h2>
+              <div class="modal-team" x-text="selected.team"></div>
+              <div class="modal-nat" x-show="selected.nationality">
+                <span x-text="selected.flag"></span>
+                <span x-text="selected.nationality"></span>
+              </div>
+            </div>
+          </div>
+
+          <template x-if="selectedStanding">
+            <div class="modal-standing">
+              <div class="modal-standing-row">
+                <span class="modal-standing-label">2026 F2 Championship</span>
+                <span class="modal-standing-pos" x-text="'P' + selectedStanding.position"></span>
+                <span class="modal-standing-pts" x-text="selectedStanding.points + ' pts'"></span>
+              </div>
+            </div>
+          </template>
+
+          <h4 class="modal-section-title">📊 2026 Race Results</h4>
+          <table class="results-table results-table-mini" x-show="selectedResults && selectedResults.length">
+            <thead>
+              <tr><th>Rd</th><th>Round</th><th>Session</th><th class="num">Pos</th></tr>
+            </thead>
+            <tbody>
+              <template x-for="r in selectedResults" :key="r.round + '-' + r.session">
+                <tr>
+                  <td class="pos" x-text="r.round"></td>
+                  <td x-text="r.country"></td>
+                  <td><span class="session-badge" x-text="r.session"></span></td>
+                  <td class="num pts" x-text="r.position || '—'"></td>
+                </tr>
+              </template>
+            </tbody>
+          </table>
+          <template x-if="selected.bio">
+            <p class="modal-bio" x-text="selected.bio"></p>
+          </template>
+          <p class="stub-text" x-show="!(selectedResults && selectedResults.length)">No completed F2 sessions yet for this driver in 2026.</p>
+        </div>
+      </template>
+    </div>
+  </div>
+
+</div>
+
+<p class="back-link"><a href="/info">← Back to Race Info</a></p>
+
+<style>
+.results-table { width:100%; border-collapse:collapse; font-size:13px; background:var(--bg); border:1px solid var(--border); border-radius:6px; overflow:hidden; }
+.results-table th { text-align:left; padding:8px 10px; background:var(--surface-2); color:var(--text-muted); font-size:10px; text-transform:uppercase; letter-spacing:.5px; border-bottom:1px solid var(--border); font-weight:700; }
+.results-table td { padding:7px 10px; border-bottom:1px solid var(--border); }
+.results-table tr:last-child td { border-bottom:none; }
+.results-table .num { text-align:right; font-variant-numeric: tabular-nums; }
+.results-table .pos { color:var(--accent); font-weight:700; width:36px; }
+.results-table .pts { color:var(--text); font-weight:600; }
+.results-table-mini { font-size:12px; }
+.results-table-mini th, .results-table-mini td { padding:5px 8px; }
+.session-badge { display:inline-block; padding:1px 6px; font-size:10px; background:var(--surface-2); border:1px solid var(--border); border-radius:3px; letter-spacing:.5px; }
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+const F2_DRIVERS = {{ drivers | tojson }};
+const F2_STANDINGS = {{ standings | tojson }};
+const F2_RESULTS = {{ results | tojson }};
+
+function f2DriverApp() {
+  return {
+    search: '',
+    teamFilter: '',
+    modalOpen: false,
+    selected: null,
+    selectedStanding: null,
+    selectedResults: [],
+    init() {},
+    matchesFilter(name, team) {
+      const q = this.search.toLowerCase();
+      const matchSearch = !q || name.toLowerCase().includes(q) || team.toLowerCase().includes(q);
+      const matchTeam = !this.teamFilter || team === this.teamFilter;
+      return matchSearch && matchTeam;
+    },
+    openModal(idx) {
+      this.selected = F2_DRIVERS[idx];
+      const did = this.selected.driver_id;
+      this.selectedStanding = (F2_STANDINGS.drivers || []).find(d => d.driver_id === did) || null;
+      const rows = [];
+      for (const round of (F2_RESULTS || [])) {
+        for (const session of (round.sessions || [])) {
+          const hit = (session.results || []).find(r => r.driver_id === did);
+          if (hit) {
+            rows.push({
+              round: round.round, country: round.country,
+              session: session.name,
+              position: hit.position
+            });
+          }
+        }
+      }
+      this.selectedResults = rows;
+      this.modalOpen = true;
+    }
+  }
+}
+</script>
+{% endblock %}

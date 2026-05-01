@@ -1,0 +1,49 @@
+:80 {
+    @captive {
+        path /hotspot-detect.html
+        path /generate_204
+        path /ncsi.txt
+        path /connecttest.txt
+        path /redirect
+        path /success.txt
+        path /library/test/success.html
+    }
+    redir @captive http://10.0.0.1/portal
+
+    # SocketIO before everything else
+    reverse_proxy /socket.io/* localhost:5000
+
+    # Flask app routes
+    reverse_proxy /api/*     localhost:5000
+    reverse_proxy /admin/*   localhost:5000
+    reverse_proxy /ctf/*     localhost:5000
+    reverse_proxy /chat      localhost:5000
+    reverse_proxy /movies    localhost:5000
+    reverse_proxy /games     localhost:5000
+    reverse_proxy /library   localhost:5000
+    reverse_proxy /schedule  localhost:5000
+    reverse_proxy /info*     localhost:5000
+    reverse_proxy /portal    localhost:5000
+
+    # Video files served directly by Caddy (range/seek support)
+    handle /media/* {
+        root * /home/outpost/outpost
+        file_server
+    }
+
+    # Static assets — root must be the project dir, NOT the static subdir
+    handle /static/* {
+        root * /home/outpost/outpost
+        file_server
+    }
+
+    handle /content/* {
+        root * /home/outpost/outpost
+        file_server
+    }
+
+    # Everything else → Flask
+    handle {
+        reverse_proxy localhost:5000
+    }
+}

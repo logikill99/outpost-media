@@ -1,0 +1,223 @@
+{% extends "base.html" %}
+{% block title %}Outpost — F1 Drivers 2026{% endblock %}
+{% block content %}
+<div x-data="driverApp()" x-init="init()">
+
+  <div class="page-header">
+    <h1 class="page-title">🏎️ 2026 F1 DRIVERS</h1>
+    <p class="muted">{{ drivers|length }} drivers · {{ drivers|map(attribute='team')|unique|list|length }} teams</p>
+  </div>
+
+  <!-- Search + filter -->
+  <div class="filter-bar">
+    <input type="search" x-model="search" placeholder="Search driver or team…" class="search-input" autocomplete="off">
+    <div class="team-filters">
+      <button class="filter-btn" :class="{active: teamFilter===''}" @click="teamFilter=''">All</button>
+      {% set teams = drivers|map(attribute='team')|unique|sort %}
+      {% for team in teams %}
+      <button class="filter-btn" :class="{active: teamFilter==='{{ team }}'}" @click="teamFilter='{{ team }}'">{{ team }}</button>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Driver grid -->
+  <div class="driver-grid">
+    {% for driver in drivers %}
+    {% set standing = standings_by_slug.get(driver.slug) %}
+    <div class="driver-card"
+         x-show="matchesFilter('{{ driver.name }}', '{{ driver.team }}')"
+         @click="openModal({{ loop.index0 }})"
+         style="--team-color: {{ driver.teamColor }};">
+      <div class="driver-card-top">
+        <div class="driver-number">#{{ driver.number }}</div>
+        {% if standing %}
+        <div class="driver-pos" title="2026 championship position">P{{ standing.position }} · {{ standing.points }} pts</div>
+        {% endif %}
+      </div>
+      <div class="driver-info">
+        <div class="driver-name">{{ driver.name }}</div>
+        <div class="driver-team" style="color: {{ driver.teamColor }}">{{ driver.team }}</div>
+        <div class="driver-nat">{{ driver.flag }} {{ driver.nationality }}</div>
+      </div>
+      <div class="driver-stats-mini">
+        <span title="Wins">🏆 {{ driver.stats.wins }}</span>
+        <span title="Podiums">🥇 {{ driver.stats.podiums }}</span>
+        {% if driver.stats.championships > 0 %}
+        <span class="champ-badge">{{ driver.stats.championships }}× WDC</span>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- Driver detail modal -->
+  <div class="modal-backdrop" x-show="modalOpen" @click.self="modalOpen=false" x-transition>
+    <div class="modal-card" x-show="modalOpen" x-transition>
+      <button class="modal-close" @click="modalOpen=false">✕</button>
+      <template x-if="selected">
+        <div>
+          <div class="modal-header" :style="'border-color:' + selected.teamColor">
+            <div class="modal-number" :style="'color:' + selected.teamColor" x-text="'#' + selected.number"></div>
+            <div>
+              <h2 class="modal-name" x-text="selected.name"></h2>
+              <div class="modal-team" :style="'color:' + selected.teamColor" x-text="selected.team"></div>
+              <div class="modal-nat"><span x-text="selected.flag"></span> <span x-text="selected.nationality"></span></div>
+            </div>
+          </div>
+
+          <template x-if="selectedStanding">
+            <div class="modal-standing">
+              <div class="modal-standing-row">
+                <span class="modal-standing-label">2026 Championship</span>
+                <span class="modal-standing-pos" x-text="'P' + selectedStanding.position"></span>
+                <span class="modal-standing-pts" x-text="selectedStanding.points + ' pts'"></span>
+                <span class="modal-standing-wins muted" x-show="selectedStanding.wins > 0" x-text="selectedStanding.wins + ' win' + (selectedStanding.wins === 1 ? '' : 's')"></span>
+              </div>
+            </div>
+          </template>
+
+          <h4 class="modal-section-title">Career</h4>
+          <div class="modal-stats">
+            <div class="stat-box">
+              <div class="stat-val" x-text="selected.stats.wins"></div>
+              <div class="stat-lbl">Wins</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-val" x-text="selected.stats.podiums"></div>
+              <div class="stat-lbl">Podiums</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-val" x-text="selected.stats.poles"></div>
+              <div class="stat-lbl">Poles</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-val" x-text="selected.stats.championships || '0'"></div>
+              <div class="stat-lbl">WDC Titles</div>
+            </div>
+          </div>
+
+          <p class="modal-bio" x-text="selected.bio"></p>
+
+          <template x-if="selected.highlights">
+            <div class="modal-highlights">
+              <h4>Career Highlights</h4>
+              <ul>
+                <template x-for="h in selected.highlights">
+                  <li x-text="h"></li>
+                </template>
+              </ul>
+            </div>
+          </template>
+
+          <div class="modal-race-history" x-show="selectedResults && selectedResults.length">
+            <h4 class="modal-section-title">📊 2026 Race-by-Race</h4>
+            <table class="results-table results-table-mini">
+              <thead>
+                <tr><th>Rd</th><th>Race</th><th class="num">Pos</th><th class="num">Grid</th><th class="num">Pts</th><th>Status</th></tr>
+              </thead>
+              <tbody>
+                <template x-for="r in selectedResults" :key="r.round + '-' + r.kind">
+                  <tr>
+                    <td class="pos" x-text="r.round"></td>
+                    <td>
+                      <span x-text="r.race"></span>
+                      <span x-show="r.kind==='sprint'" class="sprint-badge">Sprint</span>
+                    </td>
+                    <td class="num pts" x-text="r.position || '—'"></td>
+                    <td class="num muted" x-text="r.grid || '—'"></td>
+                    <td class="num" x-text="r.points"></td>
+                    <td class="muted small" x-text="r.status"></td>
+                  </tr>
+                </template>
+              </tbody>
+            </table>
+          </div>
+          <div class="stub-section" x-show="!(selectedResults && selectedResults.length)">
+            <h4 class="modal-section-title">📊 2026 Race History</h4>
+            <p class="stub-text">No 2026 race appearances yet for this driver.</p>
+          </div>
+        </div>
+      </template>
+    </div>
+  </div>
+
+</div>
+
+<p class="back-link"><a href="/info">← Back to Race Info</a></p>
+{% endblock %}
+
+{% block scripts %}
+<script>
+const DRIVERS = {{ drivers | tojson }};
+const STANDINGS = {{ standings | tojson }};
+const RACE_RESULTS = {{ race_results | tojson }};
+const SPRINT_RESULTS = {{ sprint_results | tojson }};
+
+function matchDriver(driverName, resultRow) {
+  if (!resultRow || !resultRow.driver) return false;
+  const dn = driverName.toLowerCase();
+  const rn = resultRow.driver.toLowerCase();
+  if (rn === dn) return true;
+  // Match by surname (last word of profile name)
+  const surname = dn.split(' ').slice(-1)[0];
+  if (surname && rn.endsWith(surname)) return true;
+  // Or substring (handles "Andrea Kimi Antonelli" vs "Kimi Antonelli")
+  return rn.includes(dn) || dn.includes(rn);
+}
+
+function buildDriverHistory(driverName) {
+  const rows = [];
+  for (const race of RACE_RESULTS || []) {
+    const hit = (race.results || []).find(r => matchDriver(driverName, r));
+    if (hit) {
+      rows.push({
+        round: race.round, race: race.name, kind: 'race',
+        position: hit.position, grid: hit.grid,
+        points: hit.points || 0, status: hit.status || ''
+      });
+    }
+  }
+  for (const sprint of SPRINT_RESULTS || []) {
+    const hit = (sprint.results || []).find(r => matchDriver(driverName, r));
+    if (hit) {
+      rows.push({
+        round: sprint.round, race: sprint.name, kind: 'sprint',
+        position: hit.position, grid: hit.grid,
+        points: hit.points || 0, status: hit.status || ''
+      });
+    }
+  }
+  rows.sort((a, b) => a.round - b.round || (a.kind === 'sprint' ? -1 : 1));
+  return rows;
+}
+
+function driverApp() {
+  return {
+    search: '',
+    teamFilter: '',
+    modalOpen: false,
+    selected: null,
+    selectedStanding: null,
+    selectedResults: [],
+    init() {},
+    matchesFilter(name, team) {
+      const q = this.search.toLowerCase();
+      const matchSearch = !q || name.toLowerCase().includes(q) || team.toLowerCase().includes(q);
+      const matchTeam = !this.teamFilter || team === this.teamFilter;
+      return matchSearch && matchTeam;
+    },
+    openModal(idx) {
+      this.selected = DRIVERS[idx];
+      this.selectedStanding = (STANDINGS && STANDINGS.drivers || []).find(d => matchDriver(this.selected.name, {driver: d.driver || d.name})) || null;
+      this.selectedResults = buildDriverHistory(this.selected.name);
+      this.modalOpen = true;
+    }
+  }
+}
+</script>
+<style>
+.modal-race-history { margin-top:14px; }
+.modal-race-history .results-table { background:var(--bg); }
+.sprint-badge { display:inline-block; margin-left:6px; padding:1px 6px; font-size:9px; letter-spacing:.5px; background:var(--accent-2); color:#000; border-radius:3px; font-weight:700; text-transform:uppercase; }
+</style>
+{% endblock %}

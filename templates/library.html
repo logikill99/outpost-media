@@ -1,0 +1,235 @@
+{% extends "base.html" %}
+{% block title %}Outpost — Library{% endblock %}
+
+{% block head_extra %}
+
+<style>
+.library-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.lib-tab {
+  padding: 8px 18px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  background: transparent;
+  color: var(--text-muted);
+  transition: all 0.15s;
+}
+.lib-tab:hover { border-color: var(--accent); color: var(--accent); }
+.lib-tab.active { background: var(--accent); color: #000; border-color: var(--accent); font-weight: 600; }
+.lib-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+.lib-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+.lib-card:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(225,6,0,.15); }
+.lib-card-title {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 0.95em;
+  line-height: 1.4;
+}
+.lib-card-meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.lib-badge {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: #1a1a1a;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+.lib-badge.accent { border-color: var(--accent); color: var(--accent); }
+.lib-card-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.lib-author {
+  font-size: 12px;
+  color: #888;
+}
+.lib-search {
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text);
+  font-size: 14px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+.lib-search:focus { outline: none; border-color: var(--accent); }
+.lib-search::placeholder { color: var(--text-muted); }
+.lib-empty {
+  color: var(--text-muted);
+  font-size: 14px;
+  padding: 20px 0;
+}
+.lib-count {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<h1 class="page-title">📚 LIBRARY</h1>
+<p class="muted">Books, Wikipedia, and articles. All offline.</p>
+
+<div x-data="libraryApp()" x-init="init()">
+
+  <div class="library-tabs">
+    <button class="lib-tab" :class="{active: tab==='books'}" @click="tab='books'">
+      📖 Books (<span x-text="data.books ? data.books.length : '...'"></span>)
+    </button>
+    <button class="lib-tab" :class="{active: tab==='wikipedia'}" @click="tab='wikipedia'">
+      🌐 Wikipedia (<span x-text="data.wikipedia ? data.wikipedia.length : '...'"></span>)
+    </button>
+    <button class="lib-tab" :class="{active: tab==='articles'}" @click="tab='articles'">
+      📰 Articles (<span x-text="data.articles ? data.articles.length : '...'"></span>)
+    </button>
+  </div>
+
+  <input
+    class="lib-search"
+    type="text"
+    x-model="search"
+    :placeholder="'Search ' + tab + '...'"
+  >
+
+  <!-- Books -->
+  <div x-show="tab==='books'">
+    <div class="lib-count" x-text="filteredBooks().length + ' book' + (filteredBooks().length !== 1 ? 's' : '')"></div>
+    <div class="lib-grid">
+      <template x-for="book in filteredBooks()" :key="book.file">
+        <a class="lib-card" :href="'/content/library/books/' + book.file" download>
+          <div class="lib-card-title" x-text="book.title"></div>
+          <div class="lib-author" x-text="book.author + ' · ' + (book.year < 0 ? Math.abs(book.year) + ' BC' : book.year)"></div>
+          <div class="lib-card-meta">
+            <span class="lib-badge accent" x-text="book.genre"></span>
+            <span class="lib-badge" x-text="book.reading_time"></span>
+            <span class="lib-badge">⬇ EPUB</span>
+          </div>
+          <div class="lib-card-desc" x-text="book.description"></div>
+        </a>
+      </template>
+      <div class="lib-empty" x-show="filteredBooks().length === 0">No books match your search.</div>
+    </div>
+  </div>
+
+  <!-- Wikipedia -->
+  <div x-show="tab==='wikipedia'">
+    <div class="lib-count" x-text="filteredWiki().length + ' page' + (filteredWiki().length !== 1 ? 's' : '')"></div>
+    <div class="lib-grid">
+      <template x-for="page in filteredWiki()" :key="page.file">
+        <a class="lib-card" :href="'/content/library/wikipedia/' + page.file" target="_blank">
+          <div class="lib-card-title" x-text="page.title"></div>
+          <div class="lib-card-meta">
+            <span class="lib-badge accent" x-text="page.category"></span>
+            <span class="lib-badge">🌐 Wikipedia</span>
+          </div>
+          <div class="lib-card-desc" x-text="page.description"></div>
+        </a>
+      </template>
+      <div class="lib-empty" x-show="filteredWiki().length === 0">No pages match your search.</div>
+    </div>
+  </div>
+
+  <!-- Articles -->
+  <div x-show="tab==='articles'">
+    <div class="lib-count" x-text="filteredArticles().length + ' article' + (filteredArticles().length !== 1 ? 's' : '')"></div>
+    <div class="lib-grid">
+      <template x-for="article in filteredArticles()" :key="article.file">
+        <a class="lib-card" :href="'/content/library/articles/' + article.file" target="_blank">
+          <div class="lib-card-title" x-text="article.title"></div>
+          <div class="lib-card-meta">
+            <span class="lib-badge accent" x-text="article.category"></span>
+            <span class="lib-badge" x-text="article.reading_time"></span>
+          </div>
+          <div class="lib-card-desc" x-text="article.description"></div>
+        </a>
+      </template>
+      <div class="lib-empty" x-show="filteredArticles().length === 0">No articles match your search.</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function libraryApp() {
+  return {
+    tab: 'books',
+    search: '',
+    data: {},
+
+    async init() {
+      try {
+        const resp = await fetch('/content/library/index.json');
+        this.data = await resp.json();
+      } catch (e) {
+        console.error('Failed to load library index:', e);
+      }
+    },
+
+    filteredBooks() {
+      if (!this.data.books) return [];
+      const q = this.search.toLowerCase();
+      if (!q) return this.data.books;
+      return this.data.books.filter(b =>
+        b.title.toLowerCase().includes(q) ||
+        b.author.toLowerCase().includes(q) ||
+        b.genre.toLowerCase().includes(q) ||
+        b.description.toLowerCase().includes(q)
+      );
+    },
+
+    filteredWiki() {
+      if (!this.data.wikipedia) return [];
+      const q = this.search.toLowerCase();
+      if (!q) return this.data.wikipedia;
+      return this.data.wikipedia.filter(p =>
+        p.title.toLowerCase().includes(q) ||
+        p.category.toLowerCase().includes(q) ||
+        p.description.toLowerCase().includes(q)
+      );
+    },
+
+    filteredArticles() {
+      if (!this.data.articles) return [];
+      const q = this.search.toLowerCase();
+      if (!q) return this.data.articles;
+      return this.data.articles.filter(a =>
+        a.title.toLowerCase().includes(q) ||
+        a.category.toLowerCase().includes(q) ||
+        a.description.toLowerCase().includes(q)
+      );
+    }
+  };
+}
+</script>
+{% endblock %}

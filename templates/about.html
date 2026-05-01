@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block title %}Outpost — About{% endblock %}
+{% block content %}
+
+<div class="page-header">
+  <h1 class="page-title">📖 ABOUT THIS THING</h1>
+  <p class="muted">What you're connected to, why it exists, and who made it.</p>
+</div>
+
+<div class="about-body">
+
+  <section class="about-section">
+    <h2>The short version</h2>
+    <p>You're connected to a tiny computer someone brought to the race. That computer is running its own WiFi network, and everything you see here (movies, games, live chat, race info) is being served from it with no internet connection involved. It's entirely self-contained. No cell signal required.</p>
+  </section>
+
+  <section class="about-section">
+    <h2>Why this exists</h2>
+    <p>Cell service at F1 events is, famously, terrible. Forty thousand people all trying to load the same apps at once does what you'd expect. The idea here was simple: instead of fighting the network, just bring your own. Load the content you'd actually want at a race onto a device small enough to fit in a pocket, put it in AP mode, and let anyone nearby connect to it.</p>
+    <p>It started as a weekend project and got a little out of hand. The race info pages, the CTF challenge, the offline library of articles and books, movies for downtime between sessions, the realtime chat room. Worth it.</p>
+    <p>Partly it was an experiment in how much you could actually run on basically nothing. The answer turns out to be: more than you'd think.</p>
+  </section>
+
+  <section class="about-section">
+    <h2>Who made it</h2>
+    <p>Matthew Levin. Software engineer working on an AI team, amateur radio operator (Extra class, KR4HIF), Eagle Scout, F1 fan since roughly the Bahrain 2021 era. I built this mostly in the weeks leading up to the event with help from an AI assistant handling a lot of the data wrangling and template work.</p>
+    <p>It's a hobby project. There's no company, no product, no pitch.</p>
+  </section>
+
+  <div class="about-toggle-bar">
+    <button class="filter-btn active" id="btn-simple" onclick="showMode('simple')">Plain English</button>
+    <button class="filter-btn" id="btn-tech" onclick="showMode('tech')">Technical</button>
+  </div>
+
+  <div id="mode-simple">
+    <section class="about-section">
+      <h2>How it works (plain English)</h2>
+      <p>Your phone or laptop connected to a WiFi network called something like "The Dark Side of T18." That network isn't a router with an internet connection. It's a Raspberry Pi Zero 2W, which is a $15 credit-card-sized computer, running software that makes it pretend to be a WiFi access point.</p>
+      <p>When you connected, your device probably showed a "sign in to network" prompt (that's the captive portal). Tapping that, or navigating to any URL, brought you here. There's no internet connection, but there doesn't need to be. Everything you can see on this server is stored directly on a 64GB SD card inside the Pi. Movies, articles, race data, the chat backend, all of it.</p>
+      <p>Power draw is around 2 watts. It runs off a USB battery bank. The whole thing fits in a pocket.</p>
+    </section>
+  </div>
+
+  <div id="mode-tech" style="display:none">
+    <section class="about-section">
+      <h2>How it works (technical)</h2>
+      <p>Hardware is a Raspberry Pi Zero 2W (BCM2710A1, quad-core ARM Cortex-A53 at 1GHz, 512MB RAM). Single wlan0 interface running in AP mode via hostapd. DHCP and wildcard DNS served by dnsmasq, which resolves all queries to 10.0.0.1 so the captive portal fires reliably across iOS, Android, and Windows. Caddy on port 80 handles the reverse proxy and static file serving; it catches OS-specific captive portal probe URLs (/hotspot-detect.html, /generate_204, etc.) and redirects them to the portal page before Flask ever sees the request.</p>
+      <p>The app itself is Flask with Flask-SocketIO and eventlet. SQLite via SQLAlchemy. Content data is a mix of pregenerated JSON (F1/F2/PCCNA standings and driver data) and pre-scraped Wikipedia HTML pages served offline. Frontend is Alpine.js with no build step. Video files are served directly by Caddy with range-request support for seek. SQLite has WAL mode enabled because the Pi Zero 2W's SD card write latency under concurrent SocketIO and CTF traffic is not great in journal mode.</p>
+      <p>The CTF is six flag challenges seeded into SQLite at first boot. Flags are stored as SHA-256 hashes. Leaderboard is aggregated on read. The chat is SocketIO rooms persisted to SQLite with a 50-message history window. The whole thing was built in roughly two weeks of evenings with Claude Sonnet doing a lot of the data pipeline and template work while I handled architecture, deployment, and debugging.</p>
+      <p>Stack summary: Python 3.12 / Flask / Flask-SocketIO / SQLAlchemy / SQLite / Caddy / Alpine.js / hostapd / dnsmasq / Raspberry Pi OS Lite.</p>
+    </section>
+  </div>
+
+  <section class="about-section">
+    <h2>Troubleshooting</h2>
+    <p><strong>The page isn't loading at all.</strong> Make sure your device is connected to the Outpost WiFi and not falling back to cellular or your home network. Some phones will silently prefer a known network with internet access. Disable cellular or toggle WiFi off and back on if you're not getting the captive portal prompt.</p>
+    <p><strong>I'm connected but can't reach the page.</strong> Try navigating directly to <code>http://10.0.0.1</code> in your browser. Some devices cache a "no internet, don't bother" state and won't load even if the server is there. Typing the IP directly usually bypasses that.</p>
+    <p><strong>Videos are buffering or won't play.</strong> The Pi is streaming video over WiFi from an SD card, so there's a real throughput ceiling. If more than three or four people are streaming simultaneously it'll start to bog down. Give it a few seconds to buffer, or wait for lighter traffic. The short films load fast, the feature films need a moment.</p>
+    <p><strong>The chat shows an error or won't connect.</strong> The chat uses WebSockets, which occasionally drop on mobile browsers if the device sleeps briefly. A page refresh reconnects it.</p>
+    <p><strong>The page looks broken with no styling.</strong> This usually means your browser cached a failed request for the CSS. Hard refresh (Ctrl+Shift+R on desktop, or clear the browser cache) and it should come back.</p>
+  </section>
+
+  <section class="about-section about-disclaimer">
+    <h2>Disclaimer</h2>
+    <p>This is a personal hobby project made by an F1 fan for other F1 fans. It is not affiliated with, endorsed by, or associated with Formula 1, the FIA, Formula One Management, the Miami Grand Prix, Hard Rock Stadium, or any related organizations. The F1 data displayed here (standings, driver profiles, team info) is sourced from publicly available sources for informational purposes.</p>
+    <p>All race and series information is provided as-is. Race data may be incomplete or contain inaccuracies. This server has no internet connection, so nothing here is live or official.</p>
+    <p>Any media files on this server are used solely for private, noncommercial personal viewing in a closed local environment with no public distribution. No content is streamed to the internet or made available outside the immediate physical gathering. This use falls under personal use and does not constitute distribution, reproduction for commercial purposes, or public performance under applicable copyright law.</p>
+    <p>Connecting to this WiFi network is entirely voluntary. The server logs page hits and stores chat messages (which you type knowingly). It does not track device identifiers, browsing behavior, or personal data beyond what you explicitly provide (like a chat username). The CTF challenge is just for fun and the "prize" is bragging rights.</p>
+    <p>By connecting, you accept that this is experimental software running on a $15 computer. It might go down. It might have bugs. Security was considered but not professionally audited. This is a fun project, not a hardened production system.</p>
+    <p>No responsibility is taken for anything that could go wrong as a result of connecting to or using this server. Use it at your own discretion.</p>
+  </section>
+
+</div>
+
+<p class="back-link"><a href="/">← Back to Hub</a></p>
+
+<style>
+.about-body { max-width: 720px; margin: 0 auto; }
+.about-section { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 22px 24px; margin-bottom: 16px; }
+.about-section h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); margin: 0 0 14px; }
+.about-section p { color: var(--text-muted); line-height: 1.75; font-size: 14px; margin-bottom: 12px; }
+.about-section p:last-child { margin-bottom: 0; }
+.about-section code { background: var(--surface-2); padding: 1px 5px; border-radius: 3px; font-size: 13px; color: var(--text); }
+.about-section strong { color: var(--text); }
+.about-toggle-bar { display: flex; gap: 8px; margin-bottom: 16px; }
+.about-disclaimer { border-color: var(--border); opacity: 0.8; }
+.about-disclaimer h2 { color: var(--text-muted); }
+</style>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+function showMode(mode) {
+  document.getElementById('mode-simple').style.display = mode === 'simple' ? '' : 'none';
+  document.getElementById('mode-tech').style.display = mode === 'tech' ? '' : 'none';
+  document.getElementById('btn-simple').classList.toggle('active', mode === 'simple');
+  document.getElementById('btn-tech').classList.toggle('active', mode === 'tech');
+}
+</script>
+{% endblock %}

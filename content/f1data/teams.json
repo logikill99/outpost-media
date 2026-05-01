@@ -1,0 +1,103 @@
+[
+  {
+    "id": 1, "name": "McLaren", "full_name": "McLaren Formula 1 Team",
+    "color": "#FF8000", "base": "Woking, United Kingdom",
+    "chassis": "MCL40", "engine": "Mercedes", "principal": "Andrea Stella",
+    "drivers": ["Lando Norris", "Oscar Piastri"],
+    "championships_constructors": 8, "championships_drivers": 12,
+    "bio": "The reigning constructors' champions. McLaren's renaissance under Andrea Stella has been one of F1's great comeback stories — from mid-table mediocrity in the early 2020s to dominant champions. Papaya and carbon livery, British heritage, relentless development.",
+    "notable": "Norris claimed the 2025 WDC, McLaren's first since Hamilton in 2008"
+  },
+  {
+    "id": 2, "name": "Mercedes", "full_name": "Mercedes-AMG Petronas F1 Team",
+    "color": "#00D2BE", "base": "Brackley, United Kingdom",
+    "chassis": "W17", "engine": "Mercedes", "principal": "Toto Wolff",
+    "drivers": ["George Russell", "Kimi Antonelli"],
+    "championships_constructors": 8, "championships_drivers": 9,
+    "bio": "The most successful constructor of the hybrid era. After Hamilton's departure to Ferrari, Mercedes reloaded with Russell and rookie Antonelli — the Italian prodigy. Early 2026 results suggest the Silver Arrows are back in title contention.",
+    "notable": "8 consecutive constructors' titles 2014–2021. Antonelli leads the 2026 WDC"
+  },
+  {
+    "id": 3, "name": "Ferrari", "full_name": "Scuderia Ferrari HP",
+    "color": "#E8002D", "base": "Maranello, Italy",
+    "chassis": "SF-26", "engine": "Ferrari", "principal": "Frédéric Vasseur",
+    "drivers": ["Charles Leclerc", "Lewis Hamilton"],
+    "championships_constructors": 16, "championships_drivers": 15,
+    "bio": "The most storied team in F1 history. Hamilton's move to Maranello electrified the sport — but the marriage of F1's greatest driver with the sport's most passionate team comes with enormous expectation. Ferrari's 2026 regulation car is their most ambitious in years.",
+    "notable": "Most championships in F1 history. Hamilton joined for 2025 in the most anticipated signing in decades"
+  },
+  {
+    "id": 4, "name": "Red Bull Racing", "full_name": "Oracle Red Bull Racing",
+    "color": "#3671C6", "base": "Milton Keynes, United Kingdom",
+    "chassis": "RB22", "engine": "Honda RBPT", "principal": "Christian Horner",
+    "drivers": ["Max Verstappen", "Isack Hadjar"],
+    "championships_constructors": 6, "championships_drivers": 6,
+    "bio": "The team that Verstappen built into a dynasty. Red Bull's run of dominance was interrupted by McLaren in 2025, and 2026's regulation reset is their opportunity to rebuild. Hadjar joins as a promising young talent replacing the departed Tsunoda.",
+    "notable": "Verstappen's 4 WDC titles (2021–24). Hadjar promoted from Racing Bulls"
+  },
+  {
+    "id": 5, "name": "Aston Martin", "full_name": "Aston Martin Aramco F1 Team",
+    "color": "#358C75", "base": "Silverstone, United Kingdom",
+    "chassis": "AMR26", "engine": "Mercedes", "principal": "Andy Cowell",
+    "drivers": ["Fernando Alonso", "Lance Stroll"],
+    "championships_constructors": 0, "championships_drivers": 0,
+    "bio": "Lawrence Stroll's ambitious project to turn Aston Martin into a championship contender. The 2023 season showed genuine pace, but development has plateaued. Alonso remains their talisman — somehow still extracting extraordinary performances at 44.",
+    "notable": "Alonso's 2023 run of podiums put Aston Martin back on the map. Still seeking their first win"
+  },
+  {
+    "id": 6, "name": "Alpine", "full_name": "BWT Alpine F1 Team",
+    "color": "#0090FF", "base": "Enstone, United Kingdom",
+    "chassis": "A526", "engine": "Renault", "principal": "Oliver Oakes",
+    "drivers": ["Pierre Gasly", "Franco Colapinto"],
+    "championships_constructors": 0, "championships_drivers": 2,
+    "bio": "The Renault-powered team operating under the Alpine brand. After losing Alonso and then struggling in the midfield, Alpine's 2026 project features Colapinto — Argentina's first F1 driver in 50 years — alongside the experienced Gasly. Renault's long-term commitment to F1 as an engine supplier continues.",
+    "notable": "Colapinto's signing is the biggest story for South American F1 fans in decades"
+  },
+  {
+    "id": 7, "name": "Williams", "full_name": "Williams Racing",
+    "color": "#37BEDD", "base": "Grove, United Kingdom",
+    "chassis": "FW48", "engine": "Mercedes", "principal": "James Vowles",
+    "drivers": ["Carlos Sainz", "Alexander Albon"],
+    "championships_constructors": 9, "championships_drivers": 7,
+    "bio": "The most successful independent constructor in F1 history, currently rebuilding under James Vowles. Sainz's arrival brought world-class credibility — his 2025 debut year included wins and pushed Williams up the order. Albon remains one of the grid's most underrated talents.",
+    "notable": "9 constructors' titles — but last in 1997. Sainz + Albon is their strongest lineup in decades"
+  },
+  {
+    "id": 8, "name": "Haas F1 Team", "full_name": "MoneyGram Haas F1 Team",
+    "color": "#B6BABD", "base": "Kannapolis, USA",
+    "chassis": "VF-26", "engine": "Ferrari", "principal": "Ayao Komatsu",
+    "drivers": ["Esteban Ocon", "Oliver Bearman"],
+    "championships_constructors": 0, "championships_drivers": 0,
+    "bio": "The American team with a Ferrari technical partnership. Haas's development model is unique — they outsource much of their car to Dallara while focusing on aero. Ocon and Bearman give them a genuinely competitive driver pairing for the first time in years.",
+    "notable": "The only American constructor on the grid — until Cadillac arrived in 2026"
+  },
+  {
+    "id": 9, "name": "Racing Bulls", "full_name": "Visa Cash App Racing Bulls F1 Team",
+    "color": "#6692FF", "base": "Faenza, Italy",
+    "chassis": "VCARB03", "engine": "Honda RBPT", "principal": "Laurent Mekies",
+    "drivers": ["Liam Lawson", "Arvid Lindblad"],
+    "championships_constructors": 0, "championships_drivers": 0,
+    "bio": "Red Bull's junior team, formerly Toro Rosso and then AlphaTauri. With Hadjar promoted to Red Bull, Racing Bulls enters 2026 with two of the most exciting young talents in F1 — Lawson's gritty experience and Lindblad's blinding raw pace. One to watch.",
+    "notable": "Launch pad for Vettel, Ricciardo, Verstappen, and now the next generation"
+  },
+  {
+    "id": 10, "name": "Audi F1 Team", "full_name": "Audi F1 Team",
+    "color": "#C00000", "base": "Hinwil, Switzerland",
+    "chassis": "R26", "engine": "Audi",
+    "principal": "Mattia Binotto",
+    "drivers": ["Nico Hulkenberg", "Gabriel Bortoleto"],
+    "championships_constructors": 0, "championships_drivers": 0,
+    "bio": "Formerly Sauber, now fully rebranded as Audi F1 Team as the German manufacturer begins its phased takeover. Hulkenberg is the experienced team leader; Bortoleto the future. 2026 is the beginning of Audi's proper F1 assault as they transition to their own power unit.",
+    "notable": "Audi's entry into F1 as a manufacturer — one of the biggest stories of the 2026 season"
+  },
+  {
+    "id": 11, "name": "Cadillac", "full_name": "Cadillac Formula 1 Team",
+    "color": "#FFFFFF", "base": "Concord, North Carolina, USA",
+    "chassis": "MAC-26", "engine": "Ferrari customer",
+    "principal": "Graeme Lowdon",
+    "drivers": ["Sergio Perez", "Valtteri Bottas"],
+    "championships_constructors": 0, "championships_drivers": 0,
+    "bio": "The 11th team on the 2026 grid and the first American constructor since the original Haas was founded. Cadillac/Andretti spent years fighting FOM for entry and finally arrived. Perez brings championship experience; Bottas brings veteran cool. A historic debut for American motorsport.",
+    "notable": "First American constructor since Haas in 2016. Perez and Bottas: a wildly unexpected duo"
+  }
+]

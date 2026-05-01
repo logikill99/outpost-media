@@ -1,0 +1,134 @@
+[
+  {
+    "driver_id": 1265, "name": "Nikola Tsolov", "tla": "TSO",
+    "team": "Campos Racing", "number": 6,
+    "nationality": "Bulgarian", "flag": "🇧🇬",
+    "bio": "The 2026 F2 championship leader and one of the series' most exciting talents. The Red Bull junior took a lights-to-flag win on his F2 debut at Bahrain and hasn't looked back. Still only 18, Tsolov has the raw aggression and qualifying pace of a future F1 driver — and Red Bull will be watching every lap."
+  },
+  {
+    "driver_id": 1268, "name": "Rafael Câmara", "tla": "CAM",
+    "team": "Invicta Racing", "number": 1,
+    "nationality": "Brazilian", "flag": "🇧🇷",
+    "bio": "Reigning F3 champion (2024) and McLaren junior driver. Câmara stepped up to F2 with Invicta having dominated the single-seater ladder below. Already showing the kind of pace that will make him an F1 conversation by 2027 — clinical over a single lap and smart on strategy when it matters."
+  },
+  {
+    "driver_id": 1261, "name": "Laurens van Hoepen", "tla": "VAN",
+    "team": "TRIDENT", "number": 24,
+    "nationality": "Dutch", "flag": "🇳🇱",
+    "bio": "Dutch single-seater ace who stepped up to F2 for 2026 after strong F3 campaigns. Van Hoepen is quick, consistent, and almost certainly on a factory programme's radar. Third in the championship after the opening rounds — a statement from a driver many overlooked heading into the season."
+  },
+  {
+    "driver_id": 1241, "name": "Ritomo Miyata", "tla": "MIY",
+    "team": "Hitech TGR", "number": 3,
+    "nationality": "Japanese", "flag": "🇯🇵",
+    "bio": "Toyota junior who has raced in Super Formula and across Asian single-seater categories before making the jump to F2. Miyata brings a mountain of laps in powerful single-seaters — he came to Hitech TGR already race-hardened. P4 in the championship; a consistent front-runner every weekend."
+  },
+  {
+    "driver_id": 1267, "name": "Tasanapol Inthraphuvasak", "tla": "INT",
+    "team": "ART Grand Prix", "number": 17,
+    "nationality": "Thai", "flag": "🇹🇭",
+    "bio": "Thailand's leading single-seater hope. Inthraphuvasak graduated to F2 with ART after climbing through European F3, and has already scored points in the opening rounds. He carries enormous national significance — Thailand has produced very few drivers at this level, and he is the country's most credible F1 prospect in generations."
+  },
+  {
+    "driver_id": 1247, "name": "Oliver Goethe", "tla": "GOE",
+    "team": "MP Motorsport", "number": 10,
+    "nationality": "German", "flag": "🇩🇪",
+    "bio": "German-born driver who spent several seasons developing through European junior categories before landing a strong MP Motorsport package for 2026. Points scorer through the first rounds — Goethe is one of those quietly effective F2 midfielders who consistently punches near his car's actual ceiling."
+  },
+  {
+    "driver_id": 1244, "name": "Joshua Dürksen", "tla": "DUR",
+    "team": "Invicta Racing", "number": 2,
+    "nationality": "Paraguayan", "flag": "🇵🇾",
+    "bio": "Paraguay's first driver at this level in the FIA ladder. Dürksen has been a surprise package early in 2026 — the Invicta machinery is strong and he's making the most of it. Hard-charging racecraft, willing to take risks. P7 in the championship suggests this is no fluke."
+  },
+  {
+    "driver_id": 1270, "name": "Noel León", "tla": "LEO",
+    "team": "Campos Racing", "number": 5,
+    "nationality": "Mexican", "flag": "🇲🇽",
+    "bio": "Red Bull junior from Mexico and Campos Racing's second driver alongside championship leader Tsolov. León has solid single-lap pace and the Campos car has been consistently competitive. P8 in the standings — the team's double points haul is making them the story of the early season."
+  },
+  {
+    "driver_id": 1249, "name": "Gabriele Minì", "tla": "MIN",
+    "team": "MP Motorsport", "number": 9,
+    "nationality": "Italian", "flag": "🇮🇹",
+    "bio": "Alpine junior and one of Italian racing's brightest talents. Minì stepped up to F2 after strong F3 seasons and is already converting raw pace into consistent points. Ninth in the championship — a tally that will grow as the year goes on. He has the technical feel to be a top-five championship contender by mid-season."
+  },
+  {
+    "driver_id": 1269, "name": "Colton Herta", "tla": "HER",
+    "team": "Hitech TGR", "number": 4,
+    "nationality": "American", "flag": "🇺🇸",
+    "bio": "The most high-profile arrival in F2 for years. Herta is a proven IndyCar winner (9 victories) who came to F2 specifically to chase the F1 superlicense points he was denied back in 2022 when a Red Bull seat fell through. At 25 he's older than most of his rivals, but his racecraft is elite. Every American F1 fan is watching."
+  },
+  {
+    "driver_id": 1260, "name": "Alexander Dunne", "tla": "DUN",
+    "team": "Rodin Motorsport", "number": 15,
+    "nationality": "Irish", "flag": "🇮🇪",
+    "bio": "McLaren junior and 2025 F3 champion. Dunne made the jump to F2 with Rodin Motorsport — the Carlin successor — and has been impressive over a single lap. Ireland's most credible F1 prospect since Eddie Irvine. P11 in the standings reflects a learning curve, but the pace has been there every weekend."
+  },
+  {
+    "driver_id": 1258, "name": "Sebastián Montoya", "tla": "MON",
+    "team": "PREMA Racing", "number": 11,
+    "nationality": "Colombian", "flag": "🇨🇴",
+    "bio": "The son of Juan Pablo Montoya — one of F1's most entertaining drivers of the early 2000s. Sebastián carries his father's aggression and overtaking instinct. Red Bull junior, PREMA Racing seat: this is a pedigree package. P12 in the championship is below expectations, but with PREMA's engineering depth, his trajectory will be upward."
+  },
+  {
+    "driver_id": 1271, "name": "Roman Bilinski", "tla": "BIL",
+    "team": "DAMS Lucas Oil", "number": 8,
+    "nationality": "Polish", "flag": "🇵🇱",
+    "bio": "Polish rookie making his F2 debut with DAMS Lucas Oil. Bilinski is a product of the European junior formula ladder — he arrives in F2 with strong F3 results behind him. Still finding his feet at this level, but the raw speed is evident. Poland has never had an F1 driver; Bilinski is the most plausible candidate to change that."
+  },
+  {
+    "driver_id": 1263, "name": "Martinius Stenshorne", "tla": "STE",
+    "team": "Rodin Motorsport", "number": 14,
+    "nationality": "Norwegian", "flag": "🇳🇴",
+    "bio": "Norwegian single-seater talent racing for Rodin Motorsport. Stenshorne has been building through the junior categories steadily — he brings genuine speed and is at home in the physical demands of the Dallara F2 car. Norway's most promising motorsport talent on the single-seater ladder right now."
+  },
+  {
+    "driver_id": 1231, "name": "Kush Maini", "tla": "MAI",
+    "team": "ART Grand Prix", "number": 16,
+    "nationality": "Indian", "flag": "🇮🇳",
+    "bio": "One of F2's most experienced hands — Maini has been in the series for several seasons and knows every track, every strategy nuance. He returned to ART Grand Prix in 2026 as a senior presence alongside the younger Inthraphuvasak. India's best shot at an F1 driver since Narain Karthikeyan, Maini uses accumulated track knowledge to consistently score where raw pace might not deliver."
+  },
+  {
+    "driver_id": 1245, "name": "Rafael Villagómez", "tla": "VIL",
+    "team": "Van Amersfoort Racing", "number": 23,
+    "nationality": "Mexican", "flag": "🇲🇽",
+    "bio": "Mexican driver making his F2 debut with Van Amersfoort Racing. Villagómez brings strong results from F3 and the Euroformula Open series. At VAR, the team's experience in developing young talent should help him accelerate his learning curve. Mexico's deep motorsport culture — and Sergio Pérez's ongoing legacy — keeps every Mexican driver in focus."
+  },
+  {
+    "driver_id": 1273, "name": "Emerson Fittipaldi", "tla": "FIT",
+    "team": "AIX Racing", "number": 20,
+    "nationality": "Brazilian", "flag": "🇧🇷",
+    "bio": "Grandson of Emerson Fittipaldi — the two-time Formula 1 World Champion (1972, 1974). The Fittipaldi name is one of the most iconic in motorsport, and Emerson III carries it into F2 with AIX Racing. Still developing at this level, but the bloodline speaks for itself. Miami is practically a home race — his family's connection to the city runs deep."
+  },
+  {
+    "driver_id": 1255, "name": "John Bennett", "tla": "BEN",
+    "team": "TRIDENT", "number": 25,
+    "nationality": "British", "flag": "🇬🇧",
+    "bio": "British driver on his second F2 season after a year with Van Amersfoort Racing. Bennett moved to Trident for 2026 alongside van Hoepen and has benefited from the stronger package — his racecraft has improved measurably. A points scorer this season already; Bennett is quietly building toward a stronger championship position."
+  },
+  {
+    "driver_id": 1252, "name": "Dino Beganovic", "tla": "BEG",
+    "team": "DAMS Lucas Oil", "number": 7,
+    "nationality": "Swedish", "flag": "🇸🇪",
+    "bio": "Ferrari junior and one of Scandinavia's fastest racing drivers. Beganovic spent 2025 at Hitech before moving to DAMS Lucas Oil for 2026. The Ferrari academy backing suggests serious belief in his long-term potential. Still finding his feet with the new team, but the pace is undeniably there — watch for him to surge up the standings as the season develops."
+  },
+  {
+    "driver_id": 1274, "name": "Nico Varrone", "tla": "VAR",
+    "team": "Van Amersfoort Racing", "number": 22,
+    "nationality": "Argentine", "flag": "🇦🇷",
+    "bio": "Argentine driver and a familiar face on the F2 grid — Varrone has raced in the championship for multiple seasons, accumulating experience at every track on the calendar. At VAR, he's the team's senior driver and a reliable hand. Argentina's motorsport scene has been energised by Colapinto's F1 arrival; Varrone is following in that slipstream."
+  },
+  {
+    "driver_id": 1254, "name": "Cian Shields", "tla": "SHI",
+    "team": "AIX Racing", "number": 21,
+    "nationality": "British", "flag": "🇬🇧",
+    "bio": "British driver on his F2 debut with AIX Racing. Shields made his name in British single-seaters and stepped up to F2 after consistent F3 performances. The AIX package is developing; Shields is developing alongside it. Raw potential with plenty of room to grow across the rest of the season."
+  },
+  {
+    "driver_id": 1272, "name": "Mari Boya", "tla": "BOY",
+    "team": "PREMA Racing", "number": 12,
+    "nationality": "Spanish", "flag": "🇪🇸",
+    "bio": "One of the very few women ever to race in F2 and one of the most significant stories on the 2026 motorsport calendar. Boya earned her PREMA seat through strong Spanish Formula 4 and F3 performances — she is here on merit. At the sport's most prestigious junior team, alongside a Red Bull junior, the environment is demanding. But the fact that she is here at all is historic."
+  }
+]

@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>F1 Wordle — Outpost</title>
+<style>
+:root{--bg:#0a0a0a;--surface:#111;--border:#333;--accent:#e10600;--accent2:#ff8700;--muted:#888;--green:#34c759;--yellow:#ffaa00}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{background:var(--bg);color:#fff;font-family:ui-monospace,Menlo,monospace;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:16px;gap:8px}
+h1{color:var(--accent);letter-spacing:3px;font-size:1.4rem}
+.sub{color:var(--muted);font-size:12px;text-align:center;line-height:1.5}
+#grid{display:flex;flex-direction:column;gap:6px;margin:8px 0}
+.row{display:flex;gap:5px}
+.cell{
+  width:48px;height:48px;border:2px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;font-weight:800;text-transform:uppercase;
+  background:var(--surface);
+  transition:background 0.1s,border-color 0.1s;
+  user-select:none;
+}
+.cell.active-row{border-color:#555}
+.cell.filled{border-color:#888}
+.cell.green{background:var(--green);border-color:var(--green);color:#fff}
+.cell.yellow{background:var(--yellow);border-color:var(--yellow);color:#000}
+.cell.gray{background:#3a3a3a;border-color:#3a3a3a;color:#ccc}
+#msg{min-height:22px;color:var(--accent2);font-weight:700;font-size:14px;text-align:center}
+#kb{display:flex;flex-direction:column;gap:5px;align-items:center}
+.krow{display:flex;gap:4px}
+.key{
+  background:#2a2a2a;border:1px solid #444;color:#fff;
+  padding:12px 8px;border-radius:6px;font-family:inherit;
+  font-weight:700;cursor:pointer;min-width:34px;font-size:13px;
+  text-align:center;-webkit-tap-highlight-color:transparent;
+}
+.key:active{opacity:.7}
+.key.green{background:var(--green);border-color:var(--green)}
+.key.yellow{background:var(--yellow);border-color:var(--yellow);color:#000}
+.key.gray{background:#3a3a3a;border-color:#3a3a3a;color:#666}
+.key.wide{padding:12px 10px;font-size:11px;min-width:46px}
+.foot{color:var(--muted);font-size:11px;text-align:center;line-height:1.8}
+a{color:var(--accent2)}
+button.newgame{background:var(--accent);color:#fff;border:0;padding:8px 18px;border-radius:6px;font-family:inherit;cursor:pointer;font-weight:700;font-size:13px}
+</style></head><body>
+<h1>F1 WORDLE</h1>
+<p class="sub">Guess the 6-letter F1 word in 6 tries.<br>Green = right spot · Yellow = wrong spot</p>
+<div id="grid"></div>
+<p id="msg"></p>
+<div id="kb"></div>
+<button class="newgame" onclick="init()">↻ New word</button>
+<p class="foot">
+  Surnames: NORRIS · ALONSO · STROLL · HADJAR · DOOHAN<br>
+  Tracks &amp; terms too · <a href="/games">← back to games</a>
+</p>
+
+<script>
+// All words are exactly 6 letters. Mix of driver surnames, tracks, F1 terms.
+const WORDS = [
+  // Driver surnames (exactly 6 letters)
+  'NORRIS','ALONSO','STROLL','HADJAR','DOOHAN',
+  // Track names (exactly 6 letters)
+  'MONACO','SUZUKA','CANADA','MONZA_','BAHRAN',
+  // F1 terms (exactly 6 letters)
+  'SECTOR','RACING','DRIVER','PODIUM','CORNER',
+  'SLICKS','HARDER','SOFTER','MEDIUM','SAFETY',
+  'BRAKES','MIRROR','TUNNEL','TIFOSI','PITWLL',
+  'LAPPED','YELLOW','FASTER','BOXING','CHICNE',
+].filter(w => w.length === 6);
+
+// Clean words - remove placeholders
+const WORDLIST = [
+  'NORRIS','ALONSO','STROLL','HADJAR','DOOHAN',
+  'MONACO','SUZUKA','CANADA',
+  'SECTOR','RACING','DRIVER','PODIUM','CORNER',
+  'SLICKS','HARDER','SOFTER','MEDIUM','SAFETY',
+  'BRAKES','MIRROR','TIFOSI','LAPPED','YELLOW',
+  'FASTER','BOXING',
+];
+
+const WL = 6, ROWS = 6;
+let target, board, row, col, gameOver, keyMap;
+
+function init() {
+  target = WORDLIST[Math.random() * WORDLIST.length | 0];
+  // board[r][c] = {letter, state}  state: ''|'green'|'yellow'|'gray'
+  board = Array.from({length: ROWS}, () =>
+    Array.from({length: WL}, () => ({letter: '', state: ''}))
+  );
+  row = 0; col = 0; gameOver = false;
+  keyMap = {};
+  document.getElementById('msg').textContent = '';
+  renderBoard();
+  renderKb();
+}
+
+function renderBoard() {
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '';
+  for (let r = 0; r < ROWS; r++) {
+    const rowEl = document.createElement('div');
+    rowEl.className = 'row';
+    for (let c = 0; c < WL; c++) {
+      const cell = document.createElement('div');
+      const {letter, state} = board[r][c];
+      let cls = 'cell';
+      if (state) cls += ' ' + state;
+      else if (r === row && !gameOver) cls += ' active-row';
+      else if (letter) cls += ' filled';
+      cell.className = cls;
+      cell.textContent = letter;
+      rowEl.appendChild(cell);
+    }
+    grid.appendChild(rowEl);
+  }
+}
+
+function renderKb() {
+  const kb = document.getElementById('kb');
+  kb.innerHTML = '';
+  const rows = ['QWERTYUIOP', 'ASDFGHJKL', 'ZXCVBNM'];
+  rows.forEach((keys, i) => {
+    const rowEl = document.createElement('div');
+    rowEl.className = 'krow';
+    if (i === 2) rowEl.appendChild(makeKey('ENTER', true));
+    for (const k of keys) {
+      rowEl.appendChild(makeKey(k, false, keyMap[k] || ''));
+    }
+    if (i === 2) rowEl.appendChild(makeKey('⌫', true));
+    kb.appendChild(rowEl);
+  });
+}
+
+function makeKey(label, wide, state) {
+  const btn = document.createElement('button');
+  btn.className = 'key' + (wide ? ' wide' : '') + (state ? ' ' + state : '');
+  btn.textContent = label;
+  btn.addEventListener('click', () => {
+    if (label === 'ENTER') onEnter();
+    else if (label === '⌫') onBack();
+    else onLetter(label);
+  });
+  return btn;
+}
+
+function onLetter(k) {
+  if (gameOver || col >= WL) return;
+  board[row][col].letter = k;
+  col++;
+  renderBoard();
+}
+
+function onBack() {
+  if (gameOver || col === 0) return;
+  col--;
+  board[row][col].letter = '';
+  renderBoard();
+}
+
+function onEnter() {
+  if (gameOver) return;
+  if (col < WL) { showMsg('Need ' + WL + ' letters'); return; }
+
+  const guess = board[row].map(c => c.letter).join('');
+  const result = score(guess, target);
+
+  // Apply colors to this row
+  board[row].forEach((cell, i) => cell.state = result[i]);
+
+  // Update keyboard state
+  board[row].forEach((cell, i) => {
+    const k = cell.letter;
+    const prev = keyMap[k];
+    const s = result[i];
+    if (!prev || (prev === 'gray') || (prev === 'yellow' && s === 'green')) {
+      keyMap[k] = s;
+    }
+  });
+
+  renderBoard();
+  renderKb();
+
+  if (guess === target) {
+    const msgs = ['🏁 Perfect!', '🏁 Nailed it!', '🏁 Checkered flag!', '🏁 Correct!'];
+    showMsg(msgs[row] || '🏁 Correct!');
+    gameOver = true;
+    return;
+  }
+
+  row++;
+  col = 0;
+
+  if (row >= ROWS) {
+    showMsg('💥 It was: ' + target);
+    gameOver = true;
+  }
+}
+
+function score(guess, answer) {
+  const res = Array(WL).fill('gray');
+  const rem = answer.split('');
+  // Greens first
+  for (let i = 0; i < WL; i++) {
+    if (guess[i] === rem[i]) { res[i] = 'green'; rem[i] = null; }
+  }
+  // Yellows
+  for (let i = 0; i < WL; i++) {
+    if (res[i] === 'green') continue;
+    const j = rem.indexOf(guess[i]);
+    if (j !== -1) { res[i] = 'yellow'; rem[j] = null; }
+  }
+  return res;
+}
+
+function showMsg(text) {
+  document.getElementById('msg').textContent = text;
+}
+
+document.addEventListener('keydown', e => {
+  if (e.ctrlKey || e.metaKey || e.altKey) return;
+  if (e.key === 'Enter') { e.preventDefault(); onEnter(); }
+  else if (e.key === 'Backspace') { e.preventDefault(); onBack(); }
+  else if (/^[a-zA-Z]$/.test(e.key)) onLetter(e.key.toUpperCase());
+});
+
+init();
+</script>
+</body></html>

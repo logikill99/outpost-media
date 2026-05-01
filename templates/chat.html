@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+{% block title %}Outpost — Chat{% endblock %}
+
+{% block content %}
+<div class="chat-wrap" x-data="chatApp()" x-init="init()">
+  <div class="chat-head">
+    <div>
+      <h1 class="page-title-inline">💬 PIT WALL</h1>
+      <span class="muted">Channel: <select x-model="channel" @change="changeChannel()" class="channel-select">
+        <option value="pitwall">#pitwall</option>
+        <option value="ctf">#ctf</option>
+      </select></span>
+    </div>
+    <div class="chat-meta">
+      <span>👤 <span x-text="username || 'set name'"></span> <button class="link" @click="reprompt()">change</button></span>
+      <span>🟢 <span x-text="userCount"></span> online</span>
+    </div>
+  </div>
+
+  <div class="chat-messages" x-ref="msgs">
+    <template x-for="m in messages" :key="m.id">
+      <div class="msg" :class="{ self: m.username === username, admin: m.username === 'admin' }">
+        <div class="msg-meta">
+          <span class="msg-user" x-text="m.username"></span>
+          <span class="msg-ts" x-text="fmtTs(m.ts)"></span>
+        </div>
+        <div class="msg-body" x-text="m.body"></div>
+      </div>
+    </template>
+    <div x-show="messages.length === 0" class="muted center pad">No messages yet. Say hi.</div>
+  </div>
+
+  <form class="chat-input" @submit.prevent="send()">
+    <input type="text" x-model="draft" maxlength="500" placeholder="Type a message…" :disabled="!username">
+    <button type="submit" class="btn-primary" :disabled="!username || !draft.trim()">Send</button>
+  </form>
+
+  <p class="muted small">Messages cap at 500 chars. Be cool.</p>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/socket.io.min.js"></script>
+<script>
+function chatApp(){
+  return {
+    socket: null,
+    username: '',
+    channel: 'pitwall',
+    messages: [],
+    userCount: 0,
+    draft: '',
+    _initialized: false,
+    _joinTimer: null,
+    init(){
+      // Guard against Alpine calling init() more than once (can happen during re-renders)
+
+      this._initialized = true;
+
+      this.username = localStorage.getItem('outpost_username') || '';
+      if(!this.username){ this.reprompt(); }
+
+      if(this.socket) { this.socket.disconnect(); this.socket = null; }
+      this.socket = io({transports:['websocket']});  // websocket only — prevents double-SID from polling handshake
+
+      this.socket.on('history', d => {
+        const incoming = d.messages || [];
+
+        if(d.channel !== this.channel) return;
+        // Accept history when empty (initial load / channel switch) or
+        // when the server has more messages than we do (legitimate refresh).
+        // Ignores late-arriving duplicate history that would wipe live messages.
+        if(this.messages.length === 0 || incoming.length > this.messages.length) {
+          this.messages = incoming;
+          this.$nextTick(()=>this.scroll());
+        } else {
+
+        }
+      });
+      this.socket.on('message', m => {
+        if(m.channel !== this.channel) return;
+        this.messages = [...this.messages, m];  // new array ref — forces Alpine proxy setter → reliable re-render
+        this.$nextTick(()=>this.scroll());
+      });
+      this.socket.on('message_deleted', d => {
+        this.messages = this.messages.filter(m => m.id !== d.id);
+      });
+      this.socket.on('user_count', d => { this.userCount = d.count; });
+      this.socket.on('announcement', a => {
+        const notice = {id:'a'+Date.now(), username:'📣 system', body:a.body, ts:new Date().toISOString()};
+        this.messages = [...this.messages, notice];
+        this.$nextTick(()=>this.scroll());
+      });
+      this.socket.on('connect', ()=> this.join());
+    },
+    join(){
+      // Debounce: if join() is called multiple times rapidly (e.g. connect + changeChannel),
+      // only fire the last one after a short delay
+      clearTimeout(this._joinTimer);
+      this._joinTimer = setTimeout(() => {
+        if(!this.username || !this.socket?.connected) return;
+
+        this.socket.emit('join', {username: this.username, channel: this.channel});
+      }, 80);
+    },
+    changeChannel(){
+      this.messages = [];
+      this.join();
+    },
+    reprompt(){
+      const n = prompt('Pick a username (max 32 chars):', this.username || '');
+      if(n && n.trim()){
+        this.username = n.trim().slice(0,32);
+        localStorage.setItem('outpost_username', this.username);
+        if(this.socket && this.socket.connected) this.join();
+      }
+    },
+    send(){
+      const body = this.draft.trim();
+      if(!body || !this.username) return;
+      this.socket.emit('message', {body});
+      this.draft = '';
+    },
+    scroll(){
+      const el = this.$refs.msgs;
+      if(el) el.scrollTop = el.scrollHeight;
+    },
+    fmtTs(ts){
+      if(!ts) return '';
+      try { return new Date(ts).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}); }
+      catch(e){ return ''; }
+    },
+  }
+}
+</script>
+{% endblock %}

@@ -1,0 +1,470 @@
+{
+  "last_updated": "2026-05-01T02:17:16Z",
+  "note": "8 sessions across 3 events",
+  "standings": [
+    {
+      "class": "Pro",
+      "event": "07_Long Beach Street Circuit",
+      "standings": [
+        {
+          "position": 1,
+          "net_position": 1,
+          "driver": "Tyler Maxson",
+          "total_points": 84.0,
+          "net_points": 84.0
+        },
+        {
+          "position": 2,
+          "net_position": 2,
+          "driver": "Aaron Jeansonne",
+          "total_points": 79.0,
+          "net_points": 79.0
+        },
+        {
+          "position": 3,
+          "net_position": 3,
+          "driver": "Callum Hedge",
+          "total_points": 65.0,
+          "net_points": 65.0
+        },
+        {
+          "position": 4,
+          "net_position": 4,
+          "driver": "Tom Sargent",
+          "total_points": 54.0,
+          "net_points": 54.0
+        },
+        {
+          "position": 5,
+          "net_position": 5,
+          "driver": "Cole Kleck",
+          "total_points": 42.0,
+          "net_points": 42.0
+        },
+        {
+          "position": 6,
+          "net_position": 6,
+          "driver": "Jared Thomas",
+          "total_points": 41.0,
+          "net_points": 41.0
+        },
+        {
+          "position": 7,
+          "net_position": 7,
+          "driver": "Connor Bloum",
+          "total_points": 40.0,
+          "net_points": 40.0
+        },
+        {
+          "position": 8,
+          "net_position": 8,
+          "driver": "Paul Bocuse",
+          "total_points": 35.0,
+          "net_points": 35.0
+        },
+        {
+          "position": 9,
+          "net_position": 9,
+          "driver": "John Capestro-Dubets",
+          "total_points": 25.0,
+          "net_points": 25.0
+        },
+        {
+          "position": 10,
+          "net_position": 10,
+          "driver": "Janne Stiak",
+          "total_points": 21.0,
+          "net_points": 21.0
+        },
+        {
+          "position": 11,
+          "net_position": 11,
+          "driver": "Sabre Cook",
+          "total_points": 21.0,
+          "net_points": 21.0
+        },
+        {
+          "position": 12,
+          "net_position": 12,
+          "driver": "Alan Metni",
+          "total_points": 21.0,
+          "net_points": 21.0
+        },
+        {
+          "position": 13,
+          "net_position": 13,
+          "driver": "Patrick Mulcahy",
+          "total_points": 15.0,
+          "net_points": 15.0
+        },
+        {
+          "position": 14,
+          "net_position": 14,
+          "driver": "Nikita Lastochkin",
+          "total_points": 14.0,
+          "net_points": 14.0
+        },
+        {
+          "position": 15,
+          "net_position": 15,
+          "driver": "John Jodoin",
+          "total_points": 12.0,
+          "net_points": 12.0
+        },
+        {
+          "position": 16,
+          "net_position": 16,
+          "driver": "Marco Cirone",
+          "total_points": 8.0,
+          "net_points": 8.0
+        },
+        {
+          "position": 17,
+          "net_position": 17,
+          "driver": "Rob Walker",
+          "total_points": 4.0,
+          "net_points": 4.0
+        },
+        {
+          "position": 18,
+          "net_position": 18,
+          "driver": "Scott Blind",
+          "total_points": 1.0,
+          "net_points": 1.0
+        },
+        {
+          "position": 19,
+          "net_position": 19,
+          "driver": "Richard Edge",
+          "total_points": 1.0,
+          "net_points": 1.0
+        },
+        {
+          "position": 20,
+          "net_position": 20,
+          "driver": "Kayden Kelly",
+          "total_points": 1.0,
+          "net_points": 1.0
+        },
+        {
+          "position": 21,
+          "net_position": 21,
+          "driver": "James Sofronas",
+          "total_points": 0.0,
+          "net_points": 0.0
+        },
+        {
+          "position": 22,
+          "net_position": 22,
+          "driver": "Steve Wetterau",
+          "total_points": 0.0,
+          "net_points": 0.0
+        },
+        {
+          "position": 23,
+          "net_position": 23,
+          "driver": "Chris Bellomo",
+          "total_points": 0.0,
+          "net_points": 0.0
+        },
+        {
+          "position": 24,
+          "net_position": 24,
+          "driver": "Alex Pratt",
+          "total_points": 0.0,
+          "net_points": 0.0
+        },
+        {
+          "position": 25,
+          "net_position": 25,
+          "driver": "Ricco Shlaimoun",
+          "total_points": 0.0,
+          "net_points": 0.0
+        },
+        {
+          "position": 26,
+          "net_position": 26,
+          "driver": "John Goetz",
+          "total_points": 0.0,
+          "net_points": 0.0
+        },
+        {
+          "position": 27,
+          "net_position": 27,
+          "driver": "Josh Conley",
+          "total_points": 0.0,
+          "net_points": 0.0
+        },
+        {
+          "position": 28,
+          "net_position": 28,
+          "driver": "Brady Behrman",
+          "total_points": 0.0,
+          "net_points": 0.0
+        },
+        {
+          "position": 29,
+          "net_position": 29,
+          "driver": "Kevin Stadtlander",
+          "total_points": 0.0,
+          "net_points": 0.0
+        },
+        {
+          "position": 30,
+          "net_position": 30,
+          "driver": "Alain Scalzo",
+          "total_points": 0.0,
+          "net_points": 0.0
+        }
+      ]
+    },
+    {
+      "class": "Pro-Am",
+      "event": "07_Long Beach Street Circuit",
+      "standings": [
+        {
+          "position": 1,
+          "net_position": 1,
+          "driver": "Patrick Mulcahy",
+          "total_points": 112.0,
+          "net_points": 112.0
+        },
+        {
+          "position": 2,
+          "net_position": 2,
+          "driver": "Josh Conley",
+          "total_points": 65.0,
+          "net_points": 65.0
+        },
+        {
+          "position": 3,
+          "net_position": 3,
+          "driver": "James Sofronas",
+          "total_points": 40.0,
+          "net_points": 40.0
+        },
+        {
+          "position": 4,
+          "net_position": 4,
+          "driver": "Steve Wetterau",
+          "total_points": 40.0,
+          "net_points": 40.0
+        },
+        {
+          "position": 5,
+          "net_position": 5,
+          "driver": "Brady Behrman",
+          "total_points": 31.0,
+          "net_points": 31.0
+        }
+      ]
+    },
+    {
+      "class": "Masters",
+      "event": "07_Long Beach Street Circuit",
+      "standings": [
+        {
+          "position": 1,
+          "net_position": 1,
+          "driver": "Marco Cirone",
+          "total_points": 99.0,
+          "net_points": 99.0
+        },
+        {
+          "position": 2,
+          "net_position": 2,
+          "driver": "Rob Walker",
+          "total_points": 80.0,
+          "net_points": 80.0
+        },
+        {
+          "position": 3,
+          "net_position": 3,
+          "driver": "Scott Blind",
+          "total_points": 60.0,
+          "net_points": 60.0
+        },
+        {
+          "position": 4,
+          "net_position": 4,
+          "driver": "Chris Bellomo",
+          "total_points": 55.0,
+          "net_points": 55.0
+        },
+        {
+          "position": 5,
+          "net_position": 5,
+          "driver": "Kevin Stadtlander",
+          "total_points": 40.0,
+          "net_points": 40.0
+        },
+        {
+          "position": 6,
+          "net_position": 6,
+          "driver": "Richard Edge",
+          "total_points": 34.0,
+          "net_points": 34.0
+        },
+        {
+          "position": 7,
+          "net_position": 7,
+          "driver": "John Goetz",
+          "total_points": 20.0,
+          "net_points": 20.0
+        },
+        {
+          "position": 8,
+          "net_position": 8,
+          "driver": "Alain Scalzo",
+          "total_points": 19.0,
+          "net_points": 19.0
+        },
+        {
+          "position": 9,
+          "net_position": 9,
+          "driver": "Kayden Kelly",
+          "total_points": 18.0,
+          "net_points": 18.0
+        }
+      ]
+    },
+    {
+      "class": "Entrants",
+      "event": "07_Long Beach Street Circuit",
+      "standings": [
+        {
+          "position": 1,
+          "net_position": 1,
+          "driver": "Topp Racing",
+          "total_points": 78.0,
+          "net_points": 78.0
+        },
+        {
+          "position": 2,
+          "net_position": 2,
+          "driver": "Kellymoss",
+          "total_points": 77.0,
+          "net_points": 77.0
+        },
+        {
+          "position": 3,
+          "net_position": 3,
+          "driver": "GMG Racing",
+          "total_points": 72.0,
+          "net_points": 72.0
+        },
+        {
+          "position": 4,
+          "net_position": 4,
+          "driver": "JDX Racing",
+          "total_points": 65.0,
+          "net_points": 65.0
+        },
+        {
+          "position": 5,
+          "net_position": 5,
+          "driver": "JTR Motorsports Engineering",
+          "total_points": 51.0,
+          "net_points": 51.0
+        },
+        {
+          "position": 6,
+          "net_position": 6,
+          "driver": "ACI Motorsports",
+          "total_points": 44.0,
+          "net_points": 44.0
+        },
+        {
+          "position": 7,
+          "net_position": 7,
+          "driver": "CSM - Reis Nichols",
+          "total_points": 40.0,
+          "net_points": 40.0
+        },
+        {
+          "position": 8,
+          "net_position": 8,
+          "driver": "Ruckus Racing",
+          "total_points": 31.0,
+          "net_points": 31.0
+        },
+        {
+          "position": 9,
+          "net_position": 9,
+          "driver": "van der Steur Racing",
+          "total_points": 14.0,
+          "net_points": 14.0
+        },
+        {
+          "position": 10,
+          "net_position": 10,
+          "driver": "Scalzo Autosport",
+          "total_points": 14.0,
+          "net_points": 14.0
+        }
+      ]
+    },
+    {
+      "class": "Rookies",
+      "event": "07_Long Beach Street Circuit",
+      "standings": [
+        {
+          "position": 1,
+          "net_position": 1,
+          "driver": "Cole Kleck",
+          "total_points": 95.0,
+          "net_points": 95.0
+        },
+        {
+          "position": 2,
+          "net_position": 2,
+          "driver": "John Capestro-Dubets",
+          "total_points": 82.0,
+          "net_points": 82.0
+        },
+        {
+          "position": 3,
+          "net_position": 3,
+          "driver": "Nikita Lastochkin",
+          "total_points": 71.0,
+          "net_points": 71.0
+        },
+        {
+          "position": 4,
+          "net_position": 4,
+          "driver": "Alex Pratt",
+          "total_points": 50.0,
+          "net_points": 50.0
+        },
+        {
+          "position": 5,
+          "net_position": 5,
+          "driver": "Josh Conley",
+          "total_points": 45.0,
+          "net_points": 45.0
+        },
+        {
+          "position": 6,
+          "net_position": 6,
+          "driver": "Kevin Stadtlander",
+          "total_points": 41.0,
+          "net_points": 41.0
+        },
+        {
+          "position": 7,
+          "net_position": 7,
+          "driver": "Alain Scalzo",
+          "total_points": 20.0,
+          "net_points": 20.0
+        },
+        {
+          "position": 8,
+          "net_position": 8,
+          "driver": "Kayden Kelly",
+          "total_points": 14.0,
+          "net_points": 14.0
+        }
+      ]
+    }
+  ]
+}

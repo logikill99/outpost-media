@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How F1 Tire Strategy Works — A Miami GP Guide — Outpost Library</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { background: #0a0a0a; color: #e8e8e8; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 16px; line-height: 1.75; margin: 0; padding: 0; }
+    .container { max-width: 800px; margin: 0 auto; padding: 24px 20px 60px; }
+    .back-link { display: inline-block; color: #ff8700; text-decoration: none; font-size: 14px; margin-bottom: 24px; padding: 6px 12px; border: 1px solid #ff8700; border-radius: 4px; }
+    .back-link:hover { background: #ff870020; }
+    .meta { color: #888; font-size: 14px; margin-bottom: 32px; }
+    h1 { color: #fff; font-size: 2em; margin: 0 0 12px; border-bottom: 2px solid #e10600; padding-bottom: 12px; }
+    h2 { color: #e10600; font-size: 1.4em; margin: 40px 0 16px; border-bottom: 1px solid #222; padding-bottom: 8px; }
+    h3 { color: #ff8700; font-size: 1.15em; margin: 28px 0 10px; }
+    p { margin: 0 0 18px; }
+    a { color: #ff8700; }
+    .callout { background: #111; border-left: 3px solid #ff8700; padding: 16px 20px; margin: 24px 0; border-radius: 0 4px 4px 0; }
+    .compound { display: inline-block; padding: 4px 12px; border-radius: 20px; font-weight: bold; font-size: 0.9em; margin: 0 4px; }
+    .soft { background: #e10600; color: #fff; }
+    .medium { background: #ffcc00; color: #000; }
+    .hard { background: #ccc; color: #000; }
+    ul, ol { margin: 0 0 18px; padding-left: 28px; }
+    li { margin-bottom: 6px; }
+    table { border-collapse: collapse; width: 100%; margin: 20px 0; font-size: 14px; }
+    th { background: #1a1a1a; color: #ff8700; padding: 10px 14px; text-align: left; border: 1px solid #333; }
+    td { padding: 8px 14px; border: 1px solid #222; }
+    tr:nth-child(even) td { background: #0f0f0f; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/library" class="back-link">← Library</a>
+    <h1>How F1 Tire Strategy Works — A Miami GP Guide</h1>
+    <div class="meta">Category: F1 Technical · Reading time: ~7 min · Written for Outpost</div>
+
+    <p>You're watching someone pit and wondering why. Or a team stays out longer than expected and then rockets up the order. F1 tire strategy is genuinely one of the most complex multi-variable optimization problems in sport — and once you understand the basics, you'll see the race completely differently. This is the guide.</p>
+
+    <h2>Pirelli's Compound System</h2>
+    <p>Pirelli (F1's exclusive tire supplier since 2011) makes multiple compound types. They're numbered C1 through C6 — where C1 is the hardest compound and C6 is the softest. Each grand prix uses three adjacent compounds from this range, which Pirelli selects based on circuit characteristics.</p>
+
+    <p>For fan display purposes, regardless of which C-numbers are selected, they're always called:</p>
+    <ul>
+      <li><span class="compound soft">S</span> <strong>Soft</strong> — fastest, least durable</li>
+      <li><span class="compound medium">M</span> <strong>Medium</strong> — middle ground</li>
+      <li><span class="compound hard">H</span> <strong>Hard</strong> — slowest in isolation, most durable</li>
+    </ul>
+
+    <h3>Miami's Typical Compounds</h3>
+    <p>Miami typically gets C3/C4/C5 — that's medium-soft compounds relative to the full range. The circuit is abrasive enough that Pirelli doesn't bring the hardest rubber, but the Miami heat and technical sectors create enough thermal stress that they don't go softest either. The 2026 compounds are new and teams are still mapping them, so expect some early miscalculations.</p>
+
+    <h2>The Mandatory Pit Stop Rule</h2>
+    <p>Every driver must use at least two different compounds during the race. This is the fundamental rule that drives strategy. You can't just start on softs and stay there — you have to pit and put on a different tire at some point.</p>
+
+    <p>If the Safety Car or rain disrupts the race, teams sometimes exploit this creatively — pitting very early under a VSC to change compounds and then running the rest of the race on one tire.</p>
+
+    <h2>What Soft/Medium/Hard Actually Means in Practice</h2>
+
+    <table>
+      <tr><th>Property</th><th>Soft</th><th>Medium</th><th>Hard</th></tr>
+      <tr><td>Lap time advantage (fresh)</td><td>+0.5 to 1.5s</td><td>Baseline</td><td>-0.3 to -0.5s</td></tr>
+      <tr><td>Stint length (typical)</td><td>12–20 laps</td><td>20–30 laps</td><td>30–40+ laps</td></tr>
+      <tr><td>Warm-up time needed</td><td>Fast</td><td>Medium</td><td>Slow (can take 5+ laps)</td></tr>
+      <tr><td>Sensitivity to heat</td><td>Very high</td><td>Medium</td><td>Low</td></tr>
+    </table>
+
+    <p>"Deg" (degradation) is the rate at which a tire loses performance. Miami heat accelerates this significantly — track surface temperatures can exceed 55°C in May, which stresses the tire structure. Teams that can run a tire at the edge of its degradation threshold without destroying it will have a significant strategic edge.</p>
+
+    <h2>Undercut vs. Overcut</h2>
+    <p>These are the two fundamental strategic plays. Understanding them is understanding 80% of F1 strategy.</p>
+
+    <h3>The Undercut</h3>
+    <div class="callout">
+      <strong>You pit before your rival.</strong> Fresh tires are significantly faster. By the time your rival pits a lap or two later, you've built enough of a gap on the fresh rubber that they emerge from the pits behind you, even if they were ahead before.
+    </div>
+
+    <p>The undercut works when the pace delta between fresh and old tires is large enough to overcome the pit stop time loss (typically ~22–24 seconds at Miami). If a fresh soft can lap 1.5 seconds faster than worn mediums, you only need 15 laps of exposure to build that buffer.</p>
+
+    <h3>The Overcut</h3>
+    <div class="callout">
+      <strong>You stay out after your rival pits.</strong> While they're in the pits losing 22 seconds, you're building a gap. When you finally pit, you come out ahead — even on fresher tires than you had before.
+    </div>
+
+    <p>The overcut works when your current tires can still run at competitive pace and the pit stop loss is too large to overcome via fresh tire advantage. It also works when there's heavy traffic — if your rival emerges into a train of cars and loses time being held up, you can stay out longer and emerge with clear air.</p>
+
+    <h3>Which One Wins at Miami?</h3>
+    <p>Miami's layout favors the undercut at the primary DRS zones. The straight-line speed advantage of fresh tires is significant — if you're behind someone with worn rubber and come out of the pits on fresh mediums, you can get DRS and make the pass. Teams that are quick enough to threaten an undercut force their rivals to pit defensively, sometimes earlier than optimal, which can destroy tire strategy.</p>
+
+    <h2>VSC and Safety Car — The Wildcards</h2>
+    <p>The Virtual Safety Car (VSC) and full Safety Car both dramatically alter the strategy picture.</p>
+
+    <p><strong>VSC:</strong> All cars must drive below a delta time (roughly 40% slower). The pit stop time loss shrinks from ~22 seconds to as little as 6–8 seconds because you're not losing track position relative to the delta. Teams that are due to pit anyway gain a massive advantage by pitting under VSC — essentially a "free" stop.</p>
+
+    <p><strong>Safety Car:</strong> Similar effect but more dramatic. The entire field bunches up. If you pit under the safety car, you lose almost nothing in terms of position relative to cars that don't pit. The risk: you come out behind the safety car train with fresh tires and can't use them for several laps.</p>
+
+    <p>At Miami in 2024, strategic VSC timing was a significant factor in the race outcome. Keep an eye on any safety car deployment — the first 3–4 laps after it's deployed will see teams scrambling to either pit or commit to staying out, and those decisions often determine the podium.</p>
+
+    <h2>DRS and Tire Wear Interaction</h2>
+    <p>DRS (Drag Reduction System) reduces rear wing drag on the main straights, boosting top speed by roughly 10–15 km/h. Miami has two DRS zones. Here's the interaction with tire wear:</p>
+
+    <ul>
+      <li>Fresh tires + DRS = easy overtake attempt. You'll be significantly faster on the straight.</li>
+      <li>Worn tires + DRS = still a speed boost, but you may not have the mechanical grip to hold the car on the exit of T17 before the main straight, limiting your speed anyway</li>
+      <li>Drivers on badly worn tires sometimes run wide and lose DRS advantage in the technical sections — this is what "being vulnerable" looks like</li>
+    </ul>
+
+    <p>The 2026 cars replace DRS with active aerodynamics that function similarly on straights but don't require the manual "activation" button or the 1-second gap requirement. Both cars get the straight-line benefit. The new rules intend to make overtaking more organic — watch whether the first corners still produce the same volume of action that old DRS zones did.</p>
+
+    <h2>What to Watch For</h2>
+    <p>When you see teams making strategy decisions live, here's a mental framework:</p>
+
+    <ol>
+      <li><strong>Who's being undercut?</strong> If a car that's been running strong laps suddenly loses positions at pit stops, they got undercut and didn't respond in time.</li>
+      <li><strong>Is anyone overextending?</strong> Cars staying out much longer than expected are either (a) planning an overcut, (b) waiting for a safety car that may not come, or (c) being strategically "sacrificed" to hold up the cars behind them and protect a teammate.</li>
+      <li><strong>What compound did they come out on?</strong> If a team is in P4 and comes out on mediums when everyone else is on softs, they're playing for a long second stint and hoping for late-race drama.</li>
+      <li><strong>Safety car timing:</strong> Any safety car in laps 15–30 is golden for teams running middle-of-road strategies. The decisions in the next 90 seconds after deployment usually make or break the race.</li>
+    </ol>
+
+    <p>F1 strategy is chess at 300 km/h. Once you see the board, you can't unsee it.</p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Formula E vs Formula 1 — Engineering Compared — Outpost Library</title>
+<style>
+body{background:#0a0a0a;color:#e0e0e0;font-family:system-ui,sans-serif;max-width:800px;margin:0 auto;padding:16px;line-height:1.7}
+h1,h2,h3{color:#e10600}
+a{color:#ff8700}
+.back{display:inline-block;margin-bottom:12px;color:#ff8700;font-size:13px;text-decoration:none}
+.meta{color:#999;font-size:14px;margin-bottom:24px;border-bottom:1px solid #222;padding-bottom:12px}
+.callout{background:#111;border-left:4px solid #e10600;padding:12px 16px;margin:20px 0;border-radius:0 4px 4px 0}
+table{border-collapse:collapse;width:100%;margin:16px 0}
+td,th{border:1px solid #333;padding:8px;font-size:13px;text-align:left}
+th{background:#111;color:#e10600}
+.vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:16px 0}
+.vs-cell{background:#111;padding:10px;font-size:13px}
+.vs-header{background:#1a0000;color:#e10600;font-weight:bold;font-size:12px;text-transform:uppercase;letter-spacing:0.5px}
+</style>
+</head>
+<body>
+<a href="/library" class="back">← Library</a>
+<h1>Formula E vs Formula 1 — Engineering Compared</h1>
+<div class="meta">📖 ~10 min read &nbsp;|&nbsp; Motorsport Engineering &nbsp;|&nbsp; Updated 2025</div>
+
+<p>Formula E and Formula 1 are both FIA world championships, both feature the world's top racing talent, and both run cars around circuits at competitive speeds. Beyond that, the engineering philosophies are almost entirely different — by design. Here's how they compare, where each borrows from the other, and what the 2026 F1 convergence means for both series.</p>
+
+<h2>Side by Side: The Numbers</h2>
+
+<table>
+<thead><tr><th>Parameter</th><th>Formula 1 (2025)</th><th>Formula E (Gen3)</th></tr></thead>
+<tbody>
+<tr><td>Power source</td><td>ICE + hybrid (ERS)</td><td>100% electric</td></tr>
+<tr><td>Total power output</td><td>~730kW (980hp)</td><td>~300kW (400hp)</td></tr>
+<tr><td>Vehicle weight</td><td>~800kg</td><td>~840kg</td></tr>
+<tr><td>Top speed</td><td>~375 km/h</td><td>~320 km/h</td></tr>
+<tr><td>0-100 km/h</td><td>~2.5 seconds</td><td>~2.8 seconds</td></tr>
+<tr><td>Battery capacity</td><td>~4 MJ usable/lap</td><td>~54 kWh total</td></tr>
+<tr><td>Race distance</td><td>~305km, ~90 min</td><td>~40–45 min</td></tr>
+<tr><td>Tire supplier</td><td>Pirelli (slicks + wets)</td><td>Hankook (all-weather)</td></tr>
+<tr><td>Aero approach</td><td>Maximum downforce</td><td>Minimal downforce</td></tr>
+<tr><td>Cost cap</td><td>$135M/year</td><td>~$20M/year</td></tr>
+</tbody>
+</table>
+
+<h2>The Fundamental Philosophy Difference</h2>
+<p>Formula 1 is a constructor's championship at its core. Teams build their own cars, design their own aerodynamic packages, develop their own power units (or license from manufacturers). The technical complexity is the point — winning requires solving engineering problems that nobody else has solved.</p>
+
+<p>Formula E is a manufacturer's championship primarily expressed through powertrain. The chassis (until Gen3 partial changes) is common — built by Spark Racing Technologies. The battery pack is common — supplied by Williams Advanced Engineering. What manufacturers compete on is the inverter, motor, gearbox, and energy management software. It's a more targeted engineering competition with higher relevance to road car technology.</p>
+
+<div class="callout">
+<strong>The road relevance argument:</strong> Formula E was created explicitly to develop and showcase EV technology with road car applications. The regenerative braking systems, motor efficiency, and thermal management developed in FE have tangible parallels to production EVs. F1's 2026 50/50 hybrid moves toward this — but the two series approach road relevance from opposite philosophical directions.
+</div>
+
+<h2>Aerodynamics: The Opposite Approach</h2>
+<p>F1 aerodynamics is an arms race. Teams spend hundreds of millions annually on CFD simulation, wind tunnel time, and aero development. The cars generate 2–5G of cornering force through aerodynamic downforce. Every surface is an engineered aerodynamic surface.</p>
+
+<p>Formula E deliberately runs minimal aerodynamics. The street circuits it uses don't have the long, sweeping high-speed corners where downforce generates lap time — they're tight, slow-speed urban tracks where mechanical grip matters more than aerodynamic grip. Running high-downforce setups on FE cars would add drag without meaningful cornering benefit, and the street circuit nature means speeds are limited by walls, not aerodynamic limits.</p>
+
+<p>This is also a cost and safety decision. Highly complex aerodynamic development in a series with lower budget caps would concentrate wins in the wealthiest teams rather than allowing competitive racing between manufacturers. Lower aero complexity is a competitive equalizer.</p>
+
+<h2>Energy Management: Where Formula E Is Ahead</h2>
+<p>This is the area where Formula E has genuinely pushed the state of the art further than F1 — for now.</p>
+
+<p>In a FE race, the driver is managing a finite battery charge through the race. They have no option to burn more energy than the pack contains. Every regeneration decision, every energy deployment choice, every attack mode (a temporary power boost with a defined energy cost) is a permanent tradeoff. The race is, in part, a real-time energy optimization problem solved by driver and engineer together at racing speeds.</p>
+
+<p>The energy management software and the driver's training in energy discipline developed by FE teams is more sophisticated in some respects than F1's — because in F1, fuel can be replenished at a pit stop, and the fuel load simply runs down through the race. The constraint is less absolute.</p>
+
+<p>As F1 moves to a 50/50 hybrid architecture in 2026, the electrical energy management discipline becomes more critical. Some F1 engineers have acknowledged informally that FE's energy management development serves as a useful reference point.</p>
+
+<h2>Regenerative Braking: The Critical Technology</h2>
+<p>Both series recover energy through braking — using the motors as generators during deceleration. The Gen3 Formula E car takes this further: it can regenerate through both the front and rear axles simultaneously, with the front axle having its own independent motor/generator. This four-wheel regeneration system is a genuine technical innovation.</p>
+
+<p>F1's MGU-K recovers from the rear axle only. The front axle recovery in FE is relevant because it means deceleration load is distributed across all four wheels via the regeneration torque — which interacts with brake bias, ABS behavior, and handling balance in ways that are complex and interesting.</p>
+
+<p>Some road car manufacturers (Porsche, Audi, Mercedes) have taken direct lessons from FE front axle recovery systems into their production EV powertrain development. This is a concrete technology transfer pathway that F1 doesn't have in the same direct form.</p>
+
+<h2>Attack Mode and Active Strategy Elements</h2>
+<p>Formula E has "Attack Mode" — a temporary +25–50kW power boost available for a limited time per race. Drivers must activate it by driving through a specific off-line section of the circuit, temporarily sacrificing corner speed to "pick up" the activation. Other cars see who has activated and adjust their strategy accordingly.</p>
+
+<p>This is a designed-in strategy element that has no F1 equivalent. It creates decisions: when to take attack mode (track position vs extra power), how to use it (offensive or defensive), and whether to leave a rival's attack mode timing to influence your own.</p>
+
+<p>F1 has historically resisted this type of "video game" strategy element — the sport's purists argue that performance should come from engineering and driving, not from designed power handicaps. Whether 2026's active aero system is a step in this direction is debatable.</p>
+
+<h2>Tire Philosophy: Fundamentally Different</h2>
+<p>Pirelli supplies F1 with multiple compounds specifically designed to degrade — creating the strategic dimension of tire management and pit stop timing that defines F1 race strategy. The tires wear, and the rate of wear is central to the race.</p>
+
+<p>Hankook's Formula E tires are designed for consistent performance throughout the race — they're all-weather tires that can handle both dry and wet conditions without compound changes. The FE tire is engineered for durability and predictability, not strategic degradation. This is more analogous to how road car tires work, which aligns with FE's road relevance mandate.</p>
+
+<p>The result is that tire strategy in FE is much less prominent than in F1. Attack Mode timing, energy management, and pure pace on a short circuit are the dominant strategic variables — not pit windows and compound choices.</p>
+
+<h2>What F1 Has Borrowed from Formula E</h2>
+<p>The technology transfer goes both directions, though F1 tends not to acknowledge its debts publicly:</p>
+
+<ul>
+<li><strong>Energy management philosophy:</strong> The 2014 hybrid regulations required F1 teams to develop energy management sophistication they didn't previously need. FE's development of that discipline over multiple seasons provided useful reference data.</li>
+<li><strong>Urban circuit operation:</strong> F1's Singapore, Monaco, and Baku street circuits benefit from learnings about urban temporary circuit infrastructure that FE pioneered in city center venues.</li>
+<li><strong>Fan engagement digital tools:</strong> Formula E developed FanBoost (controversial fan-voted power boost, now discontinued) and other digital engagement tools that F1 later developed analogs of in its own fan experience platforms.</li>
+</ul>
+
+<h2>What Formula E Has Borrowed from F1</h2>
+<ul>
+<li><strong>Telemetry sophistication:</strong> FE teams now run data analysis operations that look increasingly like F1's, with high-channel-count telemetry and sophisticated simulation tools.</li>
+<li><strong>Driver talent:</strong> Several F1 alumni have raced in FE (Lucas Di Grassi, Sébastien Buemi, Antonio Félix da Costa), bringing F1-developed driver craft and feedback capability.</li>
+<li><strong>Broadcast production:</strong> FE's broadcast package has improved dramatically by studying and adopting F1's data visualization, onboard camera work, and statistical presentation.</li>
+</ul>
+
+<h2>The 2026 Convergence</h2>
+<p>With F1's 2026 power unit regulations introducing a 50/50 electrical split, the two series are converging — though they will remain quite distinct:</p>
+
+<ul>
+<li>F1 will still run combustion engines; FE is 100% electric.</li>
+<li>F1 will still have aerodynamic downforce as a primary performance variable; FE is low-downforce street circuit racing.</li>
+<li>F1 budgets will still exceed FE budgets by an order of magnitude.</li>
+</ul>
+
+<p>But the engineering problems — thermal management of large battery systems, motor efficiency at racing speeds, energy deployment strategy — are becoming more similar. As manufacturers like Audi, BMW, and Porsche participate in both series simultaneously, the technology silos are starting to dissolve. That's genuinely interesting for the long-term direction of motorsport.</p>
+</body>
+</html>

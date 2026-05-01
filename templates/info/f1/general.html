@@ -1,0 +1,246 @@
+{% extends "base.html" %}
+{% block title %}F1 — Race Info{% endblock %}
+{% block content %}
+<div class="page-header">
+  <h1 class="page-title">🏎️ F1 — RACE INFO</h1>
+  <p class="muted">Sprint Weekend</p>
+</div>
+
+{% if standings and standings.drivers %}
+<section class="info-section">
+  <h2 class="info-section-title">2026 Championship — Standings</h2>
+  {% if standings.note %}<p class="standings-note muted">{{ standings.note }}</p>{% endif %}
+  <div class="standings-grid">
+    <div class="standings-col">
+      <h3 class="standings-col-title">Drivers (top 10)</h3>
+      <table class="results-table">
+        <thead>
+          <tr><th>Pos</th><th>Driver</th><th>Team</th><th class="num">Pts</th><th class="num">W</th></tr>
+        </thead>
+        <tbody>
+          {% for d in standings.drivers[:10] %}
+          <tr>
+            <td class="pos">{{ d.position }}</td>
+            <td>{{ d.driver }}</td>
+            <td class="muted">{{ d.team }}</td>
+            <td class="num pts">{{ d.points }}</td>
+            <td class="num">{{ d.wins }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    {% if standings.constructors %}
+    <div class="standings-col">
+      <h3 class="standings-col-title">Constructors (top 5)</h3>
+      <table class="results-table">
+        <thead>
+          <tr><th>Pos</th><th>Constructor</th><th class="num">Pts</th><th class="num">W</th></tr>
+        </thead>
+        <tbody>
+          {% for c in standings.constructors[:5] %}
+          <tr>
+            <td class="pos">{{ c.position }}</td>
+            <td>{{ c.constructor }}</td>
+            <td class="num pts">{{ c.points }}</td>
+            <td class="num">{{ c.wins }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endif %}
+
+{% if race_results %}
+<section class="info-section">
+  <h2 class="info-section-title">2026 Season — Results</h2>
+  <table class="results-table results-table-wide">
+    <thead>
+      <tr>
+        <th class="num">Rd</th>
+        <th>Grand Prix</th>
+        <th>Date</th>
+        <th>🥇 Winner</th>
+        <th>🥈 Second</th>
+        <th>🥉 Third</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for race in race_results %}
+      {% set podium = race.results[:3] %}
+      <tr>
+        <td class="num">{{ race.round }}</td>
+        <td><strong>{{ race.name }}</strong></td>
+        <td class="muted">{{ race.date }}</td>
+        <td>{{ podium[0].driver if podium|length > 0 else '—' }}<div class="muted small">{{ podium[0].team if podium|length > 0 else '' }}</div></td>
+        <td>{{ podium[1].driver if podium|length > 1 else '—' }}<div class="muted small">{{ podium[1].team if podium|length > 1 else '' }}</div></td>
+        <td>{{ podium[2].driver if podium|length > 2 else '—' }}<div class="muted small">{{ podium[2].team if podium|length > 2 else '' }}</div></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% if sprint_results %}
+  <p class="muted" style="margin-top:14px;font-size:13px;">Sprint races: {% for s in sprint_results %}<strong>{{ s.name }}</strong> won by {{ s.results[0].driver }} ({{ s.results[0].team }}){% if not loop.last %}, {% endif %}{% endfor %}.</p>
+  {% endif %}
+</section>
+{% endif %}
+
+<section class="info-section">
+  <h2 class="info-section-title">2026 Regulation Reset</h2>
+  <p>2026 brings the most significant rule change since the hybrid era began in 2014. New chassis, new active aerodynamics, and a new power unit formula with a 50/50 split between internal combustion and electrical energy. Expect the early season to reward teams that adapted fastest — and a long development war through the year.</p>
+  <ul class="reg-list">
+    <li><strong>Power unit:</strong> 1.6L V6 turbo + far larger battery. Synthetic e-fuels mandatory.</li>
+    <li><strong>Active aero:</strong> DRS replaced by an "Override" mode and movable front + rear wings.</li>
+    <li><strong>Smaller, lighter cars:</strong> ~30kg lighter, narrower track, shorter wheelbase.</li>
+    <li><strong>11 teams on the grid:</strong> Cadillac joins as F1's first new constructor in a decade.</li>
+  </ul>
+</section>
+
+<section class="info-section">
+  <h2 class="info-section-title">Miami International Autodrome</h2>
+  <img src="/static/img/miami-track-map.webp" alt="Miami International Autodrome circuit map" class="track-map-img">
+
+  <div class="track-stats">
+    <div class="track-stat"><span class="track-stat-val">5.412 km</span><span class="track-stat-lbl">Length</span></div>
+    <div class="track-stat"><span class="track-stat-val">57</span><span class="track-stat-lbl">Race laps</span></div>
+    <div class="track-stat"><span class="track-stat-val">308.326 km</span><span class="track-stat-lbl">Distance</span></div>
+    <div class="track-stat"><span class="track-stat-val">19</span><span class="track-stat-lbl">Corners</span></div>
+    <div class="track-stat"><span class="track-stat-val">3</span><span class="track-stat-lbl">DRS zones</span></div>
+    <div class="track-stat"><span class="track-stat-val">320 km/h</span><span class="track-stat-lbl">Top speed</span></div>
+  </div>
+
+  <p>Purpose-built street-style circuit wrapping Hard Rock Stadium. Three character zones: high-speed sweepers (T1–4), tight stadium infield (T11–16), and the final hairpin complex (T17–19). Tire management across all three compounds is critical in the Florida heat.</p>
+</section>
+
+<section class="info-section">
+  <h2 class="info-section-title">Key Corners</h2>
+  <div class="corner-grid">
+    <div class="corner-card">
+      <div class="corner-num">T1–2</div>
+      <div class="corner-name">Start Complex</div>
+      <div class="corner-desc">Heavy braking from 320 km/h. Most frequent overtaking spot at Miami.</div>
+    </div>
+    <div class="corner-card">
+      <div class="corner-num">T11</div>
+      <div class="corner-name">Fast Left</div>
+      <div class="corner-desc">Near-flat high-speed left. Heavy front-left tire load — a durability differentiator.</div>
+    </div>
+    <div class="corner-card">
+      <div class="corner-num">T14–16</div>
+      <div class="corner-name">Stadium Section</div>
+      <div class="corner-desc">Slow infield by Hard Rock Stadium. Tight, bumpy, unforgiving walls.</div>
+    </div>
+    <div class="corner-card">
+      <div class="corner-num">T17–18</div>
+      <div class="corner-name">Final Hairpin</div>
+      <div class="corner-desc">Late-braking overtake zone at lap end. <span class="accent">You're here.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="info-section">
+  <h2 class="info-section-title">Lap Record</h2>
+  <div class="lap-record">
+    <div class="lap-record-time">1:26.841</div>
+    <div class="lap-record-info">Max Verstappen — Red Bull RB19 — 2023</div>
+  </div>
+</section>
+
+{% if miami_history %}
+<section class="info-section">
+  <h2 class="info-section-title">Recent History</h2>
+  <div class="miami-history-grid">
+    {% for yr in miami_history %}
+    {% set pole = yr.qualifying[0] if yr.qualifying else None %}
+    <div class="miami-year-card">
+      <div class="miami-year-header">
+        <span class="miami-year">{{ yr.year }}</span>
+        <span class="muted small">{{ yr.date }}</span>
+      </div>
+      {% if pole %}
+      <div class="miami-pole">
+        <span class="miami-pole-label">Pole</span>
+        <span class="miami-pole-driver">{{ pole.driver }}</span>
+        <span class="muted small">{{ pole.team }} · {{ pole.q3 or pole.q2 or pole.q1 }}</span>
+      </div>
+      {% endif %}
+      <table class="results-table results-table-mini">
+        <thead><tr><th>Pos</th><th>Driver</th><th>Team</th><th class="num">Grid</th></tr></thead>
+        <tbody>
+          {% for r in yr.results[:5] %}
+          <tr>
+            <td class="pos">{{ r.position }}</td>
+            <td>{{ r.driver }}</td>
+            <td class="muted">{{ r.team }}</td>
+            <td class="num muted">{{ r.grid }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<section class="info-section">
+  <h2 class="info-section-title">Sprint Weekend Format</h2>
+  <p>Miami runs the FIA Sprint format: a single Friday practice, Sprint Qualifying (Friday afternoon), the 19-lap Sprint race (Saturday morning), traditional Qualifying (Saturday afternoon), and the Grand Prix (Sunday). Strategy is compressed — one practice session, no margin for setup error.</p>
+  <p><a href="/schedule" class="inline-link">→ Full session schedule</a></p>
+</section>
+
+<p class="back-link"><a href="/info">← Back to Race Info</a></p>
+
+<style>
+.info-section { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:20px; margin-bottom:18px; }
+.info-section-title { font-size:14px; text-transform:uppercase; letter-spacing:1px; color:var(--accent); margin:0 0 14px; }
+.info-section p { color:var(--text-muted); line-height:1.7; font-size:14px; }
+.reg-list { padding-left:18px; color:var(--text-muted); line-height:1.8; font-size:14px; }
+.reg-list strong { color:var(--text); }
+.track-map-img { width:100%; border-radius:8px; border:1px solid var(--border); margin-bottom:14px; object-fit:contain; }
+.track-stats { display:grid; grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); gap:10px; margin-bottom:16px; }
+.track-stat { background:var(--bg); border:1px solid var(--border); border-radius:6px; padding:10px; text-align:center; }
+.track-stat-val { display:block; font-size:16px; font-weight:900; color:var(--accent); }
+.track-stat-lbl { display:block; font-size:10px; text-transform:uppercase; letter-spacing:.5px; color:var(--text-muted); margin-top:2px; }
+.corner-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:10px; }
+.corner-card { background:var(--bg); border:1px solid var(--border); border-radius:6px; padding:12px; }
+.corner-num { font-size:20px; font-weight:900; color:var(--accent); opacity:.6; }
+.corner-name { font-size:13px; font-weight:700; margin:2px 0 6px; }
+.corner-desc { font-size:12px; color:var(--text-muted); line-height:1.5; }
+.lap-record { background:var(--bg); border:1px solid var(--border); border-radius:6px; padding:14px; display:flex; gap:14px; align-items:center; }
+.lap-record-time { font-size:24px; font-weight:900; color:var(--accent); }
+.lap-record-info { font-size:13px; color:var(--text-muted); }
+.accent { color:var(--accent); }
+.inline-link { color:var(--accent-2); }
+.standings-note { font-size:12px; margin:-6px 0 12px; }
+.standings-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:14px; }
+.standings-col-title { font-size:11px; text-transform:uppercase; letter-spacing:1px; color:var(--text-muted); margin:0 0 8px; }
+.results-table { width:100%; border-collapse:collapse; font-size:13px; background:var(--bg); border:1px solid var(--border); border-radius:6px; overflow:hidden; }
+.results-table th { text-align:left; padding:8px 10px; background:var(--surface-2); color:var(--text-muted); font-size:10px; text-transform:uppercase; letter-spacing:.5px; border-bottom:1px solid var(--border); font-weight:700; }
+.results-table td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+.results-table tr:last-child td { border-bottom:none; }
+.results-table tr:hover td { background:rgba(225,6,0,.04); }
+.results-table .num { text-align:right; font-variant-numeric: tabular-nums; }
+.results-table .pos { color:var(--accent); font-weight:700; width:36px; }
+.results-table .pts { color:var(--text); font-weight:600; }
+.results-table .small { font-size:11px; }
+.results-table-wide td { white-space:nowrap; }
+.results-table-mini { font-size:12px; }
+.results-table-mini th, .results-table-mini td { padding:5px 8px; }
+.miami-history-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:12px; }
+.miami-year-card { background:var(--bg); border:1px solid var(--border); border-radius:6px; padding:12px; }
+.miami-year-header { display:flex; align-items:baseline; justify-content:space-between; margin-bottom:8px; }
+.miami-year { font-size:22px; font-weight:900; color:var(--accent); letter-spacing:1px; }
+.miami-pole { background:var(--surface-2); border-left:3px solid var(--accent-2); padding:6px 10px; border-radius:4px; margin-bottom:10px; font-size:12px; display:flex; flex-wrap:wrap; gap:6px; align-items:baseline; }
+.miami-pole-label { font-size:9px; letter-spacing:1px; color:var(--accent-2); font-weight:700; text-transform:uppercase; }
+.miami-pole-driver { font-weight:700; }
+@media (max-width: 600px) {
+  .results-table-wide { font-size:11px; }
+  .results-table-wide th, .results-table-wide td { padding:6px 6px; white-space:normal; }
+}
+</style>
+{% endblock %}

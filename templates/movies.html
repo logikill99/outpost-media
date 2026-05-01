@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}Outpost — Movies{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/css/video-js.min.css">
+{% endblock %}
+
+{% block content %}
+<h1 class="page-title">🎬 MOVIES</h1>
+
+<div class="movies-layout" x-data="moviePlayer()" x-init="init()">
+  <aside class="movie-list">
+    <h3 class="muted">Library</h3>
+    <ul>
+      <template x-for="(m, i) in movies" :key="m.filename">
+        <li>
+          <button class="movie-item" :class="{active: i === idx}" @click="select(i)">
+            <strong x-text="m.title"></strong>
+            <span class="meta"><span x-text="m.year"></span> · <span x-text="m.duration"></span> · <span x-text="m.genre || ''"></span></span>
+            <span class="desc" x-text="m.description"></span>
+          </button>
+        </li>
+      </template>
+    </ul>
+    <p x-show="movies.length === 0" class="muted">No movies yet. Drop .mp4 files in <code>media/videos/</code> and they'll appear automatically.</p>
+  </aside>
+
+  <section class="movie-player">
+    <video
+      id="player"
+      class="video-js vjs-default-skin vjs-big-play-centered"
+      controls
+      preload="metadata"
+      width="960"
+      height="540"
+      data-setup='{"fluid":true}'
+    >
+      <p class="vjs-no-js">Your browser doesn't support HTML5 video.</p>
+    </video>
+    <div class="now-playing">
+      <h2 x-text="current ? current.title : 'Pick a movie →'"></h2>
+      <p x-show="current" class="muted"><span x-text="current?.year"></span> · <span x-text="current?.duration"></span></p>
+      <p x-show="current" x-text="current?.description"></p>
+    </div>
+  </section>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/video.min.js"></script>
+<script>
+function moviePlayer(){
+  return {
+    movies: {{ movies | tojson }},
+    idx: -1,
+    current: null,
+    player: null,
+    init(){
+      this.player = videojs('player');
+    },
+    select(i){
+      this.idx = i;
+      this.current = this.movies[i];
+      const src = '/media/videos/' + this.current.filename;
+      this.player.src({type:'video/mp4', src});
+      this.player.play().catch(()=>{});
+    },
+  }
+}
+</script>
+{% endblock %}

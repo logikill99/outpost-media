@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The 2026 F1 Power Unit — 50/50 Electric — Outpost Library</title>
+<style>
+body{background:#0a0a0a;color:#e0e0e0;font-family:system-ui,sans-serif;max-width:800px;margin:0 auto;padding:16px;line-height:1.7}
+h1,h2,h3{color:#e10600}
+a{color:#ff8700}
+.back{display:inline-block;margin-bottom:12px;color:#ff8700;font-size:13px;text-decoration:none}
+.meta{color:#999;font-size:14px;margin-bottom:24px;border-bottom:1px solid #222;padding-bottom:12px}
+.callout{background:#111;border-left:4px solid #e10600;padding:12px 16px;margin:20px 0;border-radius:0 4px 4px 0}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:20px 0}
+.stat-box{background:#111;border:1px solid #333;padding:12px;border-radius:4px;text-align:center}
+.stat-num{font-size:2em;color:#e10600;font-weight:bold;line-height:1}
+.stat-label{font-size:12px;color:#999;margin-top:4px}
+table{border-collapse:collapse;width:100%;margin:16px 0}
+td,th{border:1px solid #333;padding:8px;font-size:13px;text-align:left}
+th{background:#111;color:#e10600}
+</style>
+</head>
+<body>
+<a href="/library" class="back">← Library</a>
+<h1>The 2026 F1 Power Unit — 50/50 Electric</h1>
+<div class="meta">📖 ~15 min read &nbsp;|&nbsp; F1 Technical &nbsp;|&nbsp; Updated 2025</div>
+
+<p>2026 is the most significant technical reset in Formula 1 history since the hybrid era began in 2014. The power unit architecture is being fundamentally redesigned — equal electrical and combustion power, a new fuel standard, a revised MGU philosophy, and engine regulations intended to last through the early 2030s. Here's what's actually changing and why it matters.</p>
+
+<div class="stat-grid">
+<div class="stat-box"><div class="stat-num">350</div><div class="stat-label">kW from ICE (approx.)</div></div>
+<div class="stat-box"><div class="stat-num">350</div><div class="stat-label">kW from ERS</div></div>
+<div class="stat-box"><div class="stat-num">700+</div><div class="stat-label">kW total output</div></div>
+<div class="stat-box"><div class="stat-num">100%</div><div class="stat-label">Sustainable fuel blend</div></div>
+</div>
+
+<h2>Where We Were: The 2014–2025 Power Unit</h2>
+<p>To understand what's changing, you need to understand what existed before. The hybrid power unit introduced in 2014 had these components:</p>
+<ul>
+<li><strong>ICE:</strong> 1.6-liter turbocharged V6, approximately 550–600kW (740–800 hp)</li>
+<li><strong>MGU-K:</strong> Motor-Generator Unit – Kinetic. Attached to the crankshaft. Harvests energy under braking, deploys up to 120kW on acceleration.</li>
+<li><strong>MGU-H:</strong> Motor-Generator Unit – Heat. Attached to the turbocharger shaft. Harvests exhaust energy, controls turbo speed, and transfers energy to/from the MGU-K or battery.</li>
+<li><strong>Energy store:</strong> Battery pack, capped at 4 MJ per lap of electrical deployment.</li>
+<li><strong>Total output:</strong> Approximately 730–750kW (980–1000 hp) at peak.</li>
+</ul>
+
+<p>The MGU-H was the defining element of this era — a technically brilliant but brutally expensive component that Mercedes mastered and nobody else fully matched until very late in the cycle. It was complicated enough that new engine supplier Audi (and Honda's early returns) cited its difficulty as a primary engineering challenge.</p>
+
+<h2>What 2026 Removes: The MGU-H Is Gone</h2>
+<p>The MGU-H has been deleted from the 2026 specification. This is the single biggest architectural change. It was cut for several reasons:</p>
+
+<ul>
+<li><strong>Cost:</strong> Developing a competitive MGU-H required hundreds of millions in investment and years of iteration. New entrants (Audi/Sauber, GM/Andretti before the entry collapsed) couldn't realistically compete without a huge head start.</li>
+<li><strong>Complexity:</strong> The MGU-H operated at enormous temperatures with extremely tight tolerances. It was a reliability nightmare during development and remained expensive to maintain.</li>
+<li><strong>Manufacturer interest:</strong> Several manufacturers indicated they would only enter F1 if the MGU-H was removed. The FIA chose commercial viability over technical complexity.</li>
+</ul>
+
+<h2>The New Architecture: What Replaces It</h2>
+<p>Without the MGU-H managing turbo speed, the 2026 power unit needs a different approach to turbocharger control. The solution is a more powerful battery and a redesigned MGU-K:</p>
+
+<table>
+<thead><tr><th>Component</th><th>2025 Spec</th><th>2026 Spec</th></tr></thead>
+<tbody>
+<tr><td>ICE</td><td>1.6L V6 turbo, ~550kW</td><td>1.6L V6 turbo, ~350kW</td></tr>
+<tr><td>MGU-K</td><td>120kW peak output</td><td>~350kW peak output</td></tr>
+<tr><td>MGU-H</td><td>Present (turbo-shaft coupled)</td><td>Removed</td></tr>
+<tr><td>Energy store</td><td>4 MJ/lap cap</td><td>~8–9 MJ capacity</td></tr>
+<tr><td>Total output</td><td>~730kW</td><td>~700kW</td></tr>
+<tr><td>Fuel</td><td>Fossil E10</td><td>100% sustainable</td></tr>
+</tbody>
+</table>
+
+<div class="callout">
+<strong>The critical number:</strong> The MGU-K output is tripled — from 120kW to approximately 350kW. The electrical system now contributes roughly the same power as the combustion engine. This is a genuine 50/50 hybrid, not a combustion car with a boost button.
+</div>
+
+<h2>The ICE Gets Quieter. The ERS Gets Louder.</h2>
+<p>Here's the controversial part. The internal combustion engine in 2026 produces significantly less power than its 2025 equivalent — approximately 350kW vs 550kW. This is deliberate. The regulations are designed so that the total system output stays similar, but the electrical contribution doubles.</p>
+
+<p>What does this mean for sound? The exhaust note will change. The current V6 turbo is already quieter than the naturally-aspirated V8s that preceded it — the turbo kills a lot of the acoustic energy that makes the N/A era sound so spectacular. With the combustion engine running at lower loads (because it doesn't need to produce as much), the characteristic F1 scream will be different. Most engineers and audio experts expect the 2026 cars to sound softer — more EV-like under heavy electrical deployment.</p>
+
+<p>Whether you consider this a problem depends on what you think F1 should be. The sport's governing body and the manufacturers have clearly decided that relevance to road-car electrification is worth the acoustic tradeoff.</p>
+
+<h2>Sustainable Fuels: The 100% Mandate</h2>
+<p>The 2026 regulations require that all fuel used in F1 come from sustainable sources. This is a significant departure from current regulations, which mandate only a minimum 10% sustainable component (E10 blend).</p>
+
+<p>What counts as "sustainable"? The FIA's definition is broad:</p>
+<ul>
+<li><strong>Synthetic fuels (e-fuels):</strong> Produced using renewable electricity and captured CO₂ or hydrogen. The chemical composition is identical to fossil hydrocarbons — they work in existing engines — but the carbon was never underground.</li>
+<li><strong>Advanced biofuels:</strong> Produced from agricultural waste, municipal solid waste, or purpose-grown non-food crops. Not food-crop ethanol (which has its own land-use issues).</li>
+<li><strong>Waste-based fuels:</strong> Methanol or ethanol derived from industrial or household waste streams.</li>
+</ul>
+
+<p>The relevance to road cars is obvious — if F1 can prove that a 100% sustainable fuel works in a high-performance internal combustion engine, it provides a pathway for decarbonizing the existing global fleet without waiting for full electrification. This is a legitimate engineering argument, not just marketing.</p>
+
+<h2>The Turbocharger Without MGU-H</h2>
+<p>This is the most technically interesting problem 2026 creates. The MGU-H in the current generation doesn't just recover energy — it actively manages turbocharger speed. It spins the turbo up electrically to eliminate turbo lag when the driver gets on the throttle. Without it, some form of turbo lag returns.</p>
+
+<p>The solutions being explored by the manufacturers involve:</p>
+<ul>
+<li><strong>Pre-spooling via the larger MGU-K:</strong> Drawing electric power from the battery to maintain turbo speed through a mechanical or electrical connection — more complex to package but achievable without the MGU-H's direct shaft coupling.</li>
+<li><strong>Split-turbo architecture:</strong> The compressor and turbine sections physically separated, with the MGU sitting between them electrically. This was a concept explored in 2014-era development and partially implemented by some manufacturers.</li>
+<li><strong>Anti-lag strategies:</strong> Aggressive engine mapping to maintain exhaust flow through corners even when throttle lifts — accepted for F1 levels of fuel consumption but potentially changing the sound character further.</li>
+</ul>
+
+<p>None of these solutions are as elegant as the MGU-H. This is the engineering tradeoff the regulations accept in exchange for lower cost and simpler supplier entry barriers.</p>
+
+<h2>New Manufacturers: Audi and Ford</h2>
+<p>The 2026 regulations were explicitly designed to attract new engine manufacturers:</p>
+<ul>
+<li><strong>Audi</strong> is entering as a full constructor, taking over the former Alfa Romeo/Sauber entry. Their power unit program started from scratch targeting 2026.</li>
+<li><strong>Ford</strong> is returning as a partner with Red Bull Powertrains. Not a full manufacturer entry, but branding and engineering collaboration on what will still be a Red Bull-designed unit.</li>
+<li><strong>Honda</strong> returned to a full factory commitment (with Aston Martin) specifically because 2026 removes the MGU-H, which had plagued their previous return in 2015–2021.</li>
+</ul>
+
+<h2>Active Aerodynamics and Power Unit Interaction</h2>
+<p>The 2026 power unit doesn't exist in isolation. The new regulations also introduce manual override active aerodynamics (replacing DRS). On the straights, the car's front and rear wings flatten to dramatically reduce drag — this is where the electrical boost becomes critical.</p>
+
+<p>The "manual override" system is designed so that in low-drag straight-line mode, the car is less stable aerodynamically. The ERS provides the acceleration surge during this window. The result is a power unit design that has to manage thermal loads and deployment rates synchronized with aero state — a systems integration challenge that is genuinely new for F1 engineering.</p>
+
+<h2>What It Means for Competition</h2>
+<p>Historical precedent from 2014 is instructive. When a new power unit formula arrives, the manufacturer that best solves the novel engineering problems wins — often for years. Mercedes understood the 2014 formula earlier and better, and that translated into eight consecutive Constructors' Championships.</p>
+
+<p>2026 is a reset. Every team starts with limited real-world data. The MGU-H's removal eliminates the most hard-to-master component, potentially leveling the field — or creating a new hierarchy based on whoever best manages the tripled MGU-K output and its thermal implications.</p>
+
+<p>The early signs from bench testing (what teams have disclosed publicly) suggest that battery thermal management and ERS deployment mapping will be the differentiating factors. Teams that understand how to put down 350kW of electrical power without destroying tires or batteries will have a significant structural advantage.</p>
+
+<p>We're watching, in real time, the reinvention of the most advanced internal combustion system ever built for motorsport. Whether the 2026 power unit ends up being remembered as the turning point toward relevance or the moment F1 lost its soul depends on who you ask — and what happens on the racetrack.</p>
+</body>
+</html>

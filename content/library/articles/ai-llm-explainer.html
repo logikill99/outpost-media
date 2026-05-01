@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Large Language Models — How They Actually Work — Outpost Library</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { background: #0a0a0a; color: #e8e8e8; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 16px; line-height: 1.75; margin: 0; padding: 0; }
+    .container { max-width: 800px; margin: 0 auto; padding: 24px 20px 60px; }
+    .back-link { display: inline-block; color: #ff8700; text-decoration: none; font-size: 14px; margin-bottom: 24px; padding: 6px 12px; border: 1px solid #ff8700; border-radius: 4px; }
+    .back-link:hover { background: #ff870020; }
+    .meta { color: #888; font-size: 14px; margin-bottom: 32px; }
+    h1 { color: #fff; font-size: 2em; margin: 0 0 12px; border-bottom: 2px solid #e10600; padding-bottom: 12px; }
+    h2 { color: #e10600; font-size: 1.4em; margin: 40px 0 16px; border-bottom: 1px solid #222; padding-bottom: 8px; }
+    h3 { color: #ff8700; font-size: 1.15em; margin: 28px 0 10px; }
+    p { margin: 0 0 18px; }
+    a { color: #ff8700; }
+    .callout { background: #111; border-left: 3px solid #ff8700; padding: 16px 20px; margin: 24px 0; border-radius: 0 4px 4px 0; }
+    .callout strong { color: #ff8700; }
+    code { font-family: monospace; background: #1a1a1a; padding: 2px 6px; border-radius: 3px; font-size: 0.9em; }
+    .code-block { background: #111; border: 1px solid #333; border-radius: 6px; padding: 16px; margin: 16px 0; font-family: monospace; font-size: 14px; overflow-x: auto; line-height: 1.5; }
+    ul, ol { margin: 0 0 18px; padding-left: 28px; }
+    li { margin-bottom: 6px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/library" class="back-link">← Library</a>
+    <h1>Large Language Models — How They Actually Work</h1>
+    <div class="meta">Category: AI/ML · Reading time: ~12 min · Written for Outpost</div>
+
+    <p>You've been using these things for years now. Maybe you've built applications on top of them. But do you actually know what's happening under the hood when you prompt an LLM? This is the honest technical explainer — written for someone who can read code but hasn't necessarily studied ML.</p>
+
+    <h2>Start Here: What a Neural Network Is</h2>
+    <p>A neural network is a function that takes numbers in and produces numbers out. That's the whole thing. The "neural" part is a historical marketing term that gestures vaguely at neurons, but what's actually happening is: stacked matrix multiplications, with non-linear functions (activation functions) in between.</p>
+
+    <p>The simplest neural network, a single layer, does this:</p>
+    <div class="code-block">output = activation(weights × input + bias)</div>
+
+    <p>Stack dozens or hundreds of these layers with learned weights, and you have a "deep" neural network. The weights are the parameters. A model with "70 billion parameters" has 70 billion floating point numbers that define its behavior. Training is the process of finding the right values for all those numbers.</p>
+
+    <h3>How Training Works (the Essentials)</h3>
+    <p>You show the network an input, it produces an output, you compare that output to what you wanted (using a loss function), and you use calculus (backpropagation) to figure out how to adjust each weight to make the output closer to correct. Do this billions of times on enormous datasets and the weights converge to something useful.</p>
+
+    <p>This sounds almost too simple to produce intelligent behavior. It is, in fact, almost too simple — and yet it works spectacularly, for reasons that are still not fully understood even by the researchers building these systems.</p>
+
+    <h2>Transformers and the Attention Mechanism</h2>
+    <p>LLMs use a specific architecture called the Transformer, introduced in the 2017 paper "Attention is All You Need" (Vaswani et al., Google Brain). Before Transformers, language models used recurrent networks (RNNs/LSTMs) that processed text one token at a time, left to right. Transformers process all tokens simultaneously and use a mechanism called <strong>attention</strong> to relate each token to every other token in the context.</p>
+
+    <h3>Tokens, Not Words</h3>
+    <p>LLMs don't read words or characters — they read tokens. A token is roughly 3–4 characters of typical English text, but this varies significantly. "Transformer" might be one token. "Antidisestablishmentarianism" might be several. Common words are usually one token; rare words get split up. The model's "vocabulary" is typically 32,000–100,000+ tokens.</p>
+
+    <h3>Attention: The Key Insight</h3>
+    <p>Attention is the mechanism that lets a model figure out which parts of the input are relevant to each other. When processing the word "it" in "The trophy didn't fit in the suitcase because it was too big," attention lets the model learn that "it" relates to "trophy" (not "suitcase").</p>
+
+    <p>Mathematically, attention computes a weighted sum over "values" (vectors representing each token), where the weights come from comparing "queries" (what am I looking for?) to "keys" (what does each token represent?). The formula looks like:</p>
+    <div class="code-block">Attention(Q, K, V) = softmax(QK<sup>T</sup> / √d_k) × V</div>
+
+    <p>Multi-head attention runs this in parallel multiple times with different learned projections, allowing the model to attend to different "aspects" of relationships simultaneously. GPT-4 has 96 attention heads per layer. Each head can specialize in different syntactic or semantic relationships.</p>
+
+    <h3>The Full Transformer Stack</h3>
+    <p>A Transformer language model is essentially:</p>
+    <ol>
+      <li>Token embedding (map token IDs to high-dimensional vectors)</li>
+      <li>Positional encoding (add information about where in the sequence each token is)</li>
+      <li>N × transformer blocks, each containing:
+        <ul>
+          <li>Multi-head self-attention</li>
+          <li>Feed-forward network (two linear layers with nonlinearity)</li>
+          <li>Layer normalization</li>
+          <li>Residual connections</li>
+        </ul>
+      </li>
+      <li>Final linear layer + softmax → probability distribution over vocabulary</li>
+    </ol>
+    <p>The model predicts the probability of each token in the vocabulary being the "next" token. That's it. The entire apparent intelligence of a system like GPT-4 emerges from predicting what token comes next, trained on enough text at enough scale.</p>
+
+    <h2>Training on Text Data</h2>
+    <p>The base training for modern LLMs uses a massive corpus of text from the internet, books, code repositories, scientific papers, and more. We're talking petabytes of text. Common Crawl (a web scrape updated monthly) is a primary source. Books corpora. GitHub. Wikipedia. Academic papers. The data is filtered, deduplicated, and quality-scored, but at the end of the day it's mostly "a large chunk of everything humans have written in digital form."</p>
+
+    <p>The training objective is simple: predict the next token. Given a trillion tokens of text as training data, and a large enough model, the model has to learn something about language, facts, reasoning, and structure to do this accurately. The representation of all that implicit knowledge lives in the weights.</p>
+
+    <h3>Compute and Scale</h3>
+    <p>The "bitter lesson" of ML, attributed to Richard Sutton, is that general methods that scale with compute beat clever specialized methods. This has proven true with LLMs. Scaling laws (Kaplan et al., 2020; Hoffmann et al., 2022 "Chinchilla") showed that model performance improves predictably as you increase model size, training data, and compute — following power laws.</p>
+
+    <p>GPT-3 (2020): 175B parameters, ~45TB of text, ~3,640 petaflop-days of compute. State-of-the-art models today are significantly larger and have consumed orders of magnitude more compute. Training a frontier LLM costs tens to hundreds of millions of dollars in cloud compute.</p>
+
+    <h2>Emergent Capabilities</h2>
+    <p>One of the genuinely strange phenomena in LLM scaling is emergence — capabilities that appear relatively suddenly at certain model scales, not gradually. A model at 10B parameters can't do multi-step arithmetic reliably. A model at 100B+ parameters can. The capability appeared, but it wasn't explicitly trained for.</p>
+
+    <p>Current understanding: emergent capabilities appear when the model has enough capacity to implicitly form internal representations sophisticated enough to support the capability. The word "emerges" is sometimes overloaded — these aren't magical capabilities appearing from nowhere, they're capabilities that require a certain level of representational complexity to be useful, and models below that threshold appear to not have them.</p>
+
+    <p>Other emergent capabilities observed at scale: chain-of-thought reasoning, code generation, translation between many language pairs, few-shot learning from examples in the prompt. These weren't directly trained for — they emerged from predicting text at scale.</p>
+
+    <h2>RLHF — How Models Get "Good"</h2>
+    <p>A base language model trained on internet text will produce outputs that statistically resemble that training data. This includes harmful content, incorrect information presented confidently, and generally outputs that aren't actually useful for human interaction. The solution is Reinforcement Learning from Human Feedback (RLHF).</p>
+
+    <p>The process (simplified):</p>
+    <ol>
+      <li><strong>Supervised fine-tuning:</strong> Show the model examples of good responses, written by humans. Fine-tune on these.</li>
+      <li><strong>Reward model training:</strong> Have humans compare pairs of outputs and rate which is better. Train a "reward model" to predict these human preferences.</li>
+      <li><strong>RL optimization:</strong> Use the reward model as a signal to further fine-tune the language model via reinforcement learning (specifically PPO, typically). The model learns to produce outputs that the reward model rates highly.</li>
+    </ol>
+
+    <p>RLHF is why ChatGPT or Claude seems helpful, harmless, and honest compared to a raw language model. It's also why models sometimes refuse requests — the RLHF training included negative rewards for certain types of outputs. The tradeoffs in RLHF are non-trivial: optimizing too hard against the reward model can produce models that are sycophantic, or that have lost capability in some areas.</p>
+
+    <p>More recent approaches: DPO (Direct Preference Optimization) removes the explicit reward model. Constitutional AI (Anthropic) adds rule-based self-critique in the loop. The basic idea of human feedback shaping model behavior is consistent across these variants.</p>
+
+    <h2>How Inference Works</h2>
+    <p>When you prompt a model, here's what actually happens:</p>
+
+    <ol>
+      <li>Your text is tokenized into a sequence of integer IDs</li>
+      <li>These tokens are embedded into vectors</li>
+      <li>The vectors pass through all N transformer blocks (forward pass)</li>
+      <li>The output layer produces a probability distribution over the vocabulary</li>
+      <li>A token is sampled from this distribution (or the highest-probability token is selected — this is "greedy" decoding)</li>
+      <li>That token is appended to the input and the process repeats</li>
+    </ol>
+
+    <p>Each forward pass costs roughly O(N) in compute where N is context length, because attention has to relate every token to every other token. This is why longer contexts are significantly more expensive. A 128K context window costs much more per token than a 4K context window.</p>
+
+    <p>Modern inference systems use KV-cache: the "key" and "value" matrices computed during attention for past tokens are cached and reused, so each new token only requires computing attention for the new position against cached past positions. This dramatically reduces the per-token cost for long generations.</p>
+
+    <p>Parameters are stored in VRAM. A 70B parameter model in float16 requires ~140GB of VRAM minimum. Quantization (reducing precision to int8 or int4) can halve or quarter this at some quality cost. Running LLaMA 3 70B on a MacBook Pro M4 Max (128GB unified memory) is feasible with 4-bit quantization — this is wild compared to 5 years ago.</p>
+
+    <h2>Current Capabilities and Limitations</h2>
+
+    <h3>What LLMs Are Genuinely Good At</h3>
+    <ul>
+      <li>Code generation, review, and explanation — often exceeds junior developer ability</li>
+      <li>Synthesis and summarization of complex documents</li>
+      <li>Translation, including low-resource language pairs that pre-LLM systems were weak on</li>
+      <li>Structured information extraction from unstructured text</li>
+      <li>Conversational reasoning across many domains</li>
+      <li>Instruction following with complex, multi-step requirements</li>
+    </ul>
+
+    <h3>What LLMs Still Get Wrong</h3>
+    <ul>
+      <li><strong>Hallucination:</strong> Producing confident, fluent, plausible-sounding text that is factually incorrect. This is a fundamental property of autoregressive generation, not a bug to be patched.</li>
+      <li><strong>Arithmetic and formal reasoning:</strong> Getting better with tool use (code interpreter), but native arithmetic is unreliable for complex calculations</li>
+      <li><strong>Long-range consistency:</strong> Very long documents still expose context degradation — the model "forgets" (in a sense) early content</li>
+      <li><strong>Reasoning about novel situations:</strong> Pattern-matching covers enormous ground but novel genuine reasoning problems can fail in unexpected ways</li>
+      <li><strong>Knowledge cutoff:</strong> Training data has a cutoff date. The model doesn't know what happened last week unless told via retrieval or context</li>
+    </ul>
+
+    <p>The line between "impressive emergent reasoning" and "sophisticated pattern matching over training data" is genuinely contested, philosophically and empirically. The practical upshot: treat LLM outputs as a smart first draft, not as ground truth, particularly for factual claims about specific events or numerical calculations.</p>
+
+    <p>What we've built is extraordinary. What it actually is — whether it "understands" in any meaningful sense — remains one of the most interesting open questions in science.</p>
+  </div>
+</body>
+</html>

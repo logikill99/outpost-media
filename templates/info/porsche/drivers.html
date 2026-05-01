@@ -1,0 +1,196 @@
+{% extends "base.html" %}
+{% block title %}Porsche Carrera Cup NA — Drivers 2026{% endblock %}
+{% block content %}
+<div x-data="porscheDriverApp()" x-init="init()">
+
+  <div class="page-header">
+    <h1 class="page-title">👤 PORSCHE CARRERA CUP NA — DRIVERS</h1>
+    <p class="muted">{{ drivers|length }} drivers · Pro · Pro-Am · Masters</p>
+  </div>
+
+  <div class="filter-bar">
+    <input type="search" x-model="search" placeholder="Search driver or team…" class="search-input" autocomplete="off">
+    <div class="team-filters">
+      <button class="filter-btn" :class="{active: classFilter===''}" @click="classFilter=''">All Classes</button>
+      {% set classes = drivers|map(attribute='class')|unique|list %}
+      {% for cls in classes %}
+      <button class="filter-btn" :class="{active: classFilter==='{{ cls }}'}" @click="classFilter='{{ cls }}'">{{ cls }}</button>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="driver-grid">
+    {% for driver in drivers %}
+    <div class="driver-card"
+         x-show="matchesFilter('{{ driver.name }}', '{{ driver.team }}', '{{ driver.class }}')"
+         @click="openModal({{ loop.index0 }})"
+         style="--team-color: {{ driver.teamColor }};">
+      <div class="driver-info">
+        <div class="driver-name">{{ driver.name }}</div>
+        <div class="driver-team" style="color: {{ driver.teamColor }}">{{ driver.team }}</div>
+        <div class="driver-nat">{{ driver.flag }} {{ driver.nationality }} · <span class="class-pill">{{ driver.class }}</span></div>
+      </div>
+      <div class="driver-stats-mini">
+        <span title="PCCNA Wins">🏆 {{ driver.stats.wins }}</span>
+        {% if driver.stats.championships > 0 %}
+        <span class="champ-badge">{{ driver.stats.championships }}× Champ</span>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- Driver detail modal -->
+  <div class="modal-backdrop" x-show="modalOpen" @click.self="modalOpen=false" x-transition>
+    <div class="modal-card" x-show="modalOpen" x-transition>
+      <button class="modal-close" @click="modalOpen=false">✕</button>
+      <template x-if="selected">
+        <div>
+          <div class="modal-header" :style="'border-color:' + selected.teamColor">
+            <div>
+              <h2 class="modal-name" x-text="selected.name"></h2>
+              <div class="modal-team" :style="'color:' + selected.teamColor" x-text="selected.team"></div>
+              <div class="modal-nat">
+                <span x-text="selected.flag"></span>
+                <span x-text="selected.nationality"></span>
+                · <span class="class-pill" x-text="selected.class"></span>
+              </div>
+            </div>
+          </div>
+
+          <template x-if="selectedStanding">
+            <div class="modal-standing">
+              <div class="modal-standing-row">
+                <span class="modal-standing-label" x-text="'2026 ' + selected.class + ' class'"></span>
+                <span class="modal-standing-pos" x-text="'P' + selectedStanding.position"></span>
+                <span class="modal-standing-pts" x-text="selectedStanding.total_points + ' pts'"></span>
+              </div>
+            </div>
+          </template>
+
+          <h4 class="modal-section-title">PCCNA Career Stats</h4>
+          <div class="modal-stats">
+            <div class="stat-box">
+              <div class="stat-val" x-text="selected.stats.wins"></div>
+              <div class="stat-lbl">Wins</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-val" x-text="selected.stats.championships || '0'"></div>
+              <div class="stat-lbl">Titles</div>
+            </div>
+          </div>
+
+          <p class="modal-bio" x-text="selected.bio"></p>
+
+          <h4 class="modal-section-title">📊 2026 Race-by-Race</h4>
+          <table class="results-table results-table-mini" x-show="selectedResults && selectedResults.length">
+            <thead>
+              <tr><th>Event</th><th>Session</th><th class="num">Pos</th><th class="num">Laps</th></tr>
+            </thead>
+            <tbody>
+              <template x-for="r in selectedResults" :key="r.event + '-' + r.session">
+                <tr>
+                  <td x-text="r.event"></td>
+                  <td><span class="session-badge" x-text="r.session"></span></td>
+                  <td class="num pts" x-text="r.position || '—'"></td>
+                  <td class="num muted" x-text="r.laps || ''"></td>
+                </tr>
+              </template>
+            </tbody>
+          </table>
+          <p class="stub-text" x-show="!(selectedResults && selectedResults.length)">No completed PCCNA sessions yet for this driver in 2026.</p>
+        </div>
+      </template>
+    </div>
+  </div>
+
+</div>
+
+<style>
+.class-pill { background:var(--bg); border:1px solid var(--border); padding:1px 6px; border-radius:3px; font-size:10px; text-transform:uppercase; letter-spacing:.5px; }
+</style>
+
+<p class="back-link"><a href="/info">← Back to Race Info</a></p>
+{% endblock %}
+
+{% block scripts %}
+<script>
+const PORSCHE_DRIVERS = {{ drivers | tojson }};
+const PORSCHE_STANDINGS = {{ standings | tojson }};
+const PORSCHE_RESULTS = {{ results | tojson }};
+
+function nameMatches(driverName, candidate) {
+  if (!candidate) return false;
+  const dn = driverName.toLowerCase();
+  const cn = candidate.toLowerCase();
+  if (cn === dn) return true;
+  // Driver name may appear inside a co-driver list ("Andrew Chinnici, John Capestro-Dubets")
+  return cn.split(',').map(s => s.trim()).some(p => p === dn) || cn.includes(dn);
+}
+
+function findPorscheStanding(driverName, klass) {
+  for (const group of (PORSCHE_STANDINGS.standings || [])) {
+    if (group.class !== klass) continue;
+    const hit = (group.standings || []).find(s => nameMatches(driverName, s.driver));
+    if (hit) return hit;
+  }
+  return null;
+}
+
+function buildPorscheHistory(driverName) {
+  const out = [];
+  for (const ev of (PORSCHE_RESULTS || [])) {
+    const evName = (ev.event || '').replace(/^\d+_/, '');
+    for (const sess of (ev.sessions || [])) {
+      const hit = (sess.results || []).find(r => nameMatches(driverName, r.drivers));
+      if (hit) {
+        out.push({
+          event: evName,
+          session: (sess.session_name || '').replace(/^\d+_/, '').replace(/^[\d_]+/, ''),
+          position: hit.position,
+          laps: hit.laps
+        });
+      }
+    }
+  }
+  return out;
+}
+
+function porscheDriverApp() {
+  return {
+    search: '',
+    classFilter: '',
+    modalOpen: false,
+    selected: null,
+    selectedStanding: null,
+    selectedResults: [],
+    init() {},
+    matchesFilter(name, team, cls) {
+      const q = this.search.toLowerCase();
+      const matchSearch = !q || name.toLowerCase().includes(q) || team.toLowerCase().includes(q);
+      const matchClass = !this.classFilter || cls === this.classFilter;
+      return matchSearch && matchClass;
+    },
+    openModal(idx) {
+      this.selected = PORSCHE_DRIVERS[idx];
+      this.selectedStanding = findPorscheStanding(this.selected.name, this.selected.class);
+      this.selectedResults = buildPorscheHistory(this.selected.name);
+      this.modalOpen = true;
+    }
+  }
+}
+</script>
+
+<style>
+.results-table { width:100%; border-collapse:collapse; font-size:13px; background:var(--bg); border:1px solid var(--border); border-radius:6px; overflow:hidden; margin-top:8px; }
+.results-table th { text-align:left; padding:8px 10px; background:var(--surface-2); color:var(--text-muted); font-size:10px; text-transform:uppercase; letter-spacing:.5px; border-bottom:1px solid var(--border); font-weight:700; }
+.results-table td { padding:6px 10px; border-bottom:1px solid var(--border); }
+.results-table tr:last-child td { border-bottom:none; }
+.results-table .num { text-align:right; font-variant-numeric: tabular-nums; }
+.results-table .pos { color:var(--accent); font-weight:700; width:36px; }
+.results-table .pts { color:var(--text); font-weight:600; }
+.results-table-mini { font-size:12px; }
+.results-table-mini th, .results-table-mini td { padding:5px 8px; }
+.session-badge { display:inline-block; padding:1px 6px; font-size:10px; background:var(--surface-2); border:1px solid var(--border); border-radius:3px; letter-spacing:.5px; }
+</style>
+{% endblock %}

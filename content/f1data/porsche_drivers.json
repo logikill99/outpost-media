@@ -1,0 +1,212 @@
+[
+  {
+    "id": 1, "name": "Tyler Maxson", "team": "Topp Racing",
+    "class": "Pro", "nationality": "American", "flag": "🇺🇸",
+    "teamColor": "#9B59B6", "slug": "tyler-maxson",
+    "bio": "2026 Pro class championship leader and the man to beat coming into Miami. Maxson swept both Sebring races in dominant fashion and followed that with a pair of podiums at Long Beach. He is running out of room for his competition to recover ground.",
+    "stats": { "wins": 4, "championships": 0 }
+  },
+  {
+    "id": 2, "name": "Aaron Jeansonne", "team": "Kellymoss",
+    "class": "Pro", "nationality": "American", "flag": "🇺🇸",
+    "teamColor": "#FFC72C", "slug": "aaron-jeansonne",
+    "bio": "P2 in the 2026 standings, just five points behind Maxson. Jeansonne has been a model of consistency for the Kellymoss operation — two Long Beach victories keeping his title bid very much alive heading into the Miami weekend.",
+    "stats": { "wins": 2, "championships": 0 }
+  },
+  {
+    "id": 3, "name": "Callum Hedge", "team": "JDX Racing",
+    "class": "Pro", "nationality": "New Zealander", "flag": "🇳🇿",
+    "teamColor": "#0070C0", "slug": "callum-hedge",
+    "bio": "Kiwi racer with Carrera Cup Asia Pacific experience now competing for JDX Racing in the North American series. P3 in the championship through Long Beach — Hedge's consistent pace and clean racecraft keep him firmly in the title fight.",
+    "stats": { "wins": 0, "championships": 0 }
+  },
+  {
+    "id": 4, "name": "Tom Sargent", "team": "GMG Racing",
+    "class": "Pro", "nationality": "Australian", "flag": "🇦🇺",
+    "teamColor": "#27AE60", "slug": "tom-sargent",
+    "bio": "Australian Porsche factory driver who swept both Long Beach races in convincing style. Sargent missed Sebring but arrived at Long Beach and immediately went to the top. His two wins put him fourth in the championship — a Miami hat-trick would shake everything up.",
+    "stats": { "wins": 2, "championships": 0 }
+  },
+  {
+    "id": 5, "name": "Cole Kleck", "team": "Topp Racing",
+    "class": "Pro", "nationality": "American", "flag": "🇺🇸",
+    "teamColor": "#9B59B6", "slug": "cole-kleck",
+    "bio": "2026 Rookie class leader and Topp Racing teammate to Maxson. Kleck is learning the series fast — multiple top-five finishes have him fifth in Pro standings and comfortably leading the Rookie sub-championship.",
+    "stats": { "wins": 0, "championships": 0 }
+  },
+  {
+    "id": 6, "name": "Jared Thomas", "team": "JTR Motorsports Engineering",
+    "class": "Pro", "nationality": "American", "flag": "🇺🇸",
+    "teamColor": "#2980B9", "slug": "jared-thomas",
+    "bio": "JTR Engineering's lead Pro driver and Sebring race-one runner-up. Thomas has the pace to run at the front — a sixth-place points standing understates his raw speed over a single lap.",
+    "stats": { "wins": 0, "championships": 0 }
+  },
+  {
+    "id": 7, "name": "Connor Bloum", "team": "JDX Racing",
+    "class": "Pro", "nationality": "American", "flag": "🇺🇸",
+    "teamColor": "#0070C0", "slug": "connor-bloum",
+    "bio": "JDX Racing regular who has scored points at every round in 2026. Seventh in the championship through Long Beach — a consistent, no-drama campaign from a driver who rarely gives the team anything to worry about.",
+    "stats": { "wins": 0, "championships": 0 }
+  },
+  {
+    "id": 8, "name": "Paul Bocuse", "team": "Kellymoss",
+    "class": "Pro", "nationality": "French", "flag": "🇫🇷",
+    "teamColor": "#FFC72C", "slug": "paul-bocuse",
+    "bio": "French driver representing the Kellymoss multi-car effort. Bocuse brings European racing sensibility to the North American series — eighth in points, with a strong Sebring and a solid Long Beach weekend.",
+    "stats": { "wins": 0, "championships": 0 }
+  },
+  {
+    "id": 9, "name": "John Capestro-Dubets", "team": "GMG Racing",
+    "class": "Pro", "nationality": "American", "flag": "🇺🇸",
+    "teamColor": "#27AE60", "slug": "john-capestro-dubets",
+    "bio": "Known throughout the paddock as JCD, Capestro-Dubets is a well-traveled GT driver who mixes PCCNA with other IMSA programs. Ninth in the championship with solid finishes across both rounds.",
+    "stats": { "wins": 0, "championships": 0 }
+  },
+  {
+    "id": 10, "name": "Janne Stiak", "team": "ACI Motorsports",
+    "class": "Pro", "nationality": "German", "flag": "🇩🇪",
+    "teamColor": "#E74C3C", "slug": "janne-stiak",
+    "bio": "German racer competing under the large ACI Motorsports umbrella. Stiak's European GT background shows in his mechanical sympathy with the 992.2 Cup car — tenth in points after two rounds.",
+    "stats": { "wins": 0, "championships": 0 }
+  },
+  {
+    "id": 11, "name": "Sabre Cook", "team": "JDX Racing",
+    "class": "Pro", "nationality": "American", "flag": "🇺🇸",
+    "teamColor": "#0070C0", "slug": "sabre-cook",
+    "bio": "One of the most recognisable names in North American sports-car racing. Cook has been a consistent GT front-runner across multiple series — her JDX programme targets the Pro class title and she sits joint-tenth through Long Beach.",
+    "stats": { "wins": 0, "championships": 0 }
+  },
+  {
+    "id": 12, "name": "Alan Metni", "team": "Kellymoss",
+    "class": "Pro", "nationality": "American", "flag": "🇺🇸",
+    "teamColor": "#FFC72C", "slug": "alan-metni",
+    "bio": "Veteran PCCNA racer who has moved into the Kellymoss Pro program for 2026. Metni's deep experience with the series shows — twelfth in the Pro standings after two rounds with consistent points at every event.",
+    "stats": { "wins": 4, "championships": 0 }
+  },
+  {
+    "id": 13, "name": "Nikita Lastochkin", "team": "CSM - Reis Nichols",
+    "class": "Pro", "nationality": "Russian", "flag": "🇷🇺",
+    "teamColor": "#16A085", "slug": "nikita-lastochkin",
+    "bio": "Russian driver competing under the Czabok-Simpson Motorsport banner. Lastochkin has been a points finisher in both rounds and is steadily learning the PCCNA calendar after arriving from European competition.",
+    "stats": { "wins": 0, "championships": 0 }
+  },
+  {
+    "id": 14, "name": "John Jodoin", "team": "ACI Motorsports",
+    "class": "Pro", "nationality": "American", "flag": "🇺🇸",
+    "teamColor": "#E74C3C", "slug": "john-jodoin",
+    "bio": "ACI Motorsports Pro entry driving car #39. Jodoin has scored points at Sebring and missed Long Beach — strong Miami performance could shift him up the championship table significantly.",
+    "stats": { "wins": 0, "championships": 0 }
+  },
+  {
+    "id": 15, "name": "Alex Pratt", "team": "ACI Motorsports",
+    "class": "Pro", "nationality": "American", "flag": "🇺🇸",
+    "teamColor": "#E74C3C", "slug": "alex-pratt",
+    "bio": "ACI Motorsports Rookie class competitor in 2026. Pratt's development over the first two rounds has been notable — Miami will be a key moment to convert pace into points.",
+    "stats": { "wins": 0, "championships": 0 }
+  },
+  {
+    "id": 16, "name": "Ricco Shlaimoun", "team": "ACI Motorsports",
+    "class": "Pro", "nationality": "American", "flag": "🇺🇸",
+    "teamColor": "#E74C3C", "slug": "ricco-shlaimoun",
+    "bio": "Joined the ACI Motorsports line-up for Long Beach, stepping into the #18 Pro entry. A newcomer to the PCCNA paddock, Shlaimoun is expected to continue at Miami and beyond.",
+    "stats": { "wins": 0, "championships": 0 }
+  },
+  {
+    "id": 17, "name": "Patrick Mulcahy", "team": "ACI Motorsports",
+    "class": "Pro-Am", "nationality": "American", "flag": "🇺🇸",
+    "teamColor": "#E74C3C", "slug": "patrick-mulcahy",
+    "bio": "2026 Pro-Am class championship leader — and by a convincing margin. Mulcahy's consistency with ACI Motorsports has him at the top of the Pro-Am standings after both Sebring and Long Beach, with 112 points and clear air ahead.",
+    "stats": { "wins": 0, "championships": 0 }
+  },
+  {
+    "id": 18, "name": "James Sofronas", "team": "GMG Racing",
+    "class": "Pro-Am", "nationality": "American", "flag": "🇺🇸",
+    "teamColor": "#27AE60", "slug": "james-sofronas",
+    "bio": "GMG Racing founder and long-time Porsche gentleman driver. Sofronas has been competing in IMSA and Porsche programs for decades — his Pro-Am entry at Miami marks his home-market race for the Florida-rooted team.",
+    "stats": { "wins": 0, "championships": 1 }
+  },
+  {
+    "id": 19, "name": "Brady Behrman", "team": "van der Steur Racing",
+    "class": "Pro-Am", "nationality": "American", "flag": "🇺🇸",
+    "teamColor": "#8E44AD", "slug": "brady-behrman",
+    "bio": "Pro-Am competitor with the van der Steur Racing squad. Behrman has points on the board from Sebring and missed Long Beach — Miami is an important reset event for the championship push.",
+    "stats": { "wins": 0, "championships": 0 }
+  },
+  {
+    "id": 20, "name": "Josh Conley", "team": "Kellymoss",
+    "class": "Pro-Am", "nationality": "American", "flag": "🇺🇸",
+    "teamColor": "#FFC72C", "slug": "josh-conley",
+    "bio": "Pro-Am class driver embedded within the large Kellymoss operation. Conley has scored Pro-Am points at both rounds and sits second in the class standings behind Mulcahy.",
+    "stats": { "wins": 0, "championships": 0 }
+  },
+  {
+    "id": 21, "name": "Steve Wetterau", "team": "Kellymoss",
+    "class": "Pro-Am", "nationality": "American", "flag": "🇺🇸",
+    "teamColor": "#FFC72C", "slug": "steve-wetterau",
+    "bio": "Kellymoss Pro-Am entry who joined the grid at Long Beach. Wetterau's IMSA background made for a smooth integration into the Cup car — expect him to build on that as the season continues.",
+    "stats": { "wins": 0, "championships": 0 }
+  },
+  {
+    "id": 22, "name": "Marco Cirone", "team": "ACI Motorsports",
+    "class": "Masters", "nationality": "Canadian", "flag": "🇨🇦",
+    "teamColor": "#E74C3C", "slug": "marco-cirone",
+    "bio": "2026 Masters class championship leader. Cirone's disciplined, consistent approach has him at the top of the senior category standings — 99 Masters points after two rounds with no retirement from any race.",
+    "stats": { "wins": 0, "championships": 0 }
+  },
+  {
+    "id": 23, "name": "Rob Walker", "team": "JTR Motorsports Engineering",
+    "class": "Masters", "nationality": "American", "flag": "🇺🇸",
+    "teamColor": "#2980B9", "slug": "rob-walker",
+    "bio": "JTR Motorsports Masters class entry and P2 in the 2026 Masters standings. Walker's circuit knowledge and smooth driving style suit the senior category — he leads the JTR effort alongside Jared Thomas.",
+    "stats": { "wins": 0, "championships": 0 }
+  },
+  {
+    "id": 24, "name": "Scott Blind", "team": "Ruckus Racing",
+    "class": "Masters", "nationality": "American", "flag": "🇺🇸",
+    "teamColor": "#E67E22", "slug": "scott-blind",
+    "bio": "One of the few 2025 Miami winners returning in 2026 — Blind won the Masters class race at Miami last year. Ruckus Racing's programme is built around his Masters title campaign, and he arrives at Miami holding P3 in the standings.",
+    "stats": { "wins": 1, "championships": 0 }
+  },
+  {
+    "id": 25, "name": "Chris Bellomo", "team": "Kellymoss",
+    "class": "Masters", "nationality": "American", "flag": "🇺🇸",
+    "teamColor": "#FFC72C", "slug": "chris-bellomo",
+    "bio": "Kellymoss Masters class representative. Bellomo has completed every round in 2026 with clean, measured pace — fourth in the Masters standings heading into the Miami weekend.",
+    "stats": { "wins": 0, "championships": 0 }
+  },
+  {
+    "id": 26, "name": "Kevin Stadtlander", "team": "JDX Racing",
+    "class": "Masters", "nationality": "American", "flag": "🇺🇸",
+    "teamColor": "#0070C0", "slug": "kevin-stadtlander",
+    "bio": "JDX Racing's Masters class entry and 2026 Rookie class competitor in the senior category. Stadtlander sits fifth in the Masters standings through Long Beach — valuable track time at Miami will only improve his pace.",
+    "stats": { "wins": 0, "championships": 0 }
+  },
+  {
+    "id": 27, "name": "Richard Edge", "team": "ACI Motorsports",
+    "class": "Masters", "nationality": "American", "flag": "🇺🇸",
+    "teamColor": "#E74C3C", "slug": "richard-edge",
+    "bio": "Masters class ACI Motorsports driver who competed at Sebring before being replaced by Ricco Shlaimoun in the #18 entry for Long Beach. Edge's Sebring points keep him in the Masters standings.",
+    "stats": { "wins": 0, "championships": 0 }
+  },
+  {
+    "id": 28, "name": "John Goetz", "team": "Kellymoss",
+    "class": "Masters", "nationality": "American", "flag": "🇺🇸",
+    "teamColor": "#FFC72C", "slug": "john-goetz",
+    "bio": "Kellymoss Masters class driver competing in the veteran category. Goetz is a familiar face at PCCNA events — his Kellymoss programme provides excellent equipment for a tilt at the Masters title.",
+    "stats": { "wins": 0, "championships": 0 }
+  },
+  {
+    "id": 29, "name": "Alain Scalzo", "team": "Scalzo Autosport",
+    "class": "Masters", "nationality": "American", "flag": "🇺🇸",
+    "teamColor": "#7F8C8D", "slug": "alain-scalzo",
+    "bio": "Owner-driver of Scalzo Autosport running his own single-car Masters effort. Scalzo's self-run programme is a passion project in the truest gentleman-racer tradition — he knows every corner of his own car.",
+    "stats": { "wins": 0, "championships": 0 }
+  },
+  {
+    "id": 30, "name": "Kayden Kelly", "team": "Kellymoss",
+    "class": "Masters", "nationality": "American", "flag": "🇺🇸",
+    "teamColor": "#FFC72C", "slug": "kayden-kelly",
+    "bio": "Kellymoss Masters driver who has been a reliable finisher through the 2026 season. Kelly scored Masters points at Long Beach after a mechanical DNF at Sebring kept him off the grid there.",
+    "stats": { "wins": 0, "championships": 0 }
+  }
+]

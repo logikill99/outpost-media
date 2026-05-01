@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block title %}Outpost — Hub{% endblock %}
+
+{% block content %}
+<section class="hero" x-data="hubStatus()" x-init="load()">
+  <div class="hero-row">
+    <div>
+      <h1 class="hero-title">OUTPOST</h1>
+      <p class="hero-sub">Offline content server.</p>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num" x-text="connected"></span><span class="stat-label">Users in chat</span></div>
+      <div class="stat"><span class="stat-num" x-text="hits"></span><span class="stat-label">page hits</span></div>
+      <div class="stat"><span class="stat-num" x-text="uptime"></span><span class="stat-label">uptime</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="grid grid-cards">
+  <a class="card card-link" href="/movies">
+    <div class="card-icon">🎬</div>
+    <h3>Movies</h3>
+    <p>Pre-loaded library. Stream offline.</p>
+  </a>
+  <a class="card card-link" href="/games">
+    <div class="card-icon">🎮</div>
+    <h3>Games</h3>
+    <p>2048, Chess, Sudoku, Snake, F1 Wordle.</p>
+  </a>
+  <a class="card card-link" href="/f1/">
+    <div class="card-icon">🏎️</div>
+    <h3>F1 Info</h3>
+    <p>Drivers, teams, schedule, track guide.</p>
+  </a>
+  <a class="card card-link" href="/library">
+    <div class="card-icon">📚</div>
+    <h3>Library</h3>
+    <p>Books, articles, motorsport reads.</p>
+  </a>
+  <a class="card card-link" href="/chat">
+    <div class="card-icon">💬</div>
+    <h3>Chat Room</h3>
+    <p>Pit Wall + CTF channels. Real-time.</p>
+  </a>
+  <a class="card card-link" href="/ctf/">
+    <div class="card-icon">🚩</div>
+    <h3>CTF Challenge</h3>
+    <p>Six flags. Top of leaderboard wins.</p>
+  </a>
+  <a class="card card-link" href="/about">
+    <div class="card-icon">📖</div>
+    <h3>About</h3>
+    <p>What this is, how it works, who made it.</p>
+  </a>
+</section>
+
+<!-- CTF #1: Welcome to the Paddock — flag in source -->
+<!-- FLAG{view_source_revealed_the_pit_lane} -->
+{% endblock %}
+
+{% block scripts %}
+<script>
+function hubStatus(){
+  return {
+    connected: '–',
+    hits: '–',
+    uptime: '–',
+    fmt(s){ if(!s) return '0s'; const m=Math.floor(s/60), h=Math.floor(m/60); if(h) return h+'h '+(m%60)+'m'; if(m) return m+'m'; return s+'s'; },
+    fmtHits(n){ if(n >= 1000) return (n/1000).toFixed(1)+'k'; return String(n); },
+    load(){
+      fetch('/api/status').then(r=>r.json()).then(d=>{
+        this.connected = d.connected_clients;
+        this.hits = this.fmtHits(d.page_hits || 0);
+        this.uptime = this.fmt(d.uptime_seconds);
+      }).catch(()=>{});
+      setInterval(()=>this.load(), 10000);
+    }
+  }
+}
+</script>
+{% endblock %}

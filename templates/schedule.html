@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block title %}Outpost — Schedule{% endblock %}
+{% block content %}
+<div x-data="scheduleApp()" x-init="init()">
+
+  <div class="page-header">
+    <h1 class="page-title">📅 WEEKEND SCHEDULE</h1>
+    <p class="muted accent">{{ schedule.event }}</p>
+    <div class="sprint-badge">⚡ SPRINT WEEKEND — {{ schedule.format }}</div>
+    <p class="muted small">{{ schedule.note }}</p>
+  </div>
+
+  <div class="day-tabs">
+    {% for day in schedule.days %}
+    <button class="day-tab" :class="{active: activeDay==='{{ day.day }}'}" @click="activeDay='{{ day.day }}'">
+      <span class="day-name">{{ day.day }}</span>
+      <span class="day-date">{{ day.date }}</span>
+    </button>
+    {% endfor %}
+  </div>
+
+  {% for day in schedule.days %}
+  <div x-show="activeDay==='{{ day.day }}'">
+    <div class="session-list">
+      {% for session in day.sessions %}
+      {% if session.category != 'gate' %}
+      <div class="session-item {{ session.category }} {% if session.highlight is defined and session.highlight %}session-highlight{% endif %}"
+           {% if session.description is defined %}
+           @click="toggle('{{ day.day }}-{{ loop.index }}')"
+           style="cursor:pointer"
+           {% endif %}>
+        <div class="session-time">{{ session.time }}</div>
+        <div class="session-body">
+          <div class="session-row">
+            <span class="session-series-badge series-{{ session.series|replace(' ','_')|lower }}">{{ session.series }}</span>
+            <span class="session-name {% if session.highlight is defined and session.highlight %}highlight-text{% endif %}">{{ session.event }}</span>
+            {% if session.description is defined %}<span class="expand-icon" :class="{'rotated': expanded['{{ day.day }}-{{ loop.index }}']}">›</span>{% endif %}
+          </div>
+          {% if session.description is defined %}
+          <div class="session-desc" x-show="expanded['{{ day.day }}-{{ loop.index }}']" x-transition>
+            {{ session.description }}
+            {% if session.series == 'F2' %}
+            <a href="/info/f2/general" class="inline-link">→ About Formula 2</a>
+            {% elif session.series == 'Porsche Carrera Cup' %}
+            <a href="/info/porsche/general" class="inline-link">→ About Porsche Carrera Cup</a>
+            {% elif session.series == 'McLaren Trophy' %}
+            <a href="/info/mclaren/general" class="inline-link">→ About McLaren Trophy</a>
+            {% endif %}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+
+    <details class="gate-times">
+      <summary>Gate times for {{ day.day }}</summary>
+      <div class="gate-list">
+        {% for session in day.sessions %}
+        {% if session.category == 'gate' %}
+        <div class="gate-item"><span>{{ session.time }}</span><span>{{ session.event }}</span></div>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </details>
+  </div>
+  {% endfor %}
+
+  <div class="schedule-footer">
+    <div>🏁 Race: <strong>{{ schedule.laps }} laps · {{ schedule.distance_km }} km</strong></div>
+    <div>📺 Watch: <strong>{{ schedule.broadcast }}</strong></div>
+    <div>📍 <strong>{{ schedule.venue }}, {{ schedule.location }}</strong></div>
+  </div>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function scheduleApp() {
+  return {
+    activeDay: '{{ active_day }}',
+    expanded: {},
+    init() {},
+    toggle(key) {
+      this.expanded[key] = !this.expanded[key];
+    }
+  }
+}
+</script>
+{% endblock %}

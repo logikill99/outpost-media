@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Understanding F1 Team Radio — Outpost Library</title>
+<style>
+body{background:#0a0a0a;color:#e0e0e0;font-family:system-ui,sans-serif;max-width:800px;margin:0 auto;padding:16px;line-height:1.7}
+h1,h2,h3{color:#e10600}
+a{color:#ff8700}
+.back{display:inline-block;margin-bottom:12px;color:#ff8700;font-size:13px;text-decoration:none}
+.meta{color:#999;font-size:14px;margin-bottom:24px;border-bottom:1px solid #222;padding-bottom:12px}
+.radio{background:#0d1117;border:1px solid #333;border-radius:4px;padding:12px 16px;margin:16px 0;font-family:monospace}
+.radio .speaker{color:#ff8700;font-size:12px;margin-bottom:4px}
+.radio .msg{color:#e0e0e0}
+table{border-collapse:collapse;width:100%;margin:16px 0}
+td,th{border:1px solid #333;padding:8px;font-size:13px;text-align:left}
+th{background:#111;color:#e10600}
+.callout{background:#111;border-left:4px solid #ff8700;padding:12px 16px;margin:20px 0;border-radius:0 4px 4px 0}
+</style>
+</head>
+<body>
+<a href="/library" class="back">← Library</a>
+<h1>Understanding F1 Team Radio</h1>
+<div class="meta">📖 ~8 min read &nbsp;|&nbsp; F1 Culture &nbsp;|&nbsp; Updated 2025</div>
+
+<p>F1 team radio is a window into the most time-pressured communication in professional motorsport. Engineers have about two seconds to deliver critical information to a driver navigating a corner at 280 km/h. The vocabulary that's evolved is precise, dense, and often bewildering if you're watching for the first time. Here's the full dictionary — with context.</p>
+
+<h2>Pit Stop Calls</h2>
+
+<table>
+<thead><tr><th>Phrase</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>"Box, box"</strong></td><td>Come in to the pits this lap. Repeated because communication can drop out. Comes from the German "Box" (pit box). The repetition ensures it's heard through cockpit noise.</td></tr>
+<tr><td><strong>"Stay out, stay out"</strong></td><td>Do NOT pit this lap. Often used when race control calls a safety car and the team wants the driver to stay out to maintain track position.</td></tr>
+<tr><td><strong>"We're going long"</strong></td><td>The pit stop plan has been extended — you're going more laps before stopping than originally planned.</td></tr>
+<tr><td><strong>"Pit window opens in [X]"</strong></td><td>The optimal pit stop window is X laps away. The driver can start planning their attack/defense around this.</td></tr>
+</tbody>
+</table>
+
+<h2>Pace and Tire Management</h2>
+
+<table>
+<thead><tr><th>Phrase</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>"Push, push, push" / "Attack, attack"</strong></td><td>Drive at maximum pace. Usually called when there's a gap to be closed quickly, a safety car is about to end, or a rival is vulnerable.</td></tr>
+<tr><td><strong>"Manage the tires"</strong></td><td>Back off, preserve the rubber. Often followed by specific sector targets.</td></tr>
+<tr><td><strong>"Lift and coast"</strong></td><td>Release the throttle early into a braking zone to save fuel or reduce brake temperature. The car is "coasting" off-throttle rather than fully on the brakes.</td></tr>
+<tr><td><strong>"Rich mix" / "Lean mix"</strong></td><td>Engine mixture setting. Rich = more fuel in the combustion, more power, more consumption. Lean = less fuel, lower power, longer range.</td></tr>
+<tr><td><strong>"Negative, negative"</strong></td><td>Back off. A doubled negative for clarity — "don't do what you're about to do."</td></tr>
+<tr><td><strong>"Delta positive" / "Delta negative"</strong></td><td>You're above (positive) or below (negative) your target pace. Under safety car conditions, "delta negative" means you're going too slow relative to the minimum required pace.</td></tr>
+</tbody>
+</table>
+
+<h2>Position and Strategy</h2>
+
+<table>
+<thead><tr><th>Phrase</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>"Undercut opportunity"</strong></td><td>Pitting now, getting fresh tires, and putting in fast laps will let you emerge ahead of the car you're currently behind when they eventually pit.</td></tr>
+<tr><td><strong>"Overcut"</strong></td><td>Staying out longer than the car ahead, building a tire offset. When they pit first on older tires, you stay out on tires that still have some heat in them — and you potentially emerge ahead after they service.</td></tr>
+<tr><td><strong>"We are checking" / "We are monitoring"</strong></td><td>The engineer is evaluating data but doesn't have a definitive answer yet. Buys time. Drivers hate this one.</td></tr>
+<tr><td><strong>"P[X]"</strong></td><td>Your current race position. "You are P4" means you're running fourth.</td></tr>
+<tr><td><strong>"Gap ahead is [X.X]"</strong></td><td>Time in seconds to the car in front.</td></tr>
+<tr><td><strong>"Gap behind is [X.X]"</strong></td><td>Time in seconds to the car behind.</td></tr>
+<tr><td><strong>"We have [X] laps of tire life"</strong></td><td>Engineers' estimate of how many more laps the current set can run competitively before degradation forces a stop or major pace loss.</td></tr>
+</tbody>
+</table>
+
+<h2>DRS and Overtaking</h2>
+
+<table>
+<thead><tr><th>Phrase</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>"DRS enabled"</strong></td><td>Race Control has opened the DRS zones. Now any car within 1 second at the detection point can use it.</td></tr>
+<tr><td><strong>"You have DRS"</strong></td><td>You are within 1 second of the car ahead at the detection point — your DRS is available to activate.</td></tr>
+<tr><td><strong>"He has DRS on you"</strong></td><td>The car behind is within 1 second. They can activate DRS. Be aware on the straight.</td></tr>
+<tr><td><strong>"Use the tools"</strong></td><td>Vague instruction to use KERS/ERS boost, DRS, or whatever performance advantage is available. Often used when engineers are giving discretion to the driver.</td></tr>
+</tbody>
+</table>
+
+<h2>Car and Technical Issues</h2>
+
+<table>
+<thead><tr><th>Phrase</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>"Brake balance [front/rear]"</strong></td><td>Instruction to adjust the brake balance — more front bias or more rear bias on braking. Dial adjustment in the cockpit.</td></tr>
+<tr><td><strong>"Engine mode X"</strong></td><td>Switch to a specific engine map. The modes are numbered and each team's numbering is different, but broadly: lower numbers = more conservation, higher numbers = more power/deployment.</td></tr>
+<tr><td><strong>"MGU-K to recover"</strong></td><td>Increase energy harvesting from the MGU-K (braking energy recovery). More harvest = more electrical energy available for deployment = more boost.</td></tr>
+<tr><td><strong>"Temperature warning"</strong></td><td>A component is overheating. Could be brakes, tires, oil, water, or electrical systems. Usually followed by a mitigation instruction.</td></tr>
+<tr><td><strong>"Retire the car"</strong></td><td>Come in and stop. Usually only said when there's a safety risk that can't be managed with continued racing.</td></tr>
+</tbody>
+</table>
+
+<h2>Safety Car and Race Control</h2>
+
+<table>
+<thead><tr><th>Phrase</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><strong>"Safety car deployed" / "VSC deployed"</strong></td><td>Safety car (full neutralization) or Virtual Safety Car (delta time mode) has been activated. Major strategy implications follow.</td></tr>
+<tr><td><strong>"Safety car in this lap"</strong></td><td>The safety car is going to come in at the end of this lap. Racing resumes next lap. Drivers sprint to close up, prepare for the restart.</td></tr>
+<tr><td><strong>"Lapped cars will be unlapping" / "Lapped cars may overtake"</strong></td><td>Cars that are one or more laps down are allowed to pass the safety car and unlap themselves. This clears the field for the restart.</td></tr>
+<tr><td><strong>"Yellow flag sector X"</strong></td><td>There's a yellow flag (danger) in a specific track sector. Slow down, no overtaking, be ready for debris or a recovery vehicle.</td></tr>
+</tbody>
+</table>
+
+<h2>Driver-Side Phrases</h2>
+<p>Most team radio we hear is engineer-to-driver, but the broadcast also picks up driver transmissions:</p>
+
+<div class="radio">
+<div class="speaker">DRIVER</div>
+<div class="msg">"Box, box, box" — Driver is requesting to pit (often when they feel tire degradation before the engineers call it)</div>
+</div>
+
+<div class="radio">
+<div class="speaker">DRIVER</div>
+<div class="msg">"The car feels great" / "The car is alive" — Positive handling feedback, usually on fresh tires</div>
+</div>
+
+<div class="radio">
+<div class="speaker">DRIVER</div>
+<div class="msg">"Graining" / "I'm getting graining" — Tire surface is picking up rubber chunks rather than wearing cleanly, causing loss of grip</div>
+</div>
+
+<div class="radio">
+<div class="speaker">DRIVER</div>
+<div class="msg">"Blistering" — Tire overheating, air pockets forming under the rubber surface, structural integrity compromised</div>
+</div>
+
+<h2>Famous Radio Moments</h2>
+
+<p><strong>"Not bad for a number two driver"</strong> — Mark Webber after overtaking Fernando Alonso at the 2012 British Grand Prix. A dig at Red Bull's team orders that had favored Vettel over him all season.</p>
+
+<p><strong>"Multi 21, Seb, Multi 21"</strong> — Red Bull race engineer Rocky (Simon Rennie) to Sebastian Vettel at the 2013 Malaysian Grand Prix. "Multi 21" was the code for Vettel to hold position behind Mark Webber. Vettel ignored it and passed Webber to win. The radio exchange played out in full on broadcast. A catastrophic team management moment.</p>
+
+<p><strong>"Fernando is faster than you"</strong> — Ferrari race engineer Rob Smedley to Felipe Massa at the 2010 German Grand Prix. Decoded by everyone immediately: team orders to let Alonso past. Illegal under regulations at the time, later clarified and re-legalized. The clearest example of coded team orders on broadcast radio.</p>
+
+<div class="radio">
+<div class="speaker">FERRARI → MASSA</div>
+<div class="msg">"Felipe, Fernando is faster than you... can you confirm you understand this message?"</div>
+</div>
+
+<p><strong>"This is Kimi Räikkönen. My name is Kimi Räikkönen and I want this information. Thank you."</strong> — Räikkönen to his McLaren pit wall, after they asked him to confirm his identity before delivering sensitive telemetry. He was not amused.</p>
+
+<p><strong>"Leave me alone, I know what I'm doing"</strong> — Räikkönen at 2012 Abu Dhabi GP, when his engineer tried to give him instructions while he was managing a tricky situation. Delivered with absolute iceman composure.</p>
+
+<div class="callout">
+<strong>The code language is real but shifting:</strong> As broadcasters get better at decoding team radio, teams shift their codes. What "multi 21" meant was obvious in retrospect but non-obvious in real time. Modern teams are more careful — which is why some transmissions sound deliberately vague. "We are checking" often means "we know the answer but we're not ready to say it on air yet."
+</div>
+
+<h2>Why It's Interesting</h2>
+<p>Team radio gives you the inside view on the gap between what's visible and what's actually happening. A driver maintaining position "easily" might have an engineer frantically managing brake temperature in their ear. A seemingly slow pit stop might be a team discovering a brake duct issue during the change. The radio bridges the gap between the camera and the reality — which is why the broadcast teams lean on it so heavily, and why fluency in its vocabulary is worth having.</p>
+</body>
+</html>

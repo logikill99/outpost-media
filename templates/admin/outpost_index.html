@@ -1,0 +1,17 @@
+{% extends "admin/master.html" %}
+{% block body %}
+<h1>Outpost Admin</h1>
+<p>Pi Zero 2 W · Event Server</p>
+<ul>
+  <li>Messages: <strong>{{ stats.messages }}</strong></li>
+  <li>Challenges: <strong>{{ stats.challenges }}</strong></li>
+  <li>Solves: <strong>{{ stats.solves }}</strong></li>
+  <li>Active announcements: <strong>{{ stats.announcements_active }}</strong></li>
+</ul>
+<p>
+  <a href="/admin/challenge/">Manage Challenges</a> ·
+  <a href="/admin/message/">Moderate Messages</a> ·
+  <a href="/admin/announcement/">Push Announcements</a> ·
+  <a href="/admin/solve/">Reset Leaderboard</a>
+</p>
+{% endblock %}

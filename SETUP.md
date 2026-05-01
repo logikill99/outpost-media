@@ -173,21 +173,16 @@ If you configured USB gadget mode in step 2, the Pi presents as a USB ethernet a
 
 ### On the Pi — configure a static IP for `usb0`
 
-Create `/etc/systemd/network/10-usb0.network`:
-
-```ini
-[Match]
-Name=usb0
-
-[Network]
-Address=10.55.55.2/24
-```
-
-Enable and start systemd-networkd:
+NetworkManager is already running on the Pi and manages `usb0`. Add a static connection with `nmcli`:
 
 ```bash
-sudo systemctl enable --now systemd-networkd
+sudo nmcli con add type ethernet ifname usb0 con-name usb-static ip4 10.55.55.2/24 gw4 10.55.55.1
+sudo nmcli con up usb-static
 ```
+
+This persists across reboots — NM will bring up `usb0` at `10.55.55.2` automatically.
+
+> **Note:** Do not also run `systemctl enable systemd-networkd` — that creates a conflict with NM and the interface ends up with no IP.
 
 ### On the host machine (fembox) — bring up the interface
 

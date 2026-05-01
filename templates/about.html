@@ -23,8 +23,7 @@
 
   <section class="about-section">
     <h2>Who made it</h2>
-    <p>Matthew Levin. Software engineer working on an AI team, amateur radio operator (Extra class, KR4HIF), Eagle Scout, F1 fan since roughly the Bahrain 2021 era. I built this mostly in the weeks leading up to the event with help from an AI assistant handling a lot of the data wrangling and template work.</p>
-    <p>It's a hobby project. There's no company, no product, no pitch.</p>
+    <p>A software engineer who's also an F1 fan. Built this as a personal project for the race. No company, no product, no pitch.</p>
   </section>
 
   <div class="about-toggle-bar">
@@ -47,7 +46,7 @@
       <p>Hardware is a Raspberry Pi Zero 2W (BCM2710A1, quad-core ARM Cortex-A53 at 1GHz, 512MB RAM). Single wlan0 interface running in AP mode via hostapd. DHCP and wildcard DNS served by dnsmasq, which resolves all queries to 10.0.0.1 so the captive portal fires reliably across iOS, Android, and Windows. Caddy on port 80 handles the reverse proxy and static file serving; it catches OS-specific captive portal probe URLs (/hotspot-detect.html, /generate_204, etc.) and redirects them to the portal page before Flask ever sees the request.</p>
       <p>The app itself is Flask with Flask-SocketIO and eventlet. SQLite via SQLAlchemy. Content data is a mix of pregenerated JSON (F1/F2/PCCNA standings and driver data) and pre-scraped Wikipedia HTML pages served offline. Frontend is Alpine.js with no build step. Video files are served directly by Caddy with range-request support for seek. SQLite has WAL mode enabled because the Pi Zero 2W's SD card write latency under concurrent SocketIO and CTF traffic is not great in journal mode.</p>
       <p>The CTF is six flag challenges seeded into SQLite at first boot. Flags are stored as SHA-256 hashes. Leaderboard is aggregated on read. The chat is SocketIO rooms persisted to SQLite with a 50-message history window. The whole thing was built in roughly two weeks of evenings with Claude Sonnet doing a lot of the data pipeline and template work while I handled architecture, deployment, and debugging.</p>
-      <p>Stack summary: Python 3.12 / Flask / Flask-SocketIO / SQLAlchemy / SQLite / Caddy / Alpine.js / hostapd / dnsmasq / Raspberry Pi OS Lite.</p>
+      <p>Stack summary: Python 3.13 / Flask / Flask-SocketIO / SQLAlchemy / SQLite / Caddy / Alpine.js / hostapd / dnsmasq / Raspberry Pi OS Lite.</p>
     </section>
   </div>
 
@@ -65,7 +64,7 @@
     <p>This is a personal hobby project made by an F1 fan for other F1 fans. It is not affiliated with, endorsed by, or associated with Formula 1, the FIA, Formula One Management, the Miami Grand Prix, Hard Rock Stadium, or any related organizations. The F1 data displayed here (standings, driver profiles, team info) is sourced from publicly available sources for informational purposes.</p>
     <p>All race and series information is provided as-is. Race data may be incomplete or contain inaccuracies. This server has no internet connection, so nothing here is live or official.</p>
     <p>Any media files on this server are used solely for private, noncommercial personal viewing in a closed local environment with no public distribution. No content is streamed to the internet or made available outside the immediate physical gathering. This use falls under personal use and does not constitute distribution, reproduction for commercial purposes, or public performance under applicable copyright law.</p>
-    <p>Connecting to this WiFi network is entirely voluntary. The server logs page hits and stores chat messages (which you type knowingly). It does not track device identifiers, browsing behavior, or personal data beyond what you explicitly provide (like a chat username). The CTF challenge is just for fun and the "prize" is bragging rights.</p>
+    <p>Connecting to this WiFi network is entirely voluntary. The server logs page hits and stores chat messages (which you type knowingly). It does not track device identifiers, browsing behavior, or personal data beyond what you explicitly provide (like a chat username). The CTF challenge is just for fun.</p>
     <p>By connecting, you accept that this is experimental software running on a $15 computer. It might go down. It might have bugs. Security was considered but not professionally audited. This is a fun project, not a hardened production system.</p>
     <p>No responsibility is taken for anything that could go wrong as a result of connecting to or using this server. Use it at your own discretion.</p>
   </section>

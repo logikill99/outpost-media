@@ -27,18 +27,18 @@
 
     # Video files served directly by Caddy (range/seek support)
     handle /media/* {
-        root * /home/outpost/outpost
+        root * /opt/outpost
         file_server
     }
 
     # Static assets — root must be the project dir, NOT the static subdir
     handle /static/* {
-        root * /home/outpost/outpost
+        root * /opt/outpost
         file_server
     }
 
     handle /content/* {
-        root * /home/outpost/outpost
+        root * /opt/outpost
         file_server
     }
 

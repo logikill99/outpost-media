@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# fieldday — first-run setup for Raspberry Pi Zero 2W (Raspberry Pi OS Bookworm/Bullseye).
+# outpost-media — first-run setup for Raspberry Pi Zero 2W (Debian Bookworm/Trixie).
 # Run as root from the project root: sudo bash scripts/setup.sh
 set -euo pipefail
 
@@ -8,19 +8,8 @@ if [[ "$(id -u)" -ne 0 ]]; then
   exit 1
 fi
 
-# Detect repo dir. Prefer /home/pi/fieldday, else fall back to invoking user's home.
-if [[ -d /home/pi/fieldday ]]; then
-  REPO_DIR=/home/pi/fieldday
-else
-  REAL_USER="${SUDO_USER:-$(id -un)}"
-  REAL_HOME="$(getent passwd "$REAL_USER" | cut -d: -f6)"
-  REPO_DIR="$REAL_HOME/fieldday"
-fi
-SOURCE_DIR="$(cd "$(dirname "$0")/.." && pwd)"
-if [[ "$SOURCE_DIR" != "$REPO_DIR" ]]; then
-  echo "Note: running from $SOURCE_DIR, configuring as $REPO_DIR"
-  REPO_DIR="$SOURCE_DIR"
-fi
+# Repo dir is always where this script lives (one level up from scripts/)
+REPO_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 
 echo "==> Updating apt and installing system packages"
 apt-get update
@@ -53,7 +42,7 @@ echo 'DAEMON_CONF="/etc/hostapd/hostapd.conf"' > /etc/default/hostapd
 
 echo "==> Installing dnsmasq config"
 mkdir -p /etc/dnsmasq.d
-install -m 644 "$REPO_DIR/config/dnsmasq.conf" /etc/dnsmasq.d/fieldday.conf
+install -m 644 "$REPO_DIR/config/dnsmasq.conf" /etc/dnsmasq.d/outpost.conf
 
 echo "==> Installing Caddyfile"
 mkdir -p /etc/caddy
@@ -62,17 +51,17 @@ chmod 644 /etc/caddy/Caddyfile
 
 echo "==> Telling NetworkManager to leave wlan0 alone"
 mkdir -p /etc/NetworkManager/conf.d
-cat > /etc/NetworkManager/conf.d/fieldday-unmanaged.conf <<'EOF'
+cat > /etc/NetworkManager/conf.d/outpost-unmanaged.conf <<'EOF'
 [keyfile]
 unmanaged-devices=interface-name:wlan0
 EOF
 
 echo "==> Writing systemd units"
 
-cat > /etc/systemd/system/fieldday-network.service <<EOF
+cat > /etc/systemd/system/outpost-network.service <<EOF
 [Unit]
-Description=fieldday — bring up wlan0 with static IP
-Before=hostapd.service dnsmasq.service fieldday.service
+Description=outpost — bring up wlan0 with static IP
+Before=hostapd.service dnsmasq.service outpost.service
 Wants=network.target
 After=network.target
 
@@ -85,11 +74,11 @@ RemainAfterExit=yes
 WantedBy=multi-user.target
 EOF
 
-cat > /etc/systemd/system/fieldday.service <<EOF
+cat > /etc/systemd/system/outpost.service <<EOF
 [Unit]
-Description=fieldday — Flask + SocketIO app
-After=fieldday-network.service
-Requires=fieldday-network.service
+Description=outpost — Flask + SocketIO app
+After=outpost-network.service
+Requires=outpost-network.service
 
 [Service]
 WorkingDirectory=$REPO_DIR
@@ -102,11 +91,11 @@ Environment=PYTHONUNBUFFERED=1
 WantedBy=multi-user.target
 EOF
 
-cat > /etc/systemd/system/fieldday-caddy.service <<EOF
+cat > /etc/systemd/system/outpost-caddy.service <<EOF
 [Unit]
-Description=fieldday — Caddy front
-After=fieldday.service
-Requires=fieldday.service
+Description=outpost — Caddy front
+After=outpost.service
+Requires=outpost.service
 
 [Service]
 ExecStart=/usr/bin/caddy run --config /etc/caddy/Caddyfile
@@ -120,7 +109,7 @@ EOF
 echo "==> Reloading systemd and enabling services"
 systemctl daemon-reload
 systemctl unmask hostapd
-systemctl enable fieldday-network.service fieldday.service fieldday-caddy.service hostapd.service dnsmasq.service
+systemctl enable outpost-network.service outpost.service outpost-caddy.service hostapd.service dnsmasq.service
 
 echo "==> Creating runtime directories"
 mkdir -p "$REPO_DIR/instance" "$REPO_DIR/media/videos"
@@ -135,8 +124,9 @@ if [[ ! -f "$REPO_DIR/.env" ]]; then
   echo
 fi
 
+echo
 echo "==> Setup complete"
 echo "    Repo dir:     $REPO_DIR"
-echo "    SSID:         (set in $REPO_DIR/config/hostapd.conf)"
-echo "    Reboot to bring up the AP and start serving:  sudo reboot"
-echo "    Then connect to the SSID and visit http://10.0.0.1/"
+echo "    SSID:         (set in config/hostapd.conf, installed to /etc/hostapd/hostapd.conf)"
+echo "    Edit your .env and reboot to bring up the AP and start serving."
+echo "    Connect to the SSID and visit http://10.0.0.1/"

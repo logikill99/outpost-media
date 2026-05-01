@@ -14,6 +14,11 @@ p.sub{color:#aaa;font-size:14px;margin-bottom:16px}
 p.blurb{color:#bbb;font-size:13px;margin-bottom:22px;line-height:1.6;text-align:left;background:#0d0d0d;border:1px solid #1e1e1e;border-radius:6px;padding:12px 14px}
 a.btn{display:block;background:#e10600;color:#fff;text-decoration:none;padding:14px 18px;border-radius:6px;font-weight:700;font-size:16px;letter-spacing:.5px}
 a.btn:active{background:#b80500}
+.divider{display:flex;align-items:center;gap:10px;margin:18px 0;color:#444;font-size:12px}
+.divider::before,.divider::after{content:'';flex:1;border-top:1px solid #222}
+.browser-tip{background:#0d0d0d;border:1px solid #1e1e1e;border-radius:6px;padding:12px 14px;text-align:left}
+.browser-tip p{color:#888;font-size:12px;margin-bottom:8px;line-height:1.5}
+.url-box{display:block;background:#161616;border:1px solid #2a2a2a;border-radius:4px;padding:8px 10px;color:#e10600;font-family:monospace;font-size:14px;text-decoration:none;text-align:center;letter-spacing:.3px}
 .foot{margin-top:18px;color:#777;font-size:12px}
 .foot b{color:#ff8700}
 </style>
@@ -24,6 +29,11 @@ a.btn:active{background:#b80500}
 <p class="sub">Local content server — no login, no payment</p>
 <p class="blurb">You're not being redirected to pay for WiFi. Someone brought a self-contained content server to the race. There's no internet here, but there are movies, F1 info, games, a live chat room, and a CTF challenge — all running offline on a small computer in a bag nearby. Free to use, nothing to sign up for.</p>
 <a class="btn" href="http://10.0.0.1/">Open Outpost →</a>
+<div class="divider">or open in your browser</div>
+<div class="browser-tip">
+<p>This popup doesn't have tabs or a proper URL bar. For a better experience, open Safari, Chrome, or any browser and go to:</p>
+<a class="url-box" href="http://10.0.0.1/">http://10.0.0.1</a>
+</div>
 <p class="foot">Movies · Games · F1 · CTF · Chat<br><b>All offline. No data collected.</b></p>
 </div>
 </body>

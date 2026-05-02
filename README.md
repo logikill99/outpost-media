@@ -52,37 +52,50 @@ ffmpeg -i input.mkv -vf scale=1280:720 -c:v libx264 -preset slow -crf 23 \
 
 ## Local development
 
-You don't need a Pi, hostapd, dnsmasq, or Caddy to work on the app. Flask serves everything directly and the full site is usable on localhost.
+You don't need a Pi, hostapd, dnsmasq, or Caddy to work on the app. Flask serves everything directly and the full site is usable on localhost. Nothing is installed to the system and nothing runs as a daemon — it's a foreground process you stop with `Ctrl+C`.
+
+**Requirements:** Python 3.12 is recommended. Newer versions (3.13+) may have compatibility issues with `eventlet`.
+
+### First-time setup
 
 ```bash
 git clone https://github.com/logikill99/outpost-media.git
 cd outpost-media
 
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
+python3.12 -m venv .venv
+.venv/bin/pip install --upgrade pip wheel
+.venv/bin/pip install -r requirements.txt
 
 cp .env.example .env
-# SECRET_KEY can be anything for local dev
-# ADMIN_PASSWORD is whatever you want
-# CTF flags can be any FLAG{...} strings
+# Any values work for local dev — SECRET_KEY, ADMIN_PASSWORD, and the
+# six CTF_FLAG_* values just need to be non-empty.
 ```
 
-Then just run it:
+### Run it
 
 ```bash
-python run.py
+./scripts/dev.sh
 ```
 
-Site is at `http://localhost:5000`. The SQLite database initializes automatically on first run and gets seeded with the CTF challenges from your `.env` flags.
+That's the one-command path: it activates `.venv`, loads `.env`, and starts the Flask + SocketIO app on `http://localhost:5000` (or whatever `PORT` you set in `.env`). `Ctrl+C` to stop.
 
-A few things behave differently locally vs on the Pi:
+> **macOS note:** Control Center / AirPlay Receiver listens on port 5000 by default. Either set `PORT=5001` in `.env`, or disable the AirPlay Receiver under System Settings → General → AirDrop & Handoff.
+
+If you'd rather run it manually:
+
+```bash
+.venv/bin/python run.py
+# or: source .venv/bin/activate && python run.py
+```
+
+The SQLite database (`instance/outpost.db`) initializes automatically on first run and gets seeded with the CTF challenges from your `.env` flags.
+
+### Differences from the Pi
+
 - **No captive portal** — navigate directly to `http://localhost:5000`
 - **No AP or DHCP** — the network stack (hostapd/dnsmasq) is Pi-only and irrelevant locally
 - **Caddy is optional** — Flask serves static files fine in dev. If you want to test video seek/range requests accurately, put Caddy in front, but it's not required
 - **Admin panel** is at `http://localhost:5000/admin`
-
-To stop it: `Ctrl+C`. Nothing runs on startup, nothing is installed to the system.
 
 ---
 

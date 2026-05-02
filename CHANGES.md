@@ -1,6 +1,6 @@
 # Open-source release prep — change summary
 
-This pass prepared fieldday for public release on GitHub. No Flask app logic was modified; changes are limited to compliance, configuration, documentation, and secrets hygiene.
+This pass prepared outpost-media for public release on GitHub. No Flask app logic was modified; changes are limited to compliance, configuration, documentation, and secrets hygiene.
 
 ## Files added
 
@@ -16,7 +16,7 @@ This pass prepared fieldday for public release on GitHub. No Flask app logic was
 - `app/__init__.py` — only the six hardcoded CTF flag strings in `_seed_initial_data` were swapped for `app.config["CTF_FLAGS"].get(slug, "FLAG{placeholder}")`. No other logic changed.
 - `config/hostapd.conf` — `ssid` set to `YourEventSSID`, `wpa_passphrase` set to `YourWiFiPassword` (placeholders for operators).
 - `ARCHITECTURE.md` — rewritten as a generic architecture doc covering network topology, data model, content pipeline, systemd deployment, and Pi Zero 2W constraints. All event-specific references removed.
-- `scripts/setup.sh` — rewritten. Detects repo dir, installs system packages, installs Caddy from the official apt repo, sets up the venv, places hostapd/dnsmasq/Caddy configs, writes the NetworkManager unmanaged drop-in, creates three systemd units (`fieldday-network`, `fieldday`, `fieldday-caddy`), enables services, creates runtime dirs, and warns on missing `.env`.
+- `scripts/setup.sh` — rewritten. Detects repo dir, installs system packages, installs Caddy from the official apt repo, sets up the venv, places hostapd/dnsmasq/Caddy configs, writes the NetworkManager unmanaged drop-in, creates three systemd units (`outpost-network`, `outpost`, `outpost-caddy`), enables services, creates runtime dirs, and warns on missing `.env`.
 - `requirements.txt` — `python-dotenv==1.0.1` added.
 
 ## Secrets hygiene

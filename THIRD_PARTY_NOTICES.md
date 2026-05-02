@@ -1,6 +1,6 @@
 # Third Party Notices
 
-fieldday bundles or depends on the following open-source software. Each is used
+outpost-media bundles or depends on the following open-source software. Each is used
 under its own license; copies of those licenses are available from the upstream
 projects.
 

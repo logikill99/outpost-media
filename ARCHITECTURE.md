@@ -1,4 +1,4 @@
-# fieldday — Architecture
+# outpost-media — Architecture
 
 A portable offline event server: WiFi AP plus captive-portal web stack on a single Raspberry Pi Zero 2W.
 
@@ -70,13 +70,13 @@ Movies live in `media/videos/`. The `/movies` route auto-discovers `.mp4`, `.mkv
 
 `scripts/setup.sh` installs five services:
 
-- `fieldday-network.service` — oneshot. Runs `scripts/ap-bringup.sh` to set the static IP on `wlan0` and put the interface up. Ordered before everything else.
-- `hostapd.service` — broadcasts the SSID. After `fieldday-network`.
-- `dnsmasq.service` — DHCP and wildcard DNS. After `fieldday-network`.
-- `fieldday.service` — the Flask/SocketIO app (`venv/bin/python run.py`). After `fieldday-network`.
-- `fieldday-caddy.service` — `caddy run --config /etc/caddy/Caddyfile`. After `fieldday`.
+- `outpost-network.service` — oneshot. Runs `scripts/ap-bringup.sh` to set the static IP on `wlan0` and put the interface up. Ordered before everything else.
+- `hostapd.service` — broadcasts the SSID. After `outpost-network`.
+- `dnsmasq.service` — DHCP and wildcard DNS. After `outpost-network`.
+- `outpost.service` — the Flask/SocketIO app (`venv/bin/python run.py`). After `outpost-network`.
+- `outpost-caddy.service` — `caddy run --config /etc/caddy/Caddyfile`. After `outpost`.
 
-NetworkManager is told to leave `wlan0` alone via a drop-in at `/etc/NetworkManager/conf.d/fieldday-unmanaged.conf`. Without that, NM races with hostapd at boot and the AP fails to come up cleanly.
+NetworkManager is told to leave `wlan0` alone via a drop-in at `/etc/NetworkManager/conf.d/outpost-unmanaged.conf`. Without that, NM races with hostapd at boot and the AP fails to come up cleanly.
 
 ---
 
@@ -94,7 +94,7 @@ NetworkManager is told to leave `wlan0` alone via a drop-in at `/etc/NetworkMana
 ## Repository layout
 
 ```
-fieldday/
+outpost-media/
 ├── app/
 │   ├── __init__.py        Flask app factory, routes, SQLite pragmas, seed data
 │   ├── config.py          Config class, reads .env via python-dotenv

@@ -54,7 +54,7 @@ function chatApp(){
     _joinTimer: null,
     init(){
       // Guard against Alpine calling init() more than once (can happen during re-renders)
-
+      if(this._initialized) return;
       this._initialized = true;
 
       this.username = localStorage.getItem('outpost_username') || '';

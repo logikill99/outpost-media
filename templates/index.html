@@ -2,7 +2,7 @@
 {% block title %}Outpost — Hub{% endblock %}
 
 {% block content %}
-<section class="hero" x-data="hubStatus()" x-init="load()">
+<section class="hero" x-data="hubStatus()" x-init="init()">
   <div class="hero-row">
     <div>
       <h1 class="hero-title">OUTPOST</h1>
@@ -65,6 +65,7 @@ function hubStatus(){
     connected: '–',
     hits: '–',
     uptime: '–',
+    _initialized: false,
     fmt(s){ if(!s) return '0s'; const m=Math.floor(s/60), h=Math.floor(m/60); if(h) return h+'h '+(m%60)+'m'; if(m) return m+'m'; return s+'s'; },
     fmtHits(n){ if(n >= 1000) return (n/1000).toFixed(1)+'k'; return String(n); },
     load(){
@@ -73,6 +74,11 @@ function hubStatus(){
         this.hits = this.fmtHits(d.page_hits || 0);
         this.uptime = this.fmt(d.uptime_seconds);
       }).catch(()=>{});
+    },
+    init(){
+      if(this._initialized) return;
+      this._initialized = true;
+      this.load();
       setInterval(()=>this.load(), 10000);
     }
   }

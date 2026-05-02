@@ -56,7 +56,10 @@ function ctfHub(){
     leaderboard: [],
     username: '',
     solved: [],
+    _initialized: false,
     init(){
+      if(this._initialized) return;
+      this._initialized = true;
       this.username = localStorage.getItem('outpost_username') || '';
       this.solved = JSON.parse(localStorage.getItem('outpost_solved') || '[]');
       this.fetchChallenges();
